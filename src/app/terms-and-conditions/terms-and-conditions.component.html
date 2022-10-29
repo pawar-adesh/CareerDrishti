@@ -1,0 +1,42 @@
+<div class="row  d-flex align-items-center justify-content-center" style="min-height: 100vh">
+
+  <div class="col-md-6">
+
+    <div class="card">
+      <div class="card-body">
+        <h5 class="card-title">Test instructions</h5>
+        <div class="card-text">
+          <ul>
+            <li>The test consist of scenarios you may have come across in regular dya-to-day life.</li>
+            <li>Read the scneario carefully and select the response accordingly.</li>
+            <li>Be honest with your response for given scenario. This will help you to get the accurate assesment about
+              yourself.</li>
+            <li>Do not think too much on single question. As it is scenario based test keep it simple and be yourself.
+            </li>
+            <li>Make sure you are connected to strong internet connection.</li>
+            <li>Make sure that you will finish the test in one go.</li>
+            <h4 class="text-center">All the best!!</h4>
+          </ul>
+        </div>
+        <div class="card-footer">
+          <input type="checkbox" (change)="getPasskey($event)">
+          <span class="mx-2 mb-2">I have read all instructions carefully. Agree to continue.</span>
+
+
+          <div class="row mt-5" id="passkeyContainer" *ngIf="showForm">
+            <form class="md-4">
+              <div class="d-flex flex-row align-items-center mb-4">
+                <input type="text" id="passkey" class="form-control" placeholder="Passkey" /><br />
+              </div>
+              <div class="d-flex flex-row align-items-center justify-content-center mb-4">
+                <button class="btn btn-md btn-block btn-primary align-items-center">Start</button>
+                <!-- <label class="form-label" for="password">Password</label> -->
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
