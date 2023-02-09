@@ -1,0 +1,147 @@
+<nav class="navbar navbar-light bg-primary">
+  <div class="container-fluid">
+    <h1 style="color: aliceblue;" class="navbar-brand">Admin Dashboard</h1>
+    <div class="d-flex">
+
+      <button routerLink="/admin" class="btn btn-danger mx-3">Logout</button>
+    </div>
+  </div>
+
+
+</nav>
+
+<button routerLink="/manageTest" class="btn btn-warning mx-3">Manage Test</button>
+<!-- <button routerLink="/studentData" class="btn btn-warning mx-3">Student Data</button> -->
+<button class="btn btn-warning mx-3" (click)="manageStudents()">Student Data</button>
+<button class="btn btn-warning mx-3" (click)="manageTests()">Test Details</button>
+<button class="btn btn-warning mx-3" (click)="manageSchools()">Manage Schools</button>
+
+
+<div *ngIf="enableSchools">
+  <div class="row mt-5">
+    <form [formGroup]="schools">
+      <div class="row">
+        <div class="col-md-4">
+          <input type="text" formControlName="name" class="form-control" id="sname" placeholder="School Name">
+        </div>
+        <div class="col-md-4">
+          <input type="text" formControlName="city" class="form-control" id="scity" placeholder="City">
+        </div>
+
+        <div class="col-md-4 d-grid">
+          <button class="btn btn-primary" type="button" (click)="addSchool()">Add</button>
+        </div>
+      </div>
+    </form>
+  </div>
+
+  <div *ngIf="schoolData?.length > 0">
+    <table class="table mt-3">
+
+      <thead>
+        <tr>
+          <th scope="col">School name</th>
+          <th scope="col">City </th>
+          <th scope="col">Action</th>
+        </tr>
+      </thead>
+
+      <tbody>
+        <tr *ngFor="let school of schoolData">
+          <td>{{school.name}}</td>
+          <td>{{school.city}}</td>
+          <td>
+            <button style="color: #fff;" data-bs-toggle="modal" data-bs-target="#updateModal" class="btn btn-info"
+              (click)="onEdit(school)">Edit</button>
+            <button style="color: #fff;" class="btn btn-danger mx-3" (click)="deleteSchool(school)">Delete</button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="modal fade" id="updateModal" tabindex="-1" aria-labelledby="updateModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title">School Details</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <form [formGroup]="schools">
+            <div class="mb-3">
+              <label for="name" class="form-label">School Name</label>
+              <input type="text" formControlName="name" class="form-control" id="name">
+            </div>
+            <div class="mb-3">
+              <label for="city" class="form-label">City</label>
+              <!-- <textarea name="" id="" cols="30" rows="10"></textarea> -->
+              <input type="text" formControlName="city" class="form-control" id="city">
+            </div>
+          </form>
+        </div>
+        <div class="modal-footer">
+          <button id="close" type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+          <button type="button" (click)="editSchool()" class="btn btn-primary">Update</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div *ngIf="enableStudents">
+  <div class="row mt-3">
+    <table class="table mt-3">
+
+      <thead>
+        <tr>
+          <th scope="col">Student Name</th>
+          <th scope="col">School Name</th>
+          <th scope="col">Email ID</th>
+          <th scope="col">Mobile Number</th>
+          <th scope="col">City</th>
+        </tr>
+      </thead>
+
+      <tbody>
+        <tr *ngFor="let st of studentData">
+          <td>{{st.firstname + " " + st.middlename + " " + st.lastname}} </td>
+          <td>{{st.schoolname}}</td>
+          <td>{{st.email}}</td>
+          <td>{{st.mobile}}</td>
+          <td>{{st.city}}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<div *ngIf="enableTests">
+  <table class="table mt-3">
+
+    <thead>
+      <tr>
+        <th scope="col">Student EmailID</th>
+        <th scope="col">Agriculture</th>
+        <th scope="col">Arts & Humanity</th>
+        <th scope="col">Commerce</th>
+        <th scope="col">Fine Arts</th>
+        <th scope="col">Health & Lifecycle</th>
+        <th scope="col">Technical</th>
+        <th scope="col">Uniform Services</th>
+     </tr>
+    </thead>
+
+    <tbody>
+      <tr *ngFor="let test of testData">
+        <td>{{test.email}}</td>
+        <td>{{test.agriculture}}</td>
+        <td>{{test.artsHumanity}}</td>
+        <td>{{test.commerce}}</td>
+        <td>{{test.fineart}}</td>
+        <td>{{test.healthLifecycle}}</td>
+        <td>{{test.technical}}</td>
+        <td>{{test.uniformServ}}</td>
+      </tr>
+    </tbody>
+  </table>
+</div>

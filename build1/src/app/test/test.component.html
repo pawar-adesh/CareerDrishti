@@ -1,0 +1,99 @@
+<div *ngIf="!isTermsAccepted">
+  <div class="row  d-flex align-items-center justify-content-center" style="min-height: 100vh">
+
+    <div class="col-md-6">
+
+      <div class="card">
+        <div class="card-body">
+          <h5 class="card-title">Test instructions</h5>
+          <div class="card-text">
+            <ul>
+              <li>The test consist of scenarios you may have come across in regular dya-to-day life.</li>
+              <li>Read the scneario carefully and select the response accordingly.</li>
+              <li>Be honest with your response for given scenario. This will help you to get the accurate assesment
+                about
+                yourself.</li>
+              <li>Do not think too much on single question. As it is scenario based test keep it simple and be yourself.
+              </li>
+              <li>Make sure you are connected to strong internet connection.</li>
+              <li>Make sure that you will finish the test in one go.</li>
+              <h4 class="text-center">All the best!!</h4>
+            </ul>
+          </div>
+          <div class="card-footer">
+            <input type="checkbox" (change)="getPasskey($event)">
+            <span class="mx-2 mb-2">I have read all instructions carefully. Agree to continue.</span>
+
+
+            <div class="row mt-5" id="passkeyContainer" *ngIf="showForm">
+              <form class="md-4">
+                <div class="d-flex flex-row align-items-center mb-4">
+                  <input type="text" id="passkey" class="form-control" placeholder="Passkey" /><br />
+                </div>
+                <div class="d-flex flex-row align-items-center justify-content-center mb-4">
+                  <button class="btn btn-md btn-block btn-primary align-items-center"
+                    (click)="displayQuestions($event)">Start</button>
+                  <!-- <label class="form-label" for="password">Password</label> -->
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+</div>
+
+<div *ngIf="isTermsAccepted">
+    <div class="row">
+      <div class="text-center">Sample Test</div>
+    </div>
+    <div class="row">
+
+      <div class="card">
+        <div class="card-body">
+          <form action="">
+            <h4>{{questionNumber+1}}.&nbsp; {{questionData[questionNumber].question}}<span class="text-danger">
+                *</span>
+            </h4>
+            <br>
+            <div class="row">
+              <div class="col-12 gray-border gray-back options my-1 p-1" *ngFor="let option of options">
+                <input type="radio" name="option" id="optionButton"
+                  (click)="onSelect(questionData[questionNumber].questionField, option.marks, questionNumber)"
+                  ngClass="option.isSelected?'bg-success text-white: '' " required>&nbsp;{{option.label}}
+              </div>
+
+            </div>
+            <h4>{{questionNumber+2}}.&nbsp; {{questionData[questionNumber+1].question}}<span class="text-danger">
+              *</span>
+          </h4>
+          <br>
+          <div class="row">
+            <div class="col-12 gray-border gray-back options my-1 p-1" *ngFor="let option of options">
+              <input type="radio" name="option2" id="optionButton2"
+                (click)="onSelect(questionData[questionNumber+1].questionField, option.marks, questionNumber+1)"
+                ngClass="option.isSelected?'bg-success text-white: '' " required>&nbsp;{{option.label}}
+            </div>
+
+          </div>
+          </form>
+        </div>
+        <div class="card-footer">
+          <div style="float: left;">
+            <button type="button" [disabled]="isPrevDisabled" (click)="prevQuestion()" class="btn btn-primary">&lt;&lt; prev</button>
+          </div>
+          <div style="float: right;">
+            <button type="button" *ngIf="isSubmit" (click)="submitTest()" class="btn btn-success">Submit</button>
+            <button type="button" *ngIf="!isSubmit" (click)="changeQuestion()" class="btn btn-primary">next &gt;&gt;</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- <div *ngFor="let item of fields">
+      {{item}} : {{totalMarks[item]}}
+    </div> -->
+
+</div>
