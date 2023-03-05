@@ -1,0 +1,206 @@
+<div class="admin-body">
+  <nav class="navbar navbar-light bg-primary">
+    <div class="container-fluid">
+      <h1 style="color: aliceblue;" class="navbar-brand">Admin Dashboard</h1>
+      <div class="d-flex">
+
+        <button routerLink="/admin" class="btn btn-danger mx-3">Logout</button>
+      </div>
+    </div>
+
+
+  </nav>
+  <div class="container">
+    <div class="row my-3 p-4">
+      <div class="col-md-3 p-3 d-grid">
+        <button routerLink="/manageTest" class="btn btn-lg btn-warning text-white">Manage Test</button>
+      </div>
+      <div class="col-md-3 p-3 d-grid">
+        <button class="btn btn-lg btn-warning text-white" (click)="manageStudents()">Student Data</button>
+      </div>
+      <div class="col-md-3 p-3 d-grid">
+        <button class="btn btn-lg btn-warning text-white" (click)="manageTests()">Test Details</button>
+      </div>
+      <div class="col-md-3 p-3 d-grid">
+        <button class="btn btn-lg btn-warning text-white" (click)="manageSchools()">Manage Schools</button>
+      </div>
+    </div>
+    <!-- <button routerLink="/studentData" class="btn btn-warning mx-3">Student Data</button> -->
+
+
+    <div *ngIf="enableSchools">
+      <div class="row mt-5">
+        <form [formGroup]="schools">
+          <div class="row">
+            <div class="col-md-4">
+              <div class="row">
+                <input type="text" formControlName="name" class="form-control" id="sname" placeholder="School Name" required>
+              <!-- </div> -->
+              <!-- <div class="row"> -->
+                <span class="text-danger"
+                  *ngIf="schools.controls['name'].invalid && (schools.controls['name'].dirty || schools.controls['name'].touched)">
+                  *School name is required
+                </span>
+              </div>
+            </div>
+            <div class="col-md-4">
+              <div class="row">
+                <input type="text" formControlName="city" class="form-control" id="scity" placeholder="City" required>
+              <!-- </div>
+              <div class="row"> -->
+                <span class="text-danger"
+                  *ngIf="schools.controls['city'].invalid && (schools.controls['city'].dirty && schools.controls['city'].touched)">
+                  *City is required
+                </span>
+              </div>
+            </div>
+
+            <div class="col-md-4 d-grid">
+              <div class="row">
+              <button class="btn btn-primary" type="button" (click)="addSchool()"
+                [disabled]="schools.controls['name'].invalid || schools.controls['city'].invalid">Add</button>
+              </div>
+            </div>
+          </div>
+        </form>
+      </div>
+
+      <div *ngIf='schoolData?.length > 0'>
+        <table class="table mt-3 table-bordered border-primary text-center table-striped">
+
+          <thead>
+            <tr>
+              <th scope="col">School name</th>
+              <th scope="col">City </th>
+              <th scope="col">Action</th>
+            </tr>
+          </thead>
+
+          <tbody>
+            <tr *ngFor="let school of schoolData">
+              <td>{{school.name}}</td>
+              <td>{{school.city}}</td>
+              <td>
+                <button style="color: #fff;" data-bs-toggle="modal" data-bs-target="#updateModal" class="btn btn-info"
+                  (click)="onEdit(school)">Edit</button>
+                <button style="color: #fff;" class="btn btn-danger mx-3" (click)="deleteSchool(school)">Delete</button>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="modal fade" id="updateModal" tabindex="-1" aria-labelledby="updateModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title">School Details</h5>
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+              <form [formGroup]="schools">
+                <div class="mb-3">
+                  <label for="name" class="form-label">School Name</label>
+                  <input type="text" formControlName="name" class="form-control" id="name" required>
+                </div>
+                <div class="mb-3">
+                  <label for="city" class="form-label">City</label>
+                  <!-- <textarea name="" id="" cols="30" rows="10"></textarea> -->
+                  <input type="text" formControlName="city" class="form-control" id="city" required>
+                </div>
+              </form>
+            </div>
+            <div class="modal-footer">
+              <button id="close" type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+              <button type="button" (click)="editSchool()" class="btn btn-primary">Update</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div *ngIf="enableStudents">
+      <div class="row mt-3">
+        <button class="btn btn-success btn-lg" (click)="exportStudents()" style="width:fit-content; float:right;">Export
+          Data</button>
+        <table class="table mt-3 table-bordered border-primary text-center table-striped" id="student-table">
+
+          <thead>
+            <tr>
+              <th scope="col">Student Name</th>
+              <th scope="col">Email ID</th>
+              <th scope="col">Gender</th>
+              <th scope="col">DOB</th>
+              <th scope="col">School Name</th>
+              <th scope="col">Standard</th>
+              <th scope="col">Mobile Number</th>
+              <th scope="col">City</th>
+              <!-- <th scope="col">Action</th> -->
+            </tr>
+          </thead>
+
+          <tbody>
+            <tr *ngFor="let st of studentData">
+              <td>{{st.firstname + " " + st.middlename + " " + st.lastname}} </td>
+              <td>{{st.email}}</td>
+              <td>{{st.gender}}</td>
+              <td>{{st.dob}}</td>
+              <td>{{st.schoolname}}</td>
+              <td>{{st.standard}}</td>
+              <td>{{st.mobile}}</td>
+              <td>{{st.city}}</td>
+              <!-- <td>
+            <button style="color: #fff;" class="btn btn-danger mx-3" (click)="deleteStudent(st.email)">Delete</button>
+          </td> -->
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <div *ngIf="enableTests">
+      <table class="table mt-3 table-bordered border-primary text-center table-striped">
+
+        <thead>
+          <tr>
+            <th scope="col">Student EmailID</th>
+            <th scope="col">Agriculture</th>
+            <th scope="col">Arts & Humanity</th>
+            <th scope="col">Commerce</th>
+            <th scope="col">Fine Arts</th>
+            <th scope="col">Health & Lifecycle</th>
+            <th scope="col">Technical</th>
+            <th scope="col">Uniform Services</th>
+            <th scope="col">Action</th>
+          </tr>
+        </thead>
+
+        <tbody>
+          <tr *ngFor="let test of testData">
+            <td>{{test.email}}</td>
+            <td>{{test.agriculture}}</td>
+            <td>{{test.artsHumanity}}</td>
+            <td>{{test.commerce}}</td>
+            <td>{{test.fineart}}</td>
+            <td>{{test.healthLifecycle}}</td>
+            <td>{{test.technical}}</td>
+            <td>{{test.uniformServ}}</td>
+            <td>
+              <button class="btn btn-danger" (click)="generateReport(test)">
+                Generate Report
+            </button>
+          </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+
+
+<div id="content">
+  <h1>Hello, world!</h1>
+  <p>This is some sample text.</p>
+  <canvas #chartCanvas></canvas>
+</div>
+
+<!-- <app-generate-pdf #GeneratePdfComponent></app-generate-pdf> -->

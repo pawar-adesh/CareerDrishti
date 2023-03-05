@@ -1,0 +1,31 @@
+/* You can add global styles to this file, and also import other style files */
+@import 'aos/dist/aos.css';
+@import "~ngx-spinner/animations/timer.css";
+@import "~ngx-spinner/animations/square-jelly-box.css";
+@import "~@angular/material/prebuilt-themes/indigo-pink.css";
+@font-face {
+  font-family: 'Poppins';
+  src: url('assets/fonts/Poppins-Regular.ttf') format('truetype'),
+       url('assets/fonts/Poppins-Bold.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+*{
+  font-family: 'Poppins', sans-serif;
+}
+html {
+  overflow-x: hidden;
+  scroll-behavior: smooth;
+}
+body{
+  font-family: "Poppins";
+}
+::selection {
+  background-color: #000000;
+  color: #fff;
+}
+
+::-moz-selection {
+  background-color: #000000;
+  color: #fff;
+}
