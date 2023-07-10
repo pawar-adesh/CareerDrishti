@@ -28,7 +28,7 @@ export class TestComponent
     'Arts & Humanity',
     'Commerce',
     'Fine Arts',
-    'Health & Lifecycle',
+    'Health & Life sciences',
     'Technical',
     'Uniform Service',
   ];
@@ -43,7 +43,7 @@ export class TestComponent
     'Arts & Humanity': 0,
     Commerce: 0,
     'Fine Arts': 0,
-    'Health & Lifecycle': 0,
+    'Health & Life sciences': 0,
     Technical: 0,
     'Uniform Service': 0,
   };
@@ -60,7 +60,7 @@ export class TestComponent
       'Arts & Humanity': [],
       Commerce: [],
       'Fine Arts': [],
-      'Health & Lifecycle': [],
+      'Health & Life sciences': [],
       Technical: [],
       'Uniform Service': [],
     };
@@ -249,7 +249,7 @@ export class TestComponent
     this.studentTestObj.artsHumanity = this.totalMarks['Arts & Humanity'];
     this.studentTestObj.commerce = this.totalMarks['Commerce'];
     this.studentTestObj.fineart = this.totalMarks['Fine Arts'];
-    this.studentTestObj.healthLifecycle = this.totalMarks['Health & Lifecycle'];
+    this.studentTestObj.healthLifecycle = this.totalMarks['Health & Life sciences'];
     this.studentTestObj.technical = this.totalMarks['Technical'];
     this.studentTestObj.uniformServ = this.totalMarks['Uniform Service'];
     this.api.addMarks(this.studentTestObj).subscribe((res) => {
