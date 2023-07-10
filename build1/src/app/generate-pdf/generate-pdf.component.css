@@ -1,0 +1,41 @@
+.mainPage{
+  height:297mm;
+  width:210mm;
+}
+.chartContainer{
+  text-align: center;
+}
+canvas{
+  padding-left: 0;
+    padding-right: 0;
+    margin-left: auto;
+    margin-right: auto;
+    display: block;
+    margin-top: 10px;
+  }
+
+h2{
+  font-weight: bold;
+  font-size: 30px;
+}
+h4{
+  font-size: 18px;
+  line-height: normal;
+}
+.top-section{
+  border-bottom: 1px solid rgb(135, 238, 83);
+}
+.logo-container{
+  display: flex;
+  justify-content: center;
+  position: relative;
+}
+img{
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+.testDescription{
+  text-align: justify;
+}

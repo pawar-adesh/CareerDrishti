@@ -1,0 +1,80 @@
+header {
+  background-color: white;
+  border-bottom: 1px solid black;
+}
+
+.navbar-brand img {
+  width: 250px;
+}
+
+.navbar ul {
+  list-style-type: none;
+}
+
+.navbar ul li {
+  font-size: 20px;
+  border-bottom: 1px solid gray;
+}
+
+.container {
+  width: 75%;
+  /* set the width of the container */
+  background-color: white;
+}
+
+.mat-tab-group {
+  background-color: #ebebeb;
+  /* set the background color to gray (replace with your desired color) */
+}
+
+.field-title {
+  font-size: 34px;
+  font-weight: bold;
+  height: fit-content;
+  width: fit-content;
+  border-bottom: 1px solid green;
+}
+
+.field-text {
+  text-indent: 2em;
+  font-size: 18px;
+  text-align: justify;
+  line-height: 1.5;
+}
+
+.field-text .first-letter {
+  font-weight: bolder;
+  font-size: 30px;
+}
+
+.word-cloud {
+  width: 100%;
+}
+
+.word-cloud img {
+  width: 100%;
+}
+
+.tab-content {
+  text-align: justify;
+}
+
+mat-expansion-panel {
+  margin-top: 5px;
+}
+
+
+.job-info ul li ul {
+  list-style: none;
+  text-justify: justify;
+}
+
+
+/* ::ng-deep .mat-tab-list{
+  background-color: #e98888;
+} */
+
+::ng-deep .mat-tab-list .mat-tab-label {
+  color: black;
+  font-weight: bold;
+  }

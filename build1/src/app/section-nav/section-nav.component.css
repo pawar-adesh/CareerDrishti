@@ -1,0 +1,54 @@
+@import '~@angular/material/prebuilt-themes/indigo-pink.css';
+
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+mat-horizontal-stepper {
+  justify-content: center;
+  align-items: center;
+  border-radius: 20px;
+  border: 1px solid black;
+  box-shadow: 8px 8px gray;
+  padding: 8px;
+}
+
+.mat-step-header .mat-step-label .mat-step-text-label {
+  font-size: 24px;
+  color: red;
+}
+
+
+.stepper-content {
+  background: url('../../assets/images/confetti_bg.gif');
+  background-size: cover;
+  background-position: center;
+  padding: 5px;
+}
+
+.stepper-content-title {
+  font-size: 30px;
+  font-weight: bold;
+  line-height: 2;
+}
+
+.stepper-content-text {
+  font-size: 20px;
+}
+
+.stepper-content-text ul li {
+  font-size: 17px;
+  line-height: 1.2;
+}
+
+
+.card-footer {
+  font-size: 17px;
+}
+
+ul li{
+  line-height: 2;
+}

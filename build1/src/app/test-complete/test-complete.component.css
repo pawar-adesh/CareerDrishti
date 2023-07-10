@@ -1,0 +1,5 @@
+.info-box{
+  border:1px solid rgb(24, 111, 34);
+  border-radius: 20px;
+  box-shadow: 8px 8px gray;
+}

@@ -1,0 +1,515 @@
+<header id="header" class="sticky-top">
+  <!-- <div class="container d-flex align-items-center justify-content-between">
+    <h1 class="logo"><a href="index.html">OnePage</a></h1> -->
+  <!-- Uncomment below if you prefer to use an image logo -->
+  <!-- <a href="index.html" class="logo"><img src="assets/img/logo.png" alt="" class="img-fluid"></a>-->
+
+  <!-- <nav id="navbar" class="navbar">
+      <ul>
+        <li><a class="nav-link scrollto active" href="#hero">Home</a></li>
+        <li><a class="nav-link scrollto" href="#about">About</a></li> -->
+  <!-- <li><a class="nav-link scrollto" href="#resources">Resources</a></li> -->
+  <!-- <li><a class="nav-link scrollto" href="#fields">Explore Fields</a></li>
+        <li><a class="nav-link scrollto" href="#testimonials">Testimonials</a></li> -->
+  <!-- <li><a class="nav-link scrollto" href="#pricing">Pricing</a></li>
+        <li><a class="nav-link scrollto" href="#contact">Contact</a></li>
+        <li><a class="getstarted scrollto" href="#about">Get Started</a></li> -->
+  <!-- </ul> -->
+
+  <!-- <i class="bi bi-list mobile-nav-toggle"></i> -->
+  <!-- </nav> -->
+  <!-- .navbar -->
+
+  <!-- </div> -->
+
+  <nav class="navbar navbar-expand-lg navbar-light header-nav shadow-5-strong">
+    <div class="container-fluid">
+      <button class="navbar-toggler custom-to" type="button" data-bs-toggle="collapse"
+        data-bs-target="#navbarTogglerDemo01" aria-controls="navbarTogglerDemo01" aria-expanded="false"
+        aria-label="Toggle navigation">
+        <!-- <span class="navbar-toggler-icon text-white"></span> -->
+        <span></span><span></span><span></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarTogglerDemo01">
+        <a class="navbar-brand" href="#">
+          <img src="../../assets/images/Career Drishti Logo.png" alt="" class="logo">
+        </a>
+        <!-- <a class="navbar-brand" href="#">CareerDrishti</a> -->
+        <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+          <li class="nav-item mx-2">
+            <a [ngClass]="homeStatus" (click)="itsHome()" class="nav-link scrollto" href="#hero">Home</a>
+          </li>
+          <li class="nav-item mx-2">
+            <a [ngClass]="aboutStatus" (click)="itsAbout()" class="nav-link scrollto" href="#about">About</a>
+          </li>
+          <li class="nav-item mx-2">
+            <a [ngClass]="fieldStatus" (click)="itsField()" class="nav-link scrollto" href="#fields">Explore Fields</a>
+          </li>
+          <li class="nav-item mx-2">
+            <a [ngClass]="teStatus" (click)="itsTesti()" class="nav-link scrollto" href="#testimonials">Testimonials</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+</header>
+
+<!-- ======= Hero Section ======= -->
+<section id="hero" class="d-flex align-items-center">
+  <div class="position-absolute w-50 d-none d-lg-block bg-blob" data-aos="zoom-in" data-aos-duration="1000">
+    <svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+      <path fill="#F1C21B"
+        d="M38.8,-62.1C50.5,-52.9,60.2,-42.4,68.5,-29.7C76.9,-16.9,83.9,-1.9,81.6,11.5C79.3,24.9,67.7,36.7,56.2,47.1C44.7,57.4,33.4,66.2,20.5,70.1C7.6,73.9,-6.7,72.9,-18.9,67.8C-31,62.6,-40.8,53.3,-47.8,42.8C-54.8,32.3,-59,20.7,-63.3,7.5C-67.7,-5.7,-72.3,-20.4,-68.3,-32.1C-64.3,-43.8,-51.8,-52.4,-39,-61.1C-26.2,-69.9,-13.1,-78.6,0.2,-79C13.6,-79.4,27.2,-71.4,38.8,-62.1Z"
+        transform="translate(100 100)" />
+    </svg>
+  </div>
+
+  <div class="container position-relative">
+    <div class="row justify-content-center" data-aos="fade-up" data-aos-duration="1000">
+      <div class="text-center">
+        <h1>Discover. Plan. Achieve.</h1>
+        <h2>Helps you to find the perfect <b>BALANCE</b> between <b>SKILLS</b> and <b>PASSION</b></h2>
+      </div>
+    </div>
+    <div class="text-center mt-5" data-aos="fade-up" data-aos-duration="1000">
+      <!-- <button type="button" id="add-btn" class="btn btn-lg btn-success" data-bs-toggle="modal"
+        data-bs-target="#studentModal">Register for Test</button> -->
+      <button type="button" id="add-btn" class="btn btn-lg btn-success" [routerLink]="['/register']"
+        routerLinkActive="router-link-active">Register for Test</button>
+    </div>
+  </div>
+</section><!-- End Hero -->
+
+<main id="main" data-mdb-spy="scroll" data-mdb-target="#scrollspy1" data-mdb-offset="59" class="scrollspy-example">
+
+  <!-- ======= About Section ======= -->
+  <section id="about" class="about-video">
+    <div class="container">
+      <div class="row justify-content-center" data-aos="fade-left" data-aos-duration="1000">
+        <div class="col-xl-8">
+          <!-- <h1>KnightOne - Create Bootstrap Website Template</h1>
+          <h2>We are team of designers making websites with Bootstrap</h2> -->
+          <!-- <iframe class="glightbox play-btn mb-4" width="560" height="315" src="https://www.youtube.com/embed/hoNb6HuNmU0" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe> -->
+          <a href="https://www.youtube.com/embed/hoNb6HuNmU0" class="glightbox play-btn mb-4"></a>
+        </div>
+      </div>
+    </div>
+  </section><!-- End About Section -->
+
+  <section class="efields" id="fields">
+    <div class="container">
+      <div class="row text-center p-2" data-aos="fade-up" data-aos-duration="1000">
+        <h2>Explore fields</h2>
+      </div>
+      <div class="row justify-content-center mb-4 field-row" data-aos="fade-up" data-aos-duration="1000">
+        <a class="col-md-4 field-box" (click)="showf1()" href="#expand-top">
+          <div class="row icon-row">
+            <img src="../../assets/images/agriculture.svg" alt="agriculture" class="field-icon-top">
+          </div>
+          <div class="row name-row">
+            <div class="field-name">Agriculture</div>
+          </div>
+        </a>
+        <a class="col-md-4 field-box" (click)="showf2()" href="#expand-top">
+          <div class="row icon-row">
+            <img src="../../assets/images/geography-teacher-teaching-while-pointing-towards-earth-map.svg"
+              alt="arts&humanity" class="field-icon-top">
+          </div>
+          <div class="row name-row">
+            <div class="field-name">Arts & Humanities</div>
+          </div>
+        </a>
+        <a class="col-md-4 field-box" (click)="showf3()" href="#expand-top">
+          <div class="row icon-row">
+            <img src="../../assets/images/interest-loan-calculator.svg" alt="commerce" class="field-icon-top">
+          </div>
+          <div class="row name-row">
+            <div class="field-name">Commerce</div>
+          </div>
+        </a>
+      </div>
+
+      <div id="expand-top" class="row expandField p-5 position-relative" *ngIf="show1 || show2 || show3">
+        <button class="btn btn-outline-primary btn-block mb-3 position-absolute top-0 end-0" style="width:fit-content"
+          *ngIf="show1 || show2 || show3" (click)="closeBtn1()"><span aria-hidden="true">&times;</span></button>
+        <div class="row hidden-block align-items-justify" *ngIf="show1">
+          <p>
+            Agriculture careers are professional paths related to farming, dairy, poultry, and animal husbandry. BSc
+            Agriculture is
+            a 3 year UG course providing all the scientific methods and techniques of agriculture. Students after
+            completing BSc...
+          </p>
+          <button type="button" (click)="openTab(0)" class="btn btn-outline-dark btn-block mt-2"
+            style="width:fit-content">know more</button>
+        </div>
+        <div class="row hidden-block align-items-justify" *ngIf="show2">
+          <p>Arts and humanities are broad topics that include the fine, visual, and performing arts and areas of study
+            regarding the human race. Many professionals pursue fine arts or humanities degrees to increase their
+            competitive advantage in the job market. After 12... </p>
+          <button type="button" (click)="openTab(1)" class="btn btn-outline-dark btn-block mt-2"
+            style="width:fit-content">know more</button>
+        </div>
+        <div class="row hidden-block align-items-justify" *ngIf="show3">
+          <p>Planning a career in business? Traditionally, trade is seen as the process of facilitating the exchange of
+            goods, services, or valuables between two parties. As a country, however, we have grown far beyond that. Now
+            the field is not limited to the exchange of goods but...</p>
+          <button type="button" (click)="openTab(2)" class="btn btn-outline-dark btn-block mt-2"
+            style="width:fit-content">know more</button>
+        </div>
+      </div>
+
+      <div class="row field-row mb-4 mt-2" data-aos="fade-up" data-aos-duration="1000">
+        <a class="col-md-3 field-box" (click)="showf4()" href="#expand">
+          <div class="row icon-row">
+            <img src="../../assets/images/paint.svg" alt="fineArts" class="field-icon">
+          </div>
+          <div class="row name-row">
+            <div class="field-name">Fine Arts</div>
+          </div>
+        </a>
+        <a class="col-md-3 field-box" (click)="showf5()" href="#expand">
+          <div class="row icon-row">
+            <img src="../../assets/images/operation-theatre.svg" alt="health" class="field-icon">
+          </div>
+          <div class="row name-row">
+            <div class="field-name">Health & Life Sciences</div>
+          </div>
+        </a>
+        <a class="col-md-3 field-box" (click)="showf6()" href="#expand">
+          <div class="row icon-row">
+            <img src="../../assets/images/website-maintainance (1).svg" alt="technical" class="field-icon">
+          </div>
+          <div class="row name-row">
+            <div class="field-name">Technical</div>
+          </div>
+        </a>
+        <a class="col-md-3 field-box" (click)="showf7()" href="#expand">
+          <div class="row icon-row">
+            <img src="../../assets/images/police.svg" alt="uniformSerevices" class="field-icon">
+          </div>
+          <div class="row name-row">
+            <div class="field-name">Uniformed Serevices</div>
+          </div>
+        </a>
+      </div>
+
+      <div id="expand" class="row expandField p-5 position-relative" *ngIf="show4 || show5 || show6 || show7">
+        <button class="btn btn-outline-primary mb-3 position-absolute top-0 end-0"
+          *ngIf="show4 || show5 || show6 || show7" (click)="closeBtn2()" style="width:fit-content"><span
+            aria-hidden="true">&times;</span></button>
+        <div class="row hidden-block align-items-justify" *ngIf="show4">
+          <p>The term "fine art" refers to an art form used primarily for its aesthetic and aesthetic value rather than its practical value. The fine arts are based on art and design, such as painting, printmaking, and ...</p>
+          <button type="button" (click)="openTab(3)" class="btn btn-outline-dark btn-block mt-2"
+            style="width:fit-content">know more</button>
+        </div>
+        <div class="row hidden-block align-items-justify" *ngIf="show5">
+          <p>Health education improves the health of individuals, families, communities, states and nations. Health education is the study of health that uses biological, environmental, psychological, physical and medical sciences to promote health and ...</p>
+          <button type="button" (click)="openTab(4)" class="btn btn-outline-dark btn-block mt-2"
+            style="width:fit-content">know more</button>
+        </div>
+        <div class="row hidden-block align-items-justify" *ngIf="show6">
+          <p>Engineering combines science and mathematics to solve real-world problems that improve the world around us. What really sets engineers apart is their ability to implement ideas cost-effectively and efficiently ...</p>
+          <button type="button" (click)="openTab(5)" class="btn btn-outline-dark btn-block mt-2"
+            style="width:fit-content">know more</button>
+        </div>
+        <div class="row hidden-block align-items-justify" *ngIf="show7">
+          <p>Uniformed public service is effective and gets the job done. The industry is made up of key players who help support and protect the public and enable you to make a real difference. Uniforms are various garments ...</p>
+          <button type="button" (click)="openTab(6)" class="btn btn-outline-dark btn-block mt-2"
+            style="width:fit-content">know more</button>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!-- ======= Testimonials Section ======= -->
+  <section class="testimonial mx-5" id="testimonials">
+    <div class="container" data-aos="fade-up" data-aos-easing="linear" data-aos-duration="1500">
+      <div class="row py-2 text-center read">
+        <div class="read-line">Read What Others Are Saying About Us</div>
+      </div>
+      <div class="row p-5">
+        <div id="carouselIndicators" class="carousel slide" data-bs-ride="carousel">
+          <div class="carousel-indicators" style="bottom:-100px;">
+            <button type="button" data-bs-target="#carouselIndicators" data-bs-slide-to="0" class="active"
+              aria-current="true" aria-label="Slide 1"></button>
+            <button type="button" data-bs-target="#carouselIndicators" data-bs-slide-to="1"
+              aria-label="Slide 2"></button>
+            <button type="button" data-bs-target="#carouselIndicators" data-bs-slide-to="2"
+              aria-label="Slide 3"></button>
+          </div>
+          <div class="carousel-inner">
+            <div class="carousel-item active">
+              <div class="para-content px-auto mx-5 text-center">
+
+                <h3 class="paragraph my-1 px-auto pb-2">
+                  <div class="text-center quotes-icon">
+                    <i class="fa fa-quote-left" aria-hidden="true"></i>
+                  </div>
+                  <div class="testimonial-quote p-5">
+                    Finding your own carrer became more easy when I interacted with the consultant at
+                    CareerDrishti. Thank you for providing such useful information and helping me out to find me a
+                    suitable option.
+                  </div>
+                </h3>
+
+                <h4 class="author my-1 pb-1"> <strong>Varun Todkari </strong></h4>
+              </div>
+            </div>
+            <div class="carousel-item">
+              <div class="para-content px-auto mx-5 text-center">
+                <h3 class="paragraph my-1 px-auto pb-2">
+                  <div class="text-center quotes-icon">
+                    <i class="fa fa-quote-left" aria-hidden="true"></i>
+                  </div>
+                  <div class="testimonial-quote p-5">
+                    CareerDrishti is by far the best career guiding organisation in
+                    my eyes. The information and resources provided are most useful for fruitful career. I wish them All
+                    the best!!
+                  </div>
+                </h3>
+                <h4 class="author my-1 pb-1"><strong>Pranav Gujar</strong></h4>
+              </div>
+            </div>
+            <div class="carousel-item">
+              <div class="para-content px-auto mx-5 text-center">
+                <h3 class="paragraph my-1 px-auto pb-2">
+                  <div class="text-center quotes-icon">
+                    <i class="fa fa-quote-left" aria-hidden="true"></i>
+                  </div>
+                  <div class="testimonial-quote p-5">
+                  I thank CareerDrishti for finding by own interest to pursue a
+                    better career. I loved the detail report of conducted tests and also the quality of questions
+                    included
+                    in the test.
+                    </div>
+                </h3>
+                <h4 class="author my-1 pb-1"><strong>Abhay Salunke</strong></h4>
+              </div>
+            </div>
+          </div>
+          <button class="carousel-control-prev" type="button" data-bs-target="#carouselIndicators" data-bs-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <!-- <i class="fa-solid fa-chevron-left"></i> -->
+            <span class="visually-hidden">Previous</span>
+          </button>
+          <button class="carousel-control-next" type="button" data-bs-target="#carouselIndicators" data-bs-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <!-- <i class="fa-solid fa-chevron-right"></i> -->
+            <span class="visually-hidden">Next</span>
+          </button>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!-- ======= Cta Section ======= -->
+  <!-- <section id="cta" class="cta">
+    <div class="container" data-aos="zoom-in">
+      <div class="text-center">
+        <h3>Call To Action</h3>
+        <p> Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+        <a class="cta-btn" href="#">Call To Action</a>
+      </div>
+    </div>
+  </section> -->
+  <!-- End Cta Section -->
+
+  <!-- ======= Pricing Section ======= -->
+  <!-- <section id="pricing" class="pricing">
+    <div class="container" data-aos="fade-up">
+
+      <div class="section-title">
+        <h2>Pricing</h2>
+        <p>Magnam dolores commodi suscipit. Necessitatibus eius consequatur ex aliquid fuga eum quidem. Sit sint consectetur velit. Quisquam quos quisquam cupiditate. Et nemo qui impedit suscipit alias ea. Quia fugiat sit in iste officiis commodi quidem hic quas.</p>
+      </div>
+
+      <div class="row">
+
+        <div class="col-lg-4 col-md-6" data-aos="zoom-im" data-aos-delay="100">
+          <div class="box">
+            <h3>Free</h3>
+            <h4><sup>$</sup>0<span> / month</span></h4>
+            <ul>
+              <li>Aida dere</li>
+              <li>Nec feugiat nisl</li>
+              <li>Nulla at volutpat dola</li>
+              <li class="na">Pharetra massa</li>
+              <li class="na">Massa ultricies mi</li>
+            </ul>
+            <div class="btn-wrap">
+              <a href="#" class="btn-buy">Buy Now</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-lg-4 col-md-6 mt-4 mt-md-0" data-aos="zoom-in" data-aos-delay="100">
+          <div class="box featured">
+            <h3>Business</h3>
+            <h4><sup>$</sup>19<span> / month</span></h4>
+            <ul>
+              <li>Aida dere</li>
+              <li>Nec feugiat nisl</li>
+              <li>Nulla at volutpat dola</li>
+              <li>Pharetra massa</li>
+              <li class="na">Massa ultricies mi</li>
+            </ul>
+            <div class="btn-wrap">
+              <a href="#" class="btn-buy">Buy Now</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-lg-4 col-md-6 mt-4 mt-lg-0" data-aos="zoom-in" data-aos-delay="100">
+          <div class="box">
+            <h3>Developer</h3>
+            <h4><sup>$</sup>29<span> / month</span></h4>
+            <ul>
+              <li>Aida dere</li>
+              <li>Nec feugiat nisl</li>
+              <li>Nulla at volutpat dola</li>
+              <li>Pharetra massa</li>
+              <li>Massa ultricies mi</li>
+            </ul>
+            <div class="btn-wrap">
+              <a href="#" class="btn-buy">Buy Now</a>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+  </section> -->
+  <!-- End Pricing Section -->
+
+
+</main><!-- End #main -->
+
+<!-- <div class="container my-5"> -->
+<footer class="bg-dark text-center text-white mt-5">
+  <!-- Grid container -->
+  <div class="container p-4 pb-0">
+    <!-- Section: Social media -->
+    <div class="row mb-4">
+      <div class="col-lg-5">
+        <img src="../../assets/images/Career Drishti Logo.png" alt="logo" height="50" width="300">
+      </div>
+      <div class="col-lg-7">
+          <li class="fb">
+          <a class="btn btn-outline-light btn-floating m-1 text-white" href="#!" role="button"><i
+              class="fa fa-facebook-f"></i></a>
+            </li>
+          <li class="twitter">
+            <a class="btn btn-outline-light btn-floating m-1 text-white twitter" href="#!" role="button"><i
+              class="fa fa-twitter"></i></a>
+            </li>
+          <li class="ig">
+          <a class="btn btn-outline-light btn-floating m-1 text-white ig" href="#!" role="button"><i
+              class="fa fa-instagram"></i></a>
+            </li>
+          <li class="ln">
+          <a class="btn btn-outline-light btn-floating m-1 text-white ln" href="#!" role="button"><i
+              class="fa fa-linkedin"></i></a>
+            </li>
+          <li class="yt">
+          <a class="btn btn-outline-light btn-floating m-1 text-white yt" href="#!" role="button"><i
+              class="fa fa-youtube"></i></a>
+            </li>
+        </div>
+      </div>
+    </div>
+  <!-- Grid container -->
+
+  <!-- Copyright -->
+  <div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.2);">
+    © 2023 Copyright:
+    <a class="text-white" href="https://careerdrishti.com/">CareerDrishti.com</a>
+  </div>
+  <!-- Copyright -->
+</footer>
+<!-- </div>   -->
+
+<!-- <div class="modal fade" id="studentModal" tabindex="-1" aria-labelledby="studentModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Student Details</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <form [formGroup]="formValue">
+          <div class="form-group mb-3">
+            <label for="email" class="form-label">Email address</label>
+            <input type="text" formControlName="email" class="form-control" id="email" aria-describedby="emailHelp">
+            <span class="text-danger"
+              *ngIf="formValue.controls['email'].dirty && formValue.hasError('required','email')">*Email is
+              required</span>
+          </div>
+          <div class="form-group mb-3">
+            <label for="fname" class="form-label">First Name</label>
+            <input type="text" formControlName="firstName" class="form-control" id="fname" [required]="true">
+            <span class="text-danger"
+              *ngIf="formValue.controls['firstName'].dirty && formValue.hasError('required','firstName')">*Full
+              name is
+              required</span>
+          </div>
+          <div class="form-group mb-3">
+            <label for="mname" class="form-label">Middle Name</label>
+            <input type="text" formControlName="middleName" class="form-control" id="mname">
+            <span class="text-danger"
+              *ngIf="formValue.controls['middleName'].dirty && formValue.hasError('required','middleName')">*Middle
+              name
+              is required</span>
+          </div>
+          <div class="form-group mb-3">
+            <label for="lname" class="form-label">Last Name</label>
+            <input type="text" formControlName="lastName" class="form-control" id="lname">
+            <span class="text-danger"
+              *ngIf="formValue.controls['lastName'].dirty && formValue.hasError('required','lastName')">*Last
+              name is
+              required</span>
+          </div>
+          <div class="form-group mb-3">
+            <label for="schoolname" class="form-label">School Name</label>
+
+            <select class="form-select" (change)="update($event)" formControlName="schoolname"
+              aria-label="Default select example">
+              <option selected>Open this select menu</option>
+              <option *ngFor="let sch of allSchools">
+                {{sch.name}}
+              </option>
+            </select>
+            <input type="text" formControlName="schoolname" class="form-control" id="schoolname">
+            <span class="text-danger"
+              *ngIf="formValue.controls['schoolname'].dirty && formValue.hasError('required','schoolname')">*School
+              Name
+              is required</span>
+          </div>
+          <div class="form-group mb-3">
+            <label for="mobileNum" class="form-label">Mobile Number</label>
+            <input type="text" formControlName="mobile" class="form-control" id="mobileNum" maxlength="10">
+            <span class="text-danger"
+              *ngIf="formValue.controls['mobile'].dirty && formValue.hasError('required','mobile')">*Mobile
+              Number is
+              required</span>
+          </div>
+          <div class="form-group mb-3">
+            <label for="city" class="form-label">City</label>
+            <input type="text" formControlName="city" class="form-control" id="city">
+            <span class="text-danger"
+              *ngIf="formValue.controls['city'].dirty && formValue.hasError('required','city')">*City is
+              required</span>
+          </div>
+
+          <div class="d-flex justify-content-center mx-4 mb-3 mb-lg-4">
+            <button type="button btn-lg" (click)="registerStudent()" class="btn btn-primary">Register</button>
+          </div>
+
+</form>
+</div>
+<div class="modal-footer">
+  <button id="close" type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+  <button type="button" (click)="checkUser()" class="btn btn-primary" data-bs-dismiss="modal">Next</button>
+  routerLink="register" routerLinkActive="active"
+</div>
+</div>
+</div>
+</div> -->

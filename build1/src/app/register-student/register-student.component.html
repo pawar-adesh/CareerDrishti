@@ -1,0 +1,408 @@
+<ngx-spinner bdColor="rgba(0, 0, 0, 0.8)" size="medium" color="#f3705b" type="square-jelly-box" [fullScreen]="true">
+  <p style="color: white"> Loading... </p>
+</ngx-spinner>
+
+<section class="" style="min-height: 100vh; background-color: #eee; margin-top: 8px;">
+  <nav class="navbar navbar-expand-lg navbar-light header-nav sticky-top">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="#">
+        <img src="../../assets/images/Career Drishti Logo.png" alt="" class="logo">
+      </a>
+    </div>
+  </nav>
+
+  <div class="container h-100 center">
+    <div class="row d-flex justify-content-center align-items-center h-100">
+      <div class="col-lg-12 col-xl-11">
+        <div class="card text-black student-details-container" style="border-radius: 25px;">
+          <div class="card-body p-md-5">
+            <form [formGroup]="emailForm">
+              <div class="form-group mb-3">
+                <div class="input-group">
+                  <div class="input-group-addon text-center p-2 border">
+                    <i class="fa fa-envelope"></i>
+                  </div>
+                  <!-- <label for="email" class="form-label">Email address</label> -->
+                  <input type="email" formControlName="email" class="form-control" id="email"
+                    aria-describedby="emailHelp" placeholder="Email address" ngModel email required>
+                </div>
+                <div
+                  *ngIf="emailForm.controls['email'].invalid && (emailForm.controls['email'].dirty || emailForm.controls['email'].touched)"
+                  class="row text-danger align-items-center ms-1">
+                  valid email is required.
+                </div>
+                <!-- <span ng-show="emailForm.controls['email'].$touched && emailForm.controls['email'].$invalid">The Email is required.</span> -->
+              </div>
+              <button type="button" (click)="checkEmail()" class="btn btn-primary"
+                *ngIf="hideNext!='yes' && emailForm.controls['email'].valid ">Next</button>
+            </form>
+            <div class="row justify-content-center" *ngIf="SecondTestAttempt == 'yes'">
+              You already have redeemed the free Career test by CareerDrishti!
+              <br>
+              Try contacting concerning authority.
+            </div>
+            <div class="row justify-content-center" *ngIf="registerUser == 'no'">
+              <div class="col-md-10 col-lg-6 col-xl-5 order-2 order-lg-1">
+
+                <p class="text-center h1 fw-bold mb-5 mx-1 mx-md-4 mt-4">Student Details</p>
+
+                <form [formGroup]="formValue" class="mx-1 mx-md-4">
+
+                  <div class="form-group mb-3">
+                    <div class="input-group">
+                      <div class="input-group-addon text-center p-2 border">
+                        <i class="fa fa-user"></i>
+                      </div>
+                      <input type="text" formControlName="firstName" class="form-control" id="fname" [required]="true"
+                        placeholder="First Name">
+                    </div>
+                    <span class="text-danger"
+                      *ngIf="formValue.controls['firstName'].invalid && (formValue.controls['firstName'].dirty || formValue.controls['firstName'].touched)">*First
+                      name is required
+                    </span>
+                  </div>
+                  <div class="form-group mb-3">
+                    <div class="input-group">
+                      <div class="input-group-addon text-center p-2 border">
+                        <i class="fa fa-user"></i>
+                      </div>
+                      <input type="text" formControlName="middleName" class="form-control" id="mname"
+                        placeholder="Middle Name">
+                    </div>
+                    <span class="text-danger"
+                      *ngIf="formValue.controls['middleName'].invalid && (formValue.controls['middleName'].dirty || formValue.controls['middleName'].touched)">
+                      *Middle name is required
+                    </span>
+                  </div>
+                  <div class="form-group mb-3">
+                    <div class="input-group">
+                      <div class="input-group-addon text-center p-2 border">
+                        <i class="fa fa-user"></i>
+                      </div>
+                      <input type="text" formControlName="lastName" class="form-control" id="lname"
+                        placeholder="Last Name">
+                    </div>
+                    <span class="text-danger"
+                      *ngIf="formValue.controls['lastName'].invalid && (formValue.controls['lastName'].dirty || formValue.controls['lastName'].touched)">
+                      *Last name is required
+                    </span>
+                  </div>
+                  <div class="form-group mb-3 row">
+                    <div class="input-group">
+                      <div class="col-md-3 col-sm-12">
+                        <label class="form-check-label px-1">
+                          Gender
+                        </label>
+                      </div>
+                      <div class="form-check col-md-3 col-sm-12">
+                        <input class="form-check-input form-control" type="radio" id="male" value="male" name="gender"
+                          formControlName="gender">
+                        <label class="form-check-label px-1" for="male">
+                          Male
+                        </label>
+                      </div>
+                      <div class="form-check px-2 col-md-3 col-sm-12">
+                        <input class="form-check-input form-control" type="radio" id="female" value="female"
+                          name="gender" formControlName="gender">
+                        <label class="form-check-label px-1" for="female">
+                          Female
+                        </label>
+                      </div>
+                      <div class="form-check px-2 col-md-3 col-sm-12">
+                        <input class="form-check-input form-control" type="radio" id="other" value="other" name="gender"
+                          formControlName="gender">
+                        <label class="form-check-label px-1" for="other">
+                          Other
+                        </label>
+                      </div>
+                      <span
+                        *ngIf="formValue.controls['gender'].invalid && (formValue.controls['gender'].dirty || formValue.controls['gender'].touched)"
+                        class="text-danger">
+                        *Gender is required.
+                      </span>
+                    </div>
+                  </div>
+                  <div class="form-group mb-3 row">
+                    <div class="input-group">
+                      <input type="date" formControlName="dob" class="form-control" formControlName="dob"
+                        [max]="maxDate" [min]="minDate" jhiTranslate="form.birthdate.placeholder" />
+                    </div>
+                    <span class="text-danger"
+                      *ngIf="formValue.controls['dob'].invalid && (formValue.controls['dob'].dirty || formValue.controls['dob'].touched)">
+                      *Date of Birth is required
+                    </span>
+                  </div>
+
+                  <div class="form-group mb-3">
+                    <!-- <label for="schoolname" class="form-label">School Name</label> -->
+                    <div class="input-group">
+                      <div class="input-group-addon text-center p-2 border">
+                        <i class="fa fa-graduation-cap"></i>
+                      </div>
+                      <select class="form-select" (change)="update($event)" formControlName="schoolname"
+                        aria-label="Default select example">
+                        <option disable selected hidden>Select School</option>
+                        <option *ngFor="let sch of allSchools">
+                          {{sch.name}}
+                        </option>
+                      </select>
+                    </div>
+                    <span class="text-danger"
+                      *ngIf="formValue.controls['schoolname'].invalid && (formValue.controls['schoolname'].dirty || formValue.controls['schoolname'].touched)">
+                      *School name is required
+                    </span>
+                  </div>
+                  <div class="form-group mb-3 row">
+                    <div class="input-group">
+                      <div class="form-check col-md-6 col-sm-12">
+                        <input class="form-check-input form-control" type="radio" id="std10" value="10th"
+                          name="standard" formControlName="standard">
+                        <label class="form-check-label px-1" for="std10">
+                          10th
+                        </label>
+                      </div>
+                      <div class="form-check px-2 col-md-6 col-sm-12">
+                        <input class="form-check-input form-control" type="radio" id="std12" value="12th"
+                          name="standard" formControlName="standard">
+                        <label class="form-check-label px-1" for="std12">
+                          12th
+                        </label>
+                      </div>
+
+
+                      <span
+                        *ngIf="formValue.controls['standard'].invalid && (formValue.controls['standard'].dirty || formValue.controls['standard'].touched)"
+                        class="text-danger">
+                        *Standard is required.
+                      </span>
+                    </div>
+                  </div>
+                  <div class="form-group mb-3">
+                    <div class="input-group">
+                      <div class="input-group-addon text-center p-2 border">
+                        <i class="fa fa-phone"></i>
+                      </div>
+                      <input type="text" formControlName="mobile" class="form-control" id="mobileNum" maxlength="10"
+                        minlength="10" placeholder="Mobile Number">
+                    </div>
+                    <span class="text-danger"
+                      *ngIf="formValue.controls['mobile'].invalid && (formValue.controls['mobile'].dirty || formValue.controls['mobile'].touched)">
+                      *Valid Mobile number required
+                    </span>
+                    <!-- <span class="text-danger" *ngIf="formValue.controls['mobile'].errors?.['pattern']">
+                      *Number should be 10 digit
+                    </span> -->
+                  </div>
+                  <div class="form-group mb-3">
+                    <!-- <label for="city" class="form-label">City</label> -->
+                    <div class="input-group">
+                      <div class="input-group-addon text-center p-2 border">
+                        <i class="fa fa-map-marker"></i>
+                      </div>
+                      <input type="text" formControlName="city" class="form-control" id="city"
+                        placeholder="City/Town/Village">
+                    </div>
+                    <span class="text-danger"
+                      *ngIf="formValue.controls['city'].invalid && (formValue.controls['city'].dirty || formValue.controls['city'].touched)">
+                      *City is required
+                    </span>
+                  </div>
+
+                  <div class="d-grid my-3 my-lg-4">
+                    <button type="button btn-lg" (click)="addStudent()" class="btn btn-primary btn-block btn-lg"
+                      [disabled]="formValue.controls['firstName'].invalid || formValue.controls['middleName'].invalid || formValue.controls['lastName'].invalid || formValue.controls['dob'].invalid || formValue.controls['gender'].invalid || formValue.controls['mobile'].invalid|| formValue.controls['schoolname'].invalid || formValue.controls['city'].invalid">
+                      Register</button>
+                    <!-- data-bs-toggle="modal" data-bs-target="#updateModal" -->
+
+                    <!-- <div class="modal fade" id="updateModal" tabindex="-1" aria-labelledby="updateModalLabel"
+                      aria-hidden="true">
+                      <div class="modal-dialog modal-dialog-centered">
+                        <div class="modal-content">
+                          <div class="modal-header">
+                            <h5 class="modal-title">School Details</h5>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                          </div>
+                          <div class="modal-body">
+                            <form [formGroup]="form" (ngSubmit)="submit()">
+
+                              <div class="form-group">
+                                <label for="language">Language:</label>
+                                <div>
+                                  <input id="marathi" type="radio" value="marathi" name="language"
+                                    formControlName="language">
+                                  <label for="marathi">Marathi</label>
+                                </div>
+
+                                <div>
+                                  <input id="english" type="radio" value="english" name="language"
+                                    formControlName="language">
+                                  <label for="english">English</label>
+                                </div>
+
+                                <div *ngIf="f.language.touched && f.language.invalid" class="alert alert-danger">
+                                  Name is required.
+                                </div>
+                              </div>
+                            </form>
+                          </div>
+                          <div class="modal-footer">
+                            <button id="close" type="button" class="btn btn-secondary" >Close</button>
+                            <button class="btn btn-primary" type="submit" [disabled]="!form.valid"
+                              data-bs-dismiss="modal" (click)="submit()">Next</button>
+                          </div>
+                        </div>
+                      </div>
+                    </div> -->
+
+
+                  </div>
+                </form>
+
+              </div>
+              <div class="col-md-10 col-lg-6 col-xl-7 d-flex align-items-center order-1 order-lg-2 register-image">
+
+                <img src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-registration/draw1.webp"
+                  class="img-fluid align-items-center" alt="Sample image">
+                <!-- <img src="../../assets/images/businessman-using-tablet.gif" class="img-fluid" alt="register"> -->
+
+              </div>
+            </div>
+
+            <!-- <div class="row justify-content-center" *ngIf="langContainer == 'display'">
+              <div class="col-md-10 col-lg-6 col-xl-5 order-2 order-lg-1">
+
+                <p class="text-center h1 fw-bold mb-5 mx-1 mx-md-4 mt-4">Choose language</p>
+                <form [formGroup]="form" (ngSubmit)="submit()">
+
+                  <div class="form-group">
+                    <label for="language">Language:</label>
+                    <div class="p-3">
+                      <input id="marathi" type="radio" value="marathi" name="language" formControlName="language">
+                      <label for="marathi">Marathi</label>
+                    </div>
+
+                    <div class="p-3">
+                      <input id="english" type="radio" value="english" name="language" formControlName="language">
+                      <label for="english">English</label>
+                    </div>
+
+                    <div *ngIf="f.language.touched && f.language.invalid" class="alert alert-danger">
+                      Name is required.
+                    </div>
+
+                    <button class="btn btn-primary" type="submit" [disabled]="!form.valid"
+                              data-bs-dismiss="modal" (click)="submit()">Next</button>
+                  </div>
+                </form>
+              </div>
+              <div class="col-md-10 col-lg-6 col-xl-7 d-flex align-items-center order-1 order-lg-2 register-image">
+
+                <img src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-registration/draw1.webp"
+                  class="img-fluid align-items-center" alt="Sample image"> -->
+            <!-- <img src="../../assets/images/businessman-using-tablet.gif" class="img-fluid" alt="register"> -->
+
+            <!-- </div>
+            </div> -->
+
+
+            <div class="row justify-content-center" *ngIf="showForm == 'no'">
+              <div class="col-md-10 col-lg-6 col-xl-7 d-flex align-items-center order-1 order-lg-1">
+
+                <img src="../../assets/images/online-graduation.svg" class="img-fluid" alt="instructions">
+
+              </div>
+              <div class="col-md-10 col-lg-6 col-xl-5 order-2 order-lg-2 test-instructions">
+
+                <p class="text-center h2 fw-bold mb-2 mx-1 mx-md-4 mt-4">Test instructions / सूचना</p>
+
+                <div class="card-text p-2">
+                  <mat-tab-group animationDuration="1000ms" dynamicHeight>
+                    <mat-tab label="English" class="p-3">
+                      <ul class="p-3">
+                        <li>The test comprises of situations you may come across in your day-to-day life. Read each
+                          situation carefully, and select the response you most agree with.</li>
+                        <li>Do not think too much on each question. Keep it simple.</li>
+                        <li>Be honest in responding to the questions asked. This will help you get an accurate
+                          assessment about yourself.</li>
+                        <li>Do not think too much on single question. As it is scenario based test keep it simple and be
+                          yourself.
+                        </li>
+                        <li>The options for responding to the statements are – 'Strongly Agree', 'Agree', 'Disagree',
+                          'Strongly Disagree'. Depending on your preference, choose the option based on how much you
+                          like the action.</li>
+                        <li>Make sure you are connected to strong internet connection.</li>
+                        <li>Make sure that you will finish the test in one go.</li>
+                        <h4 class="text-center">All the best!!</h4>
+                      </ul>
+                    </mat-tab>
+                    <mat-tab label="Marathi" class="p-3">
+                      <ul class="p-3">
+                        <li>चाचणीमध्ये तुम्हाला तुमच्या दैनंदिन जीवनात येणाऱ्या परिस्थितींचा समावेश आहे. प्रत्येक
+                          परिस्थिती काळजीपूर्वक वाचा आणि तुम्हाला सर्वात जास्त सहमत असलेला प्रतिसाद निवडा.</li>
+                        <li>प्रत्येक प्रश्नावर जास्त विचार करू नका. सोपे ठेवा.</li>
+                        <li>विचारलेल्या प्रश्नांची उत्तरे देण्यात प्रामाणिक रहा. हे तुम्हाला तुमच्याबद्दल अचूक आकलन
+                          करण्यात मदत करेल.</li>
+                        <li>
+                          एकाच प्रश्नावर जास्त विचार करू नका. ही परिस्थिती आधारित चाचणी असल्याने ती सोपी ठेवा आणि स्वतः
+                          व्हा.
+                        </li>
+                        <li>
+                          विधानांना प्रत्युत्तर देण्यासाठी पर्याय आहेत – 'Strongly Agree', 'Agree', 'Agree', 'Strongly
+                          Disagree'. तुमच्या पसंतीनुसार, तुम्हाला कृती किती आवडते यावर आधारित पर्याय निवडा.</li>
+                        <li>तुम्ही मजबूत इंटरनेट कनेक्शनशी कनेक्ट असल्याची खात्री करा.</li>
+                        <li>तुम्ही एकाच वेळी चाचणी पूर्ण कराल याची खात्री करा.</li>
+                        <h4 class="text-center mt-1">All the best!!</h4>
+                      </ul>
+                    </mat-tab>
+                  </mat-tab-group>
+                </div>
+                <div class="card-footer">
+                  <input type="checkbox" id="checkInstruct" (change)="displayQuestions($event)">
+                  <span class="mx-2 mb-2">I have read all instructions carefully. Agree to continue.</span>
+                </div>
+                <div class="d-flex flex-row align-items-center justify-content-center mb-4">
+                  <button class="btn btn-md btn-block btn-primary align-items-center" *ngIf="isTermsAccepted"
+                    [routerLink]="['/test']" routerLinkActive="router-link-active">Start</button>
+                </div>
+              </div>
+
+
+              <!-- <div class="col-md-10 col-lg-6 col-xl-5 order-2 order-lg-2" *ngIf="preferedLang=='marathi'">
+
+                <p class="text-center h1 fw-bold mb-5 mx-1 mx-md-4 mt-4">Test instructions in Marathi</p>
+
+                <div class="card-text">
+                  <ul>
+                    <li>The test consist of scenarios you may have come across in regular day-to-day life.</li>
+                    <li>Read the scenario carefully and select the response accordingly.</li>
+                    <li>Be honest with your response for given scenario. This will help you to get the accurate
+                      assesment
+                      about
+                      yourself.</li>
+                    <li>Do not think too much on single question. As it is scenario based test keep it simple and be
+                      yourself.
+                    </li>
+                    <li>Make sure you are connected to strong internet connection.</li>
+                    <li>Make sure that you will finish the test in one go.</li>
+                    <h4 class="text-center">All the best!!</h4>
+                  </ul>
+                </div>
+                <div class="card-footer">
+                  <input type="checkbox" id="checkInstruct" (change)="displayQuestions($event)">
+                  <span class="mx-2 mb-2">I have read all instructions carefully. Agree to continue.</span>
+                </div>
+                <div class="d-flex flex-row align-items-center justify-content-center mb-4">
+                  <button class="btn btn-md btn-block btn-primary align-items-center" *ngIf="isTermsAccepted"
+                    [routerLink]="['/test']" routerLinkActive="router-link-active">Start</button>
+                </div>
+              </div> -->
+
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+</section>

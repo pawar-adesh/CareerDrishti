@@ -1,0 +1,277 @@
+<div class="container">
+  <div class="row my-3 p-2">
+    <div class="col-md-3 p-3 d-grid">
+      <button class="btn btn-lg btn-warning text-white" (click)="manage10()">10<sup>th</sup></button>
+    </div>
+    <div class="col-md-3 p-3 d-grid">
+      <button class="btn btn-lg btn-warning text-white" (click)="manage12()">12<sup>th</sup></button>
+    </div>
+    <div class="col-md-3 p-3 d-grid">
+      <button class="btn btn-lg btn-warning text-white" (click)="manageApti()">Aptitude Test</button>
+    </div>
+
+    <div *ngIf="enable10">
+      <div class="row my-2 text-center">
+        <h2>10th Question Details</h2>
+      </div>
+      <div>
+        <button style="color: #fff;" data-bs-toggle="modal" data-bs-target="#updateQueModal" class="btn btn-info"
+          (click)="activateAdd()">Add</button>
+      </div>
+      <table class="table mt-3">
+
+        <thead>
+          <tr>
+            <th scope="col">Sr. No.</th>
+            <th scope="col">Question </th>
+            <th scope="col">Question(Marathi) </th>
+            <th scope="col">Field</th>
+            <th scope="col">Action</th>
+          </tr>
+        </thead>
+
+        <tbody>
+          <tr *ngFor="let que of questionData10; let i = index">
+            <td>{{ i + 1 }}</td>
+            <td>{{que.question}}</td>
+            <td>{{que.questionMarathi}}</td>
+            <td>{{que.questionField}}</td>
+            <td>
+              <button style="color: #fff;" data-bs-toggle="modal" data-bs-target="#updateQueModal" class="btn btn-info"
+                (click)="onEdit(que)">Edit</button>
+              <button style="color: #fff;" class="btn btn-danger mx-3" (click)="deleteQuestion(que)">Delete</button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div *ngIf="enable12">
+      <div class="row my-2 text-center">
+        <h2>12th Question Details</h2>
+      </div>
+
+      <div>
+        <button style="color: #fff;" data-bs-toggle="modal" data-bs-target="#updateQueModal" class="btn btn-info"
+          (click)="activateAdd()">Add</button>
+      </div>
+      <table class="table mt-3">
+
+        <thead>
+          <tr>
+            <th scope="col">Sr. No.</th>
+            <th scope="col">Question </th>
+            <th scope="col">Question(Marathi) </th>
+            <th scope="col">Field</th>
+            <th scope="col">Action</th>
+          </tr>
+        </thead>
+
+        <tbody>
+          <tr *ngFor="let que of questionData12; let i = index">
+            <td>{{ i + 1 }}</td>
+            <td>{{que.question}}</td>
+            <td>{{que.questionMarathi}}</td>
+            <td>{{que.questionField}}</td>
+            <td>
+              <button style="color: #fff;" data-bs-toggle="modal" data-bs-target="#updateQueModal" class="btn btn-info"
+                (click)="onEdit(que)">Edit</button>
+              <button style="color: #fff;" class="btn btn-danger mx-3" (click)="deleteQuestion(que)">Delete</button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div *ngIf="enableApti">
+      <div class="row my-2 text-center">
+        <h2>Aptitiude Question Details</h2>
+      </div>
+
+      <div>
+        <button style="color: #fff;" data-bs-toggle="modal" data-bs-target="#updateAptiQueModal" class="btn btn-info"
+          (click)="activateAdd()">Add</button>
+      </div>
+      <table class="table mt-3">
+
+        <thead>
+          <tr>
+            <th scope="col">Sr. No.</th>
+            <th scope="col">Question </th>
+            <th scope="col">Option1 </th>
+            <th scope="col">Option2 </th>
+            <th scope="col">Option3 </th>
+            <th scope="col">Option4 </th>
+            <th scope="col">Correct Answer</th>
+            <th scope="col">Question Type</th>
+            <th scope="col">Action</th>
+          </tr>
+        </thead>
+
+        <tbody>
+          <tr *ngFor="let que of questionDataApti; let i = index">
+            <td>{{ i + 1 }}</td>
+            <td>{{que.que}}</td>
+            <td>{{que.option1}}</td>
+            <td>{{que.option2}}</td>
+            <td>{{que.option3}}</td>
+            <td>{{que.option4}}</td>
+            <td>{{que.answer}}</td>
+            <td>{{que.queType}}</td>
+            <td>
+              <button style="color: #fff;" data-bs-toggle="modal" data-bs-target="#updateAptiQueModal" class="btn btn-info"
+                (click)="onEditApti(que)">Edit</button>
+              <button style="color: #fff;" class="btn btn-danger mx-3" (click)="deleteAptiQuestion(que)">Delete</button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+
+
+<div class="modal fade" id="updateQueModal" tabindex="-1" aria-labelledby="updateQueModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Question Details</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <form [formGroup]="formValue">
+          <!-- <div class="mb-3">
+            <label for="questionID" class="form-label">Question ID</label>
+            <input type="text" formControlName="queID" class="form-control" id="questionID" required>
+            [readOnly]="true">
+            <span class="text-danger"
+                      *ngIf="formValue.controls['queID'].invalid && (formValue.controls['queID'].dirty || formValue.controls['queID'].touched)">
+                      *ID is required
+                    </span>
+          </div> -->
+          <div class="mb-3">
+            <label for="queDesc" class="form-label">Question</label>
+            <!-- <textarea name="" id="" cols="30" rows="10"></textarea> -->
+            <input type="text" formControlName="question" class="form-control" id="queDesc" required>
+            <span class="text-danger"
+              *ngIf="formValue.controls['question'].invalid && (formValue.controls['question'].dirty || formValue.controls['question'].touched)">
+              *Question is required
+            </span>
+          </div>
+          <div class="mb-3">
+            <label for="queDesc" class="form-label">Question (Marathi)</label>
+            <!-- <textarea name="" id="" cols="30" rows="10"></textarea> -->
+            <input type="text" formControlName="questionMarathi" class="form-control" id="queMarDesc" required>
+            <span class="text-danger"
+              *ngIf="formValue.controls['questionMarathi'].invalid && (formValue.controls['questionMarathi'].dirty || formValue.controls['questionMarathi'].touched)">
+              *Question is required
+            </span>
+          </div>
+          <div class="mb-3">
+            <label for="field" class="form-label">Question Field</label>
+            <!--     <input type="text" formControlName="questionField" class="form-control" id="field">
+                  </div> -->
+            <select class="form-select" aria-label="Select fields" formControlName="questionField" id="field" required>
+              <option selected class="text-secondary">select question field</option>
+              <option value="Agriculture">Agriculture</option>
+              <option value="Arts & Humanity">Arts & Humanity</option>
+              <option value="Commerce">Commerce</option>
+              <option value="Fine Arts">Fine Arts</option>
+              <option value="Health & Lifecycle">Health & Lifecycle</option>
+              <option value="Technical">Technical</option>
+              <option value="Uniform Service">Uniformed Service</option>
+            </select>
+            <span class="text-danger"
+              *ngIf="formValue.controls['questionField'].invalid && (formValue.controls['questionField'].dirty || formValue.controls['questionField'].touched)">
+              *Question Field is required
+            </span>
+          </div>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button id="close" type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        <button type="button" *ngIf="isAdded" (click)="addQuestions()" class="btn btn-primary"
+          [disabled]="formValue.controls['queID'].invalid || formValue.controls['question'].invalid || formValue.controls['questionField'].invalid">Add</button>
+        <button type="button" *ngIf="isUpdated" (click)="editQuestion()" class="btn btn-primary">Update</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<div class="modal fade" id="updateAptiQueModal" tabindex="-1" aria-labelledby="updateQueModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Question Details</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <form [formGroup]="AptiformValue">
+          <div class="mb-3">
+            <label for="question" class="form-label">Question</label>
+            <input type="text" class="form-control" formControlName="question" id="question" required>
+            <span class="text-danger" *ngIf="AptiformValue.controls['question'].invalid &&  (AptiformValue.controls['question'].dirty || AptiformValue.controls['question'].touched)">
+              *Question is required
+            </span>
+          </div>
+          <div class="mb-3">
+            <label for="option1" class="form-label">Option1</label>
+            <input type="text" class="form-control" formControlName="option1" id="option1" required>
+            <span class="text-danger" *ngIf="AptiformValue.controls['option1'].invalid &&  (AptiformValue.controls['option1'].dirty || AptiformValue.controls['option1'].touched)">
+              *Option1 is required
+            </span>
+          </div>
+          <div class="mb-3">
+            <label for="option2" class="form-label">Option2</label>
+            <input type="text" class="form-control" formControlName="option2" id="option2" required>
+            <span class="text-danger" *ngIf="AptiformValue.controls['option2'].invalid &&  (AptiformValue.controls['option2'].dirty || AptiformValue.controls['option2'].touched)">
+              *Option2 is required
+            </span>
+          </div>
+          <div class="mb-3">
+            <label for="option3" class="form-label">Option3</label>
+            <input type="text" class="form-control" formControlName="option3" id="option3" required>
+            <span class="text-danger" *ngIf="AptiformValue.controls['option3'].invalid &&  (AptiformValue.controls['option3'].dirty || AptiformValue.controls['option3'].touched)">
+              *Option3 is required
+            </span>
+          </div>
+          <div class="mb-3">
+            <label for="option4" class="form-label">Option4</label>
+            <input type="text" class="form-control" formControlName="option4" id="option4" required>
+            <span class="text-danger" *ngIf="AptiformValue.controls['option4'].invalid &&  (AptiformValue.controls['option4'].dirty || AptiformValue.controls['option4'].touched)">
+              *Option4 is required
+            </span>
+          </div>
+          <div class="mb-3">
+            <label for="answer" class="form-label">Correct Answer</label>
+            <input type="text" class="form-control" formControlName="answer" id="answer" required>
+            <span class="text-danger" *ngIf="AptiformValue.controls['answer'].invalid &&  (AptiformValue.controls['answer'].dirty || AptiformValue.controls['answer'].touched)">
+              *Correct answer is required
+            </span>
+          </div>
+          <div class="mb-3">
+            <label for="qType" class="form-label">Question Type</label>
+            <select class="form-select" aria-label="Select Type" formControlName="questionType" id="qType" required>
+              <option selected class="text-secondary">select question type</option>
+              <option value="Aptitude">Aptitude</option>
+              <option value="Verbal">Verbal</option>
+              <option value="Numerical">Numerical</option>
+              <option value="Spatial">Spatial</option>
+           </select>
+            <span class="text-danger"
+              *ngIf="AptiformValue.controls['questionType'].invalid && (AptiformValue.controls['questionType'].dirty || AptiformValue.controls['questionType'].touched)">
+              *Question Type is required
+            </span>
+          </div>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button id="closeApti" type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        <button type="button" *ngIf="isAdded" (click)="addAptiQuestions()" class="btn btn-primary"
+          [disabled]="AptiformValue.controls['question'].invalid || AptiformValue.controls['questionType'].invalid || AptiformValue.controls['option1'].invalid || AptiformValue.controls['option2'].invalid || AptiformValue.controls['option3'].invalid || AptiformValue.controls['option4'].invalid || AptiformValue.controls['answer'].invalid">Add</button>
+        <button type="button" *ngIf="isUpdated" (click)="editAptiQuestion()" class="btn btn-primary">Update</button>
+      </div>
+    </div>
+  </div>
+</div>

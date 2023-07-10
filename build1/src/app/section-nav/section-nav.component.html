@@ -1,0 +1,71 @@
+<div class="container">
+  <!-- <mat-vertical-stepper>
+    <mat-step [completed]="true">
+      <ng-template matStepLabel><h1 class="step-label">Step 1</h1></ng-template>
+      <h3>Completed</h3>
+      <button mat-button (click)="stepper.next()">Next</button>
+
+    </mat-step>
+    <mat-step>
+      <ng-template matStepLabel><h1 class="step-label">Step 2</h1></ng-template>
+      <h3>To be completed</h3>
+    </mat-step>
+  </mat-vertical-stepper> -->
+  <mat-horizontal-stepper #stepper [linear]="true">
+    <!-- Step 1 -->
+    <mat-step [stepControl]="test1submit">
+      <ng-template matStepLabel>Step 1</ng-template>
+      <div class="stepper-content text-center p-5">
+        <p class="stepper-content-title">Test Submitted Successfully!</p>
+        <p class="stepper-content-text">You have submiited the career test successfully. Now it's time for Aptitude
+          Test.</p>
+        <button class="btn btn-primary" matStepperNext (click)="enableStep2()">Proceed</button>
+      </div>
+    </mat-step>
+
+    <!-- Step 2 -->
+    <mat-step [stepControl]="aptitudeInstruction">
+      <ng-template matStepLabel>Step 2</ng-template>
+      <div class="p-3">
+        <p class="stepper-content-title text-center">Instructions</p>
+        <div class="card-text p-2 stepper-content-text">
+          <mat-tab-group animationDuration="1000ms" dynamicHeight>
+            <mat-tab label="English" class="p-3">
+              <ul class="p-3">
+                <li>Read the instructions carefully before starting the test.</li>
+                <li>Allocate your time wisely for each section to ensure you can attempt all questions.</li>
+                <li>Each correct answer will be awarded 1 mark, while incorrect answers will receive 0 marks.</li>
+                <li>Answer all the questions to the best of your ability; do not leave any question unanswered.
+                </li>
+                <li>Double-check your answers before submitting the test.</li>
+                <h2 class="text-center mt-1">All the best!!</h2>
+              </ul>
+            </mat-tab>
+            <mat-tab label="Marathi" class="p-3">
+              <ul class="p-3">
+                <li>चाचणी सुरू करण्यापूर्वी सूचना काळजीपूर्वक वाचा.</li>
+                <li>तुम्ही सर्व प्रश्नांचा प्रयत्न करू शकता याची खात्री करण्यासाठी प्रत्येक विभागासाठी तुमचा वेळ हुशारीने द्या.</li>
+                <li>प्रत्येक बरोबर उत्तराला 1 गुण दिले जातील, तर चुकीच्या उत्तरांना 0 गुण मिळतील.</li>
+                <li>
+                  तुमच्या क्षमतेनुसार सर्व प्रश्नांची उत्तरे द्या; कोणताही प्रश्न अनुत्तरीत ठेवू नका.
+                </li>
+                <li>
+                  चाचणी सबमिट करण्यापूर्वी तुमची उत्तरे दोनदा तपासा.</li>
+                <h2 class="text-center mt-1">All the best!!</h2>
+              </ul>
+            </mat-tab>
+          </mat-tab-group>
+        </div>
+        <div class="card-footer">
+          <input type="checkbox" id="checkAptiInstruct" (change)="displayAptiQuestions($event)">
+          <span class="mx-2 mb-2">I have read all instructions carefully. Agree to continue.</span>
+        </div>
+        <div class="d-flex flex-row align-items-center justify-content-center mb-4">
+          <button class="btn btn-md btn-block btn-primary align-items-center" *ngIf="isTermsAccepted"
+            [routerLink]="['/test/aptitude']" routerLinkActive="router-link-active">Start</button>
+        </div>
+      </div>
+    </mat-step>
+  </mat-horizontal-stepper>
+
+</div>
