@@ -43,6 +43,7 @@ export class RegisterStudentComponent implements OnInit {
   preferedLang: any;
   registerUser: string = '';
   isTermsAccepted!: boolean;
+  emailVal:String="";
 
   emailData: any = [];
   constructor(
@@ -199,5 +200,12 @@ export class RegisterStudentComponent implements OnInit {
     } else {
       this.isTermsAccepted = false;
     }
+  }
+
+  clearText(){
+    this.emailVal="";
+    this.emailForm.enable();
+    this.SecondTestAttempt="";
+    this.hideNext="";
   }
 }

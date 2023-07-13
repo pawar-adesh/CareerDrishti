@@ -8,6 +8,10 @@
       <a class="navbar-brand" href="#">
         <img src="../../assets/images/Career Drishti Logo.png" alt="" class="logo">
       </a>
+
+      <div class="home-tab">
+        <button class="btn btn-primary" [routerLink]="['/']" routerLinkActive="router-link-active">Home</button>
+      </div>
     </div>
   </nav>
 
@@ -24,7 +28,7 @@
                   </div>
                   <!-- <label for="email" class="form-label">Email address</label> -->
                   <input type="email" formControlName="email" class="form-control" id="email"
-                    aria-describedby="emailHelp" placeholder="Email address" ngModel email required>
+                    aria-describedby="emailHelp" placeholder="Email address" [(ngModel)]="emailVal" email required>
                 </div>
                 <div
                   *ngIf="emailForm.controls['email'].invalid && (emailForm.controls['email'].dirty || emailForm.controls['email'].touched)"
@@ -36,11 +40,16 @@
               <button type="button" (click)="checkEmail()" class="btn btn-primary"
                 *ngIf="hideNext!='yes' && emailForm.controls['email'].valid ">Next</button>
             </form>
-            <div class="row justify-content-center" *ngIf="SecondTestAttempt == 'yes'">
+            <div class="row" *ngIf="SecondTestAttempt == 'yes'">
+              <button type="button" class="btn btn-primary mb-2" (click)="clearText()" style="width: auto;">Clear</button>
+              <div class=" justify-content-center second-attempt">
+              <i class="fa fa-exclamation-triangle my-2" style="font-size:48px;color:rgb(246, 246, 15);" aria-hidden="true"></i>
+              <br>
               You already have redeemed the free Career test by CareerDrishti!
               <br>
               Try contacting concerning authority.
             </div>
+          </div>
             <div class="row justify-content-center" *ngIf="registerUser == 'no'">
               <div class="col-md-10 col-lg-6 col-xl-5 order-2 order-lg-1">
 

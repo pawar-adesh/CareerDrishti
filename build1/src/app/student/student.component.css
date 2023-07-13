@@ -106,6 +106,17 @@ h6 {
   }
 }
 
+.floating-button {
+  position: fixed;
+  bottom: 30px;
+  right: 30px;
+  padding: 10px 20px;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  z-index: 1;
+}
 /*--------------------------------------------------------------
 # Header
 --------------------------------------------------------------*/
@@ -322,6 +333,13 @@ section {
   padding: 80px 0;
   overflow: hidden;
 }
+
+
+  /* .fixed-button {
+    position: fixed;
+    bottom: 0px;
+    right: 0px;
+} */
 
 /*--------------------------------------------------------------
 # About Video

@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "h++2uorZrdYNW2FhW010fTiWXMcVpyOiHpIEn019+a9cEeLX1U2iaaYd+3FUpNpVQMiosdwsWIFfe4do00h9BA==",
+  "dgSpecHash": "38sexJFOw8wbuSNusqQBjJm3Z5eqfsCbgMT07WVVsyA4mJve0ZkVwvGFLEmLjmIPinDOCOetYn/DRVcuXKifRA==",
   "success": true,
   "projectFilePath": "C:\\Users\\Adesh\\Desktop\\FILES\\trial\\CareerDrishti\\backend\\CareerDrishti\\CareerDrishti.csproj",
   "expectedPackageFiles": [
@@ -60,6 +60,7 @@
     "C:\\Users\\Adesh\\.nuget\\packages\\microsoft.netcore.platforms\\1.1.1\\microsoft.netcore.platforms.1.1.1.nupkg.sha512",
     "C:\\Users\\Adesh\\.nuget\\packages\\microsoft.netcore.targets\\1.1.3\\microsoft.netcore.targets.1.1.3.nupkg.sha512",
     "C:\\Users\\Adesh\\.nuget\\packages\\microsoft.openapi\\1.2.3\\microsoft.openapi.1.2.3.nupkg.sha512",
+    "C:\\Users\\Adesh\\.nuget\\packages\\microsoft.visualstudio.azure.containers.tools.targets\\1.17.0\\microsoft.visualstudio.azure.containers.tools.targets.1.17.0.nupkg.sha512",
     "C:\\Users\\Adesh\\.nuget\\packages\\microsoft.visualstudio.debugger.contracts\\17.2.0\\microsoft.visualstudio.debugger.contracts.17.2.0.nupkg.sha512",
     "C:\\Users\\Adesh\\.nuget\\packages\\microsoft.visualstudio.web.codegeneration\\6.0.11\\microsoft.visualstudio.web.codegeneration.6.0.11.nupkg.sha512",
     "C:\\Users\\Adesh\\.nuget\\packages\\microsoft.visualstudio.web.codegeneration.core\\6.0.11\\microsoft.visualstudio.web.codegeneration.core.6.0.11.nupkg.sha512",

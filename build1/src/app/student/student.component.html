@@ -55,7 +55,7 @@
 </header>
 
 <!-- ======= Hero Section ======= -->
-<section id="hero" class="d-flex align-items-center">
+<section id="hero" class="d-flex align-items-center hero-section">
   <div class="position-absolute w-50 d-none d-lg-block bg-blob" data-aos="zoom-in" data-aos-duration="1000">
     <svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
       <path fill="#F1C21B"
@@ -74,11 +74,14 @@
     <div class="text-center mt-5" data-aos="fade-up" data-aos-duration="1000">
       <!-- <button type="button" id="add-btn" class="btn btn-lg btn-success" data-bs-toggle="modal"
         data-bs-target="#studentModal">Register for Test</button> -->
-      <button type="button" id="add-btn" class="btn btn-lg btn-success" [routerLink]="['/register']"
-        routerLinkActive="router-link-active">Register for Test</button>
+        <!-- <button type="button" id="add-btn" class="btn btn-lg btn-success floating-button" [routerLink]="['/register']"
+        routerLinkActive="router-link-active">Register for Test</button> -->
     </div>
   </div>
 </section><!-- End Hero -->
+
+<button type="button" id="add-btn" class="btn btn-lg btn-success floating-button" [routerLink]="['/register']"
+routerLinkActive="router-link-active">Register for Test</button>
 
 <main id="main" data-mdb-spy="scroll" data-mdb-target="#scrollspy1" data-mdb-offset="59" class="scrollspy-example">
 
@@ -390,7 +393,7 @@
     <!-- Section: Social media -->
     <div class="row mb-4">
       <div class="col-lg-5">
-        <img src="../../assets/images/Career Drishti Logo.png" alt="logo" height="50" width="300">
+        <img src="../../assets/images/BW_logo.JPG" alt="logo" height="50" width="300">
       </div>
       <div class="col-lg-7">
           <li class="fb">

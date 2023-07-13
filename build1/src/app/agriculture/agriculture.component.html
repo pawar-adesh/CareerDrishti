@@ -7,7 +7,10 @@
       </a>
       <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
         <li class="nav-item mx-2">
-          Explore Fields
+          <button class="btn btn-light">Explore Fields</button>
+        </li>
+        <li class="nav-item mx-2">
+          <button class="btn btn-primary" [routerLink]="['/']" routerLinkActive="router-link-active">Home</button>
         </li>
       </ul>
     </div>
@@ -20,14 +23,14 @@
       <mat-tab label="Agriculture" class="bold-label p-3">
         <div class="container px-5 field-container">
           <div class="row word-cloud mt-3 p-4">
-            <!-- <img src="../../assets/images/wordcloud_agri.svg" class="img-fluid" alt="agriculture"> -->
+            <!-- <img src="../../assets/images/wordcloud_agri.svg" class="img-fluid field-image" alt="agriculture"> -->
             <video width="auto" height="auto" controls controlsList="nodownload" oncontextmenu="return false;">
               <source [src]="videoUrl" type="video/mp4">
             </video>
 
           </div>
           <div class="row justify-content-left field-title p-2">What is Agriculture?</div>
-          <div class="row">
+          <div class="row info-container">
             <div class="col-md-10 col-lg-6 col-xl-7 field-text mt-3 py-3 px-2 order-2 order-lg-2">
               <span class="first-letter">A</span>griculture careers are professional paths related to farming, dairy,
               poultry, and animal husbandry. BSc Agriculture is a 3 year UG course providing all the scientific methods
@@ -45,8 +48,8 @@
                 changes.
               </p>
             </div>
-            <div class="col-md-10 col-lg-6 col-xl-5 d-flex mt-3 py-3 align-items-center field-image order-1 order-lg-1">
-              <img src="../../assets/images/8400.jpg" class="img-fluid" alt="agriculture">
+            <div class="col-md-10 col-lg-6 col-xl-5 d-flex mt-3 py-3 align-items-center order-1 order-lg-1 ">
+              <img src="../../assets/images/agri.jpg" class="img-fluid field-image" alt="agriculture">
             </div>
           </div>
           <div class="row available-courses align-items-center">
@@ -888,13 +891,13 @@
       <mat-tab label="Arts & Humanities" class="p-3">
         <div class="container px-5 field-container">
           <div class="row word-cloud mt-3 p-4">
-            <!-- <img src="../../assets/images/arts-word-cloud.svg" class="img-fluid" alt="artsHumanity"> -->
+            <!-- <img src="../../assets/images/arts-word-cloud.svg" class="img-fluid field-image" alt="artsHumanity"> -->
             <video width="auto" height="auto" controls controlsList="nodownload" oncontextmenu="return false;">
               <source [src]="videoUrl2" type="video/mp4">
             </video>
           </div>
           <div class="row justify-content-left field-title p-2">What is Arts & Humanities?</div>
-          <div class="row">
+          <div class="row info-container">
             <div class="col-md-10 col-lg-6 col-xl-7 field-text mt-3 py-3 px-2 order-2 order-lg-2">
               <span class="first-letter">A</span>rts and humanities are broad topics that include the fine, visual, and
               performing arts and areas of study regarding the human race. Many professionals pursue fine arts or
@@ -915,8 +918,8 @@
                 communication, critical thinking, problem-solving, and analytical reasoning skills.
               </p>
             </div>
-            <div class="col-md-10 col-lg-6 col-xl-5 d-flex mt-3 py-3 align-items-center field-image order-1 order-lg-1">
-              <img src="../../assets/images/whatisarts.svg" class="img-fluid" alt="artss">
+            <div class="col-md-10 col-lg-6 col-xl-5 d-flex mt-3 py-3 align-items-center order-1 order-lg-1 ">
+              <img src="../../assets/images/art1.jpg" class="img-fluid field-image" alt="artss">
             </div>
           </div>
           <div class="row available-courses align-items-center">
@@ -1833,13 +1836,13 @@
       <mat-tab label="Commerce" class="p-3">
         <div class="container px-5 field-container">
           <div class="row word-cloud mt-3 p-4">
-            <!-- <img src="../../assets/images/commerce-word-cloud.svg" class="img-fluid" alt="artsHumanity"> -->
+            <!-- <img src="../../assets/images/commerce-word-cloud.svg" class="img-fluid field-image" alt="artsHumanity"> -->
             <video width="auto" height="auto" controls controlsList="nodownload" oncontextmenu="return false;">
               <source [src]="videoUrl3" type="video/mp4">
             </video>
           </div>
           <div class="row justify-content-left field-title p-2">What is Commerce?</div>
-          <div class="row">
+          <div class="row info-container">
             <div class="col-md-10 col-lg-6 col-xl-7 field-text mt-3 py-3 px-2 order-2 order-lg-2">
               <span class="first-letter">P</span>lanning a career in business? Traditionally, trade is seen as the
               process
@@ -1856,8 +1859,8 @@
                 will not only give you growth opportunities but will shape your brilliant career.
               </p>
             </div>
-            <div class="col-md-10 col-lg-6 col-xl-5 d-flex mt-3 py-3 align-items-center field-image order-1 order-lg-1">
-              <img src="../../assets/images/accounting.svg" class="img-fluid" alt="agriculture">
+            <div class="col-md-10 col-lg-6 col-xl-5 d-flex mt-3 py-3 align-items-center order-1 order-lg-1 ">
+              <img src="../../assets/images/commerce.jpg" class="img-fluid field-image" alt="agriculture">
             </div>
           </div>
           <div class="row available-courses align-items-center">
@@ -2585,20 +2588,20 @@
       <mat-tab label="Fine Arts" class="p-3">
         <div class="container px-5 field-container">
           <div class="row word-cloud mt-3 p-4">
-            <!-- <img src="../../assets/images/commerce-word-cloud.svg" class="img-fluid" alt="artsHumanity"> -->
+            <!-- <img src="../../assets/images/commerce-word-cloud.svg" class="img-fluid field-image" alt="artsHumanity"> -->
             <video width="auto" height="auto" controls controlsList="nodownload" oncontextmenu="return false;">
               <source [src]="videoUrl4" type="video/mp4">
             </video>
           </div>
           <div class="row justify-content-left field-title p-2">What is Fine Arts?</div>
-          <div class="row">
+          <div class="row info-container">
             <div class="col-md-10 col-lg-6 col-xl-7 field-text mt-3 py-3 px-2 order-2 order-lg-2">
               <span class="first-letter">T</span>he term "fine art" refers to an art form used primarily for its aesthetic and aesthetic value rather than its practical value. The fine arts are based on art and design, such as painting, printmaking, and sculpture. It is often compared to "use arts" and "crafts", which are always viewed as utilitarian activities. Fine arts is the study of different art forms such as painting, sculpture, drawing, literature, music, dance, architecture and drama. Art classes also include photography, graphic design, interior design, painting and other activities YouTube, Instagram, OTT etc. .
               <p>It has a large audience, with many young audiences able to focus on good performances to meet their needs. Recently, fine art has started to gain more recognition due to the great interest by artists from all over the world. Fine arts are now seen as an important career option for young people, with companies offering well-paying jobs.
               </p>
             </div>
-            <div class="col-md-10 col-lg-6 col-xl-5 d-flex mt-3 py-3 align-items-center field-image order-1 order-lg-1">
-              <img src="../../assets/images/fineArts.png" class="img-fluid" alt="agriculture">
+            <div class="col-md-10 col-lg-6 col-xl-5 d-flex mt-3 py-3 align-items-center order-1 order-lg-1 ">
+              <img src="../../assets/images/fine art.jpg" class="img-fluid field-image" alt="agriculture">
             </div>
           </div>
           <div class="row available-courses align-items-center">
@@ -3350,13 +3353,13 @@
       <mat-tab label="Health & Life Sciences" class="p-3">
         <div class="container px-5 field-container">
           <div class="row word-cloud mt-3 p-4">
-            <!-- <img src="../../assets/images/commerce-word-cloud.svg" class="img-fluid" alt="artsHumanity"> -->
+            <!-- <img src="../../assets/images/commerce-word-cloud.svg" class="img-fluid field-image" alt="artsHumanity"> -->
             <video width="auto" height="auto" controls controlsList="nodownload" oncontextmenu="return false;">
               <source [src]="videoUrl5" type="video/mp4">
             </video>
           </div>
           <div class="row justify-content-left field-title p-2">What is Health & Life Sciences?</div>
-          <div class="row">
+          <div class="row info-container">
             <div class="col-md-10 col-lg-6 col-xl-7 field-text mt-3 py-3 px-2 order-2 order-lg-2">
               <span class="first-letter">H</span>ealth education improves the health of individuals, families, communities, states and nations. Health education is the study of health that uses biological, environmental, psychological, physical and medical sciences to promote health and prevent disease, disability and premature death through education through voluntary behavior change. Health education is the development of individual, group, workplace, society and strategies to improve health knowledge, behavior, skills and personality habits. The purpose of health education is to have a positive impact on the health and well-being of individuals and communities, and on their living and working activities.
               <p>
@@ -3364,8 +3367,8 @@
               Health education reduces premature death. By focusing on prevention, health education reduces the cost of health (both financial and human) for individuals, businesses, families and companies, insurance, doctors, communities, states and countries.
               </p>
             </div>
-            <div class="col-md-10 col-lg-6 col-xl-5 d-flex mt-3 py-3 align-items-center field-image order-1 order-lg-1">
-              <img src="../../assets/images/health&LS.svg" class="img-fluid" alt="agriculture">
+            <div class="col-md-10 col-lg-6 col-xl-5 d-flex mt-3 py-3 align-items-center order-1 order-lg-1 ">
+              <img src="../../assets/images/health.jpg" class="img-fluid field-image" alt="agriculture">
             </div>
           </div>
           <div class="row available-courses align-items-center">
@@ -3827,13 +3830,13 @@ At the end of the course, students will participate in a compulsory practice.
       <mat-tab label="Technical" class="p-3">
         <div class="container px-5 field-container">
           <div class="row word-cloud mt-3 p-4">
-            <!-- <img src="../../assets/images/commerce-word-cloud.svg" class="img-fluid" alt="artsHumanity"> -->
+            <!-- <img src="../../assets/images/commerce-word-cloud.svg" class="img-fluid field-image" alt="artsHumanity"> -->
             <video width="auto" height="auto" controls controlsList="nodownload" oncontextmenu="return false;">
               <source [src]="videoUrl6" type="video/mp4">
             </video>
           </div>
           <div class="row justify-content-left field-title p-2">What is Technical?</div>
-          <div class="row">
+          <div class="row info-container">
             <div class="col-md-10 col-lg-6 col-xl-7 field-text mt-3 py-3 px-2 order-2 order-lg-2">
               <span class="first-letter">E</span>ngineering combines science and mathematics to solve real-world problems that improve the world around us. What really sets engineers apart is their ability to implement ideas cost-effectively and efficiently. The ability to turn ideas or abstract ideas into reality is what distinguishes engineers from other sciences and mathematics. Think about some of the things you use in your daily life: buildings, roads and bridges, vehicles (cars, planes and boats), computers and other electronic devices.
               <p>
@@ -3841,8 +3844,8 @@ At the end of the course, students will participate in a compulsory practice.
               From satellites to cell membranes, engineers use math and science to achieve extraordinary things and find solutions to some of the world's challenges. Engineers are needed in almost every field, from the development of robots to software programming, from the design of large airplanes to the construction of huge buildings. Good work and good work.
               </p>
             </div>
-            <div class="col-md-10 col-lg-6 col-xl-5 d-flex mt-3 py-3 align-items-center field-image order-1 order-lg-1">
-              <img src="../../assets/images/technical.svg" class="img-fluid" alt="agriculture">
+            <div class="col-md-10 col-lg-6 col-xl-5 d-flex mt-3 py-3 align-items-center order-1 order-lg-1 ">
+              <img src="../../assets/images/technical.svg" class="img-fluid field-image" alt="agriculture">
             </div>
           </div>
           <div class="row available-courses align-items-center">
@@ -4581,21 +4584,21 @@ At the end of the course, students will participate in a compulsory practice.
       <mat-tab label="Uniformed Services" class="p-3">
         <div class="container px-5 field-container">
           <div class="row word-cloud mt-3 p-4">
-            <!-- <img src="../../assets/images/commerce-word-cloud.svg" class="img-fluid" alt="artsHumanity"> -->
+            <!-- <img src="../../assets/images/commerce-word-cloud.svg" class="img-fluid field-image" alt="artsHumanity"> -->
             <video width="auto" height="auto" controls controlsList="nodownload" oncontextmenu="return false;">
               <source [src]="videoUrl7" type="video/mp4">
             </video>
           </div>
           <div class="row justify-content-left field-title p-2">What is Uniformed Services?</div>
-          <div class="row">
+          <div class="row info-container">
             <div class="col-md-10 col-lg-6 col-xl-7 field-text mt-3 py-3 px-2 order-2 order-lg-2">
               <span class="first-letter">U</span>niformed public service is effective and gets the job done. The industry is made up of key players who help support and protect the public and enable you to make a real difference.
               <p>
               Uniforms are various garments worn by members of an organization while participating in the activities of the organization. Today's uniforms are typically worn by police, emergency services, security personnel, military and non-military organizations such as the Army, Navy, Ground Forces, Marine Corps, Coast Guard, and NOAA, and public health services.
               </p>
             </div>
-            <div class="col-md-10 col-lg-6 col-xl-5 d-flex mt-3 py-3 align-items-center field-image order-1 order-lg-1">
-              <img src="../../assets/images/uniformServ.svg" class="img-fluid" alt="agriculture">
+            <div class="col-md-10 col-lg-6 col-xl-5 d-flex mt-3 py-3 align-items-center order-1 order-lg-1 ">
+              <img src="../../assets/images/uniform.jpg" class="img-fluid field-image" alt="agriculture">
             </div>
           </div>
           <div class="row available-courses align-items-center">

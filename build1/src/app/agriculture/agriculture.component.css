@@ -13,7 +13,6 @@ header {
 
 .navbar ul li {
   font-size: 20px;
-  border-bottom: 1px solid gray;
 }
 
 .container {
@@ -45,6 +44,21 @@ header {
 .field-text .first-letter {
   font-weight: bolder;
   font-size: 30px;
+}
+
+.info-container {
+  display: flex;
+  align-items: stretch;
+}
+
+.field-image {
+  height: 100%;
+  object-fit: cover;
+}
+
+.field-image-US{
+  height: 80%;
+  object-fit: cover;
 }
 
 .word-cloud {

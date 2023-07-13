@@ -15,11 +15,11 @@ import { numbers } from '@material/dialog';
 export class GeneratePdfComponent implements OnInit {
   public chart: any;
   public chart2: any;
-  public name : string="";
-  public fname : string="";
-  public mname : string="";
-  public lname : string="";
-  public std : string="";
+  public name: string = '';
+  public fname: string = '';
+  public mname: string = '';
+  public lname: string = '';
+  public std: string = '';
   fields = [
     'AGRICULTURE',
     ['ARTS &', 'HUMANITIES'],
@@ -29,17 +29,17 @@ export class GeneratePdfComponent implements OnInit {
     'TECHNICAL',
     ['UNIFORMED', 'SERVICES'],
   ];
-  topics=[
-    ['LOGICAL', 'SECTION'],
-    ['VERBAL', 'SECTION'],
-    ['SPATIAL', 'SECTION'],
-    ['NUMERICAL', 'SECTION']
+  topics = [
+    ['LOGICAL', 'APTITUDE'],
+    ['VERBAL', 'APTITUDE'],
+    ['SPATIAL', 'APTITUDE'],
+    ['NUMERICAL', 'APTITUDE'],
   ];
   // aptiMarks :{ [key:string]: number} = {
-  //   'LOGICAL SECTION':0,
-  //   'VERBAL SECTION':0,
-  //   'SPATIAL SECTION':0,
-  //   'NUMERICAL SECTION':0
+  //   'LOGICAL APTITUDE':0,
+  //   'VERBAL APTITUDE':0,
+  //   'SPATIAL APTITUDE':0,
+  //   'NUMERICAL APTITUDE':0
   // };
   // totalMarks: { [key: string]: number } = {
   //   AGRICULTURE: 0,
@@ -51,11 +51,10 @@ export class GeneratePdfComponent implements OnInit {
   //   'UNIFORMED SERVICES': 0,
   // };
   myObject: any;
-  AptiTest:any;
-  dataArray: number[]=[];
-  dataArrayB: number[]=[];
-  constructor(private route: ActivatedRoute, private api:ApiService) {
-  }
+  AptiTest: any;
+  dataArray: number[] = [];
+  dataArrayB: number[] = [];
+  constructor(private route: ActivatedRoute, private api: ApiService) {}
   @ViewChild('content', { static: false }) content!: ElementRef;
 
   ngOnInit(): void {
@@ -70,37 +69,36 @@ export class GeneratePdfComponent implements OnInit {
     // this.totalMarks['UNIFORMED SERVICES'] = this.myObject.uniformServ;
     // console.log(this.totalMarks);
 
-   this.dataArray[0] = this.myObject.agriculture;
-   this.dataArray[1] = this.myObject.artsHumanity;
-   this.dataArray[2] =this.myObject.commerce;
-   this.dataArray[3] = this.myObject.fineart;
-   this.dataArray[4] = this.myObject.healthLifecycle;
-   this.dataArray[5] = this.myObject.technical;
-   this.dataArray[6] = this.myObject.uniformServ;
+    this.dataArray[0] = this.myObject.agriculture;
+    this.dataArray[1] = this.myObject.artsHumanity;
+    this.dataArray[2] = this.myObject.commerce;
+    this.dataArray[3] = this.myObject.fineart;
+    this.dataArray[4] = this.myObject.healthLifecycle;
+    this.dataArray[5] = this.myObject.technical;
+    this.dataArray[6] = this.myObject.uniformServ;
 
     this.AptiTest = history.state.data.param2;
     // console.log(this.AptiTest);
-    // this.aptiMarks['LOGICAL SECTION'] = this.AptiTest.aptitude;
-    // this.aptiMarks['VERBAL SECTION'] = this.AptiTest.verbal;
-    // this.aptiMarks['NUMERICAL SECTION'] = this.AptiTest.numerical;
-    // this.aptiMarks['SPATIAL SECTION'] = this.AptiTest.spatial;
+    // this.aptiMarks['LOGICAL APTITUDE'] = this.AptiTest.aptitude;
+    // this.aptiMarks['VERBAL APTITUDE'] = this.AptiTest.verbal;
+    // this.aptiMarks['NUMERICAL APTITUDE'] = this.AptiTest.numerical;
+    // this.aptiMarks['SPATIAL APTITUDE'] = this.AptiTest.spatial;
 
     this.dataArrayB[0] = this.AptiTest.aptitude;
-    this.dataArrayB[1]= this.AptiTest.verbal;
+    this.dataArrayB[1] = this.AptiTest.verbal;
     this.dataArrayB[2] = this.AptiTest.numerical;
     this.dataArrayB[3] = this.AptiTest.spatial;
 
     this.createChart();
     this.createChart2();
     this.api.getStandard(this.myObject.email).subscribe((res) => {
-      this.name = res.firstname+ res.lastname;
-      this.fname= res.firstname;
+      this.name = res.firstname + res.lastname;
+      this.fname = res.firstname;
       this.mname = res.middlename;
       this.lname = res.lastname;
       this.std = res.standard;
     });
   }
-
 
   printPdf() {
     const pdf = new jsPDF('p', 'mm', 'a4');
@@ -113,7 +111,7 @@ export class GeneratePdfComponent implements OnInit {
       const pdfHeight = (imgProps.height * pdfWidth) / imgProps.width;
 
       pdf.addImage(imgData, 'PNG', 0, 0, pdfWidth, pdfHeight);
-      pdf.save(this.name +'.pdf');
+      pdf.save(this.name + '.pdf');
     });
   }
 
@@ -130,26 +128,26 @@ export class GeneratePdfComponent implements OnInit {
             label: '',
             data: this.dataArray,
             borderColor: [
-              '#385723',
-              '#7F6000',
-              '#1F4E79',
-              '#BD1D43',
-              '#C55A11',
-              '#6D457F',
-              '#3C280D'
+              '#000000',
+              '#000000',
+              '#000000',
+              '#000000',
+              '#000000',
+              '#000000',
+              '#000000',
             ],
             backgroundColor: [
-              '#385723',
-              '#7F6000',
-              '#1F4E79',
-              '#BD1D43',
-              '#C55A11',
-              '#6D457F',
-              '#3C280D'
+              '#538135',
+              '#FFC000',
+              '#2E74B5',
+              '#E44E72',
+              '#794D8D',
+              '#F09456',
+              '#815E11',
             ],
-            borderWidth:1,
-            barPercentage:0.5,
-            categoryPercentage:0.5,
+            borderWidth: 1,
+            barPercentage: 0.5,
+            categoryPercentage: 0.5,
           },
         ],
       },
@@ -161,39 +159,51 @@ export class GeneratePdfComponent implements OnInit {
             anchor: 'end',
             align: 'top',
             font: {
-              weight: 'bold'
+              weight: 'bold',
             },
-            color: 'black'
+            color: 'black',
           },
           legend: {
-            display: false // Hide the legend if needed
-          }
+            display: false, // Hide the legend if needed
+          },
         },
         layout: {
           padding: {
             top: 20, // Adjust top padding as needed
             right: 20, // Adjust right padding as needed
             bottom: 20, // Adjust bottom padding as needed
-            left: 20 // Adjust left padding as needed
-          }
+            left: 20, // Adjust left padding as needed
+          },
         },
         scales: {
           x: {
             offset: true,
             grid: {
-              drawTicks: false
+              drawTicks: false,
+              display:false,
             },
             ticks: {
-              color:'black',
-              padding: 10
-            }
+              color: 'black',
+              padding: 10,
+              font:{
+                size:9,
+              }
+            },
           },
           y: {
             beginAtZero: true,
-            display:false,
-          }
+            display: true,
+            grid: {
+              display: true,
+            },
+            min: 0,
+            max: 100,
+            ticks: {
+              stepSize: 10
+            }
+          },
         },
-      }
+      },
     });
   }
 
@@ -209,15 +219,11 @@ export class GeneratePdfComponent implements OnInit {
           {
             label: '',
             data: this.dataArrayB,
-            borderColor: [
-              '#262626'
-            ],
-            backgroundColor: [
-              '#82695E'
-            ],
-            borderWidth:1,
-            barPercentage:0.5,
-            categoryPercentage:0.5,
+            borderColor: ['#000000'],
+            backgroundColor: ['#745E54'],
+            borderWidth: 1,
+            barPercentage: 0.5,
+            categoryPercentage: 0.5,
           },
         ],
       },
@@ -229,38 +235,44 @@ export class GeneratePdfComponent implements OnInit {
             anchor: 'end',
             align: 'top',
             font: {
-              weight: 'bold'
+              weight: 'bold',
             },
-            color: 'black'
+            color: 'black',
           },
           legend: {
-            display: false // Hide the legend if needed
-          }
+            display: false,
+          },
         },
         layout: {
           padding: {
-            top: 20, // Adjust top padding as needed
-            right: 20, // Adjust right padding as needed
-            bottom: 20, // Adjust bottom padding as needed
-            left: 20 // Adjust left padding as needed
-          }
+            top: 20,
+            right: 20,
+            bottom: 20,
+            left: 20,
+          },
         },
         scales: {
           x: {
             offset: true,
             grid: {
-              drawTicks: false
+              drawTicks: false,
+              display:false,
             },
             ticks: {
-              color:'black',
-              padding: 10
-            }
+              color: 'black',
+              padding: 10,
+            },
           },
           y: {
-            display:false,
-          }
+            display: true,
+            grid: {
+              display: true,
+            },
+            min: 0,
+            max: 10,
+          },
         },
-      }
+      },
     });
   }
 }
