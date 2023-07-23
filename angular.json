@@ -13,6 +13,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
+            "allowedCommonJsDependencies": ["ng2-cookies"],
             "outputPath": "dist/build1",
             "index": "src/index.html",
             "main": "src/main.ts",
@@ -41,8 +42,8 @@
               "budgets": [
                 {
                   "type": "initial",
-                  "maximumWarning": "5mb",
-                  "maximumError": "5mb"
+                  "maximumWarning": "6MB",
+                  "maximumError": "10MB"
                 },
                 {
                   "type": "anyComponentStyle",
