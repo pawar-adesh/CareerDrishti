@@ -1,8 +1,12 @@
 /* You can add global styles to this file, and also import other style files */
 @import 'aos/dist/aos.css';
-@import "~ngx-spinner/animations/timer.css";
-@import "~ngx-spinner/animations/square-jelly-box.css";
+/* @import "~ngx-spinner/animations/timer.css";
+@import "~ngx-spinner/animations/square-jelly-box.css"; */
 @import "~@angular/material/prebuilt-themes/indigo-pink.css";
+@import "../node_modules/ngx-spinner/animations/timer.css";
+@import "../node_modules/ngx-spinner/animations/square-jelly-box.css";
+
+
 @font-face {
   font-family: 'Poppins';
   src: url('assets/fonts/Poppins-Regular.ttf') format('truetype'),
