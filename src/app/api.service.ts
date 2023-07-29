@@ -8,14 +8,14 @@ import { Student } from './shared/student.model';
   providedIn: 'root',
 })
 export class ApiService {
-  public AdminApiUrl = 'http://careerdrishti-prod.us-east-1.elasticbeanstalk.com/api/Admin';
-  public QuestionUrl = 'http://careerdrishti-prod.us-east-1.elasticbeanstalk.com/api/Questions';
-  public spHandlerUrl = 'http://careerdrishti-prod.us-east-1.elasticbeanstalk.com/api/spHandling';
-  public StudentUrl = 'http://careerdrishti-prod.us-east-1.elasticbeanstalk.com/api/Student';
-  public StudentTestUrl = 'http://careerdrishti-prod.us-east-1.elasticbeanstalk.com/api/StudentTest';
-  public StudentTestBUrl = 'http://careerdrishti-prod.us-east-1.elasticbeanstalk.com/api/StudentTestB';
-  public SchoolUrl = 'http://careerdrishti-prod.us-east-1.elasticbeanstalk.com/api/School';
-  public SectionBUrl = 'http://careerdrishti-prod.us-east-1.elasticbeanstalk.com/api/SectionB';
+  public AdminApiUrl = 'https://careerdrishti-prod.us-east-1.elasticbeanstalk.com/api/Admin';
+  public QuestionUrl = 'https://careerdrishti-prod.us-east-1.elasticbeanstalk.com/api/Questions';
+  public spHandlerUrl = 'https://careerdrishti-prod.us-east-1.elasticbeanstalk.com/api/spHandling';
+  public StudentUrl = 'https://careerdrishti-prod.us-east-1.elasticbeanstalk.com/api/Student';
+  public StudentTestUrl = 'https://careerdrishti-prod.us-east-1.elasticbeanstalk.com/api/StudentTest';
+  public StudentTestBUrl = 'https://careerdrishti-prod.us-east-1.elasticbeanstalk.com/api/StudentTestB';
+  public SchoolUrl = 'https://careerdrishti-prod.us-east-1.elasticbeanstalk.com/api/School';
+  public SectionBUrl = 'https://careerdrishti-prod.us-east-1.elasticbeanstalk.com/api/SectionB';
   constructor(private _http: HttpClient) {}
 
   // getStudentData(){
