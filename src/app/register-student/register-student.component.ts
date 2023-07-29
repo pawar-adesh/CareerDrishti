@@ -77,11 +77,11 @@ export class RegisterStudentComponent implements OnInit {
     this.emailForm = this.fb.group({
       email: ['', Validators.required],
     });
-    this.getSchools();
+    // this.getSchools();
     //enable test instructions
     // this.registerUser = 'yes';
     //     this.showForm = 'no';
-    this.getStudentsData();
+    // this.getStudentsData();
   }
   form = new FormGroup({
     language: new FormControl('', Validators.required),
