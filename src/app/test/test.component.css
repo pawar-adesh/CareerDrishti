@@ -17,7 +17,7 @@ header {
 }
 
 .test-section {
-  min-height: 100vh;
+  /* min-height: 100vh; */
   /* background: url("../../assets/images/test-sectionbg.svg");
   background-position: center;
   background-size: cover;
@@ -30,7 +30,7 @@ header {
 
 .question-row {
   /* border: 1px solid black; */
-  box-shadow: 10px 8px 8px 1px rgba(0, 0, 255, .2);
+  /* box-shadow: 10px 8px 8px 1px rgba(0, 0, 255, .2); */
 }
 
 .user-container {

@@ -22,6 +22,9 @@ import { MatStepperModule } from '@angular/material/stepper';
 import { NgParticlesModule } from "ng-particles";
 import { TestGuard } from './test/test.guard';
 import { TestCompleteComponent } from './test-complete/test-complete.component';
+import { MatDialogModule } from '@angular/material/dialog';
+import {MatCardModule} from '@angular/material/card';
+import { CarouselModule } from 'ngx-owl-carousel-o';
 // import { StudentDataComponent } from './student-data/student-data.component';
 // import { TestDetailsComponent } from './test-details/test-details.component';
 @NgModule({
@@ -52,7 +55,10 @@ import { TestCompleteComponent } from './test-complete/test-complete.component';
     MatTabsModule,
     MatExpansionModule,
     MatStepperModule,
-    NgParticlesModule
+    NgParticlesModule,
+    MatDialogModule,
+    MatCardModule,
+    CarouselModule
   ],
   providers: [TestGuard],
   bootstrap: [AppComponent],

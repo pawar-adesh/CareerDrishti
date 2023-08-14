@@ -5,7 +5,12 @@
 @import "~@angular/material/prebuilt-themes/indigo-pink.css";
 @import "../node_modules/ngx-spinner/animations/timer.css";
 @import "../node_modules/ngx-spinner/animations/square-jelly-box.css";
+/* @import "../node_modules/ngx-owl-carousel-o/lib/styles/scss/owl.carousel.scss";
+@import "../node_modules/ngx-owl-carousel-o/lib/styles/scss/owl.theme.default.scss"; */
+@import "../node_modules/ngx-owl-carousel-o/lib/styles/prebuilt-themes/owl.carousel.min.css";
+@import "../node_modules/ngx-owl-carousel-o/lib/styles/prebuilt-themes/owl.theme.green.min.css";
 
+/* @import 'animate.css/animate.min.css'; */
 
 @font-face {
   font-family: 'Poppins';
@@ -14,16 +19,21 @@
   font-weight: normal;
   font-style: normal;
 }
+
 *{
   font-family: 'Poppins', sans-serif;
 }
+
 html {
   overflow-x: hidden;
   scroll-behavior: smooth;
 }
+
 body{
   font-family: "Poppins";
+  background-color: #F1F8FF;
 }
+
 ::selection {
   background-color: #000000;
   color: #fff;
@@ -32,4 +42,16 @@ body{
 ::-moz-selection {
   background-color: #000000;
   color: #fff;
+}
+.owl-carousel .owl-stage-outer .owl-stage .owl-item.active .carouselSlide {
+  background-color: #FF0000;
+}
+
+::ng-deep .owl-theme .owl-dots .owl-dot span {
+  background: #D6D6D6!important; /* dots color*/
+}
+
+::ng-deep .owl-theme .owl-dots .owl-dot.active span,
+.owl-theme .owl-dots .owl-dot:hover span {
+  background: #FCAC45!important; /*active and on hover color*/
 }
