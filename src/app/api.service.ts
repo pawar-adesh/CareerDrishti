@@ -11,7 +11,8 @@ export class ApiService {
   public AdminApiUrl = 'http://careerdrishti-dev.us-east-1.elasticbeanstalk.com//api/Admin';
   public QuestionUrl = 'http://careerdrishti-dev.us-east-1.elasticbeanstalk.com//api/Questions';
   public spHandlerUrl = 'http://careerdrishti-dev.us-east-1.elasticbeanstalk.com//api/spHandling';
-  public StudentUrl = 'http://careerdrishti-dev.us-east-1.elasticbeanstalk.com//api/Student';
+  // public StudentUrl = 'http://careerdrishti-dev.us-east-1.elasticbeanstalk.com//api/Student';
+  public StudentUrl = 'https://careerdrishti-api-default-rtdb.firebaseio.com/Student/';
   public StudentTestUrl = 'http://careerdrishti-dev.us-east-1.elasticbeanstalk.com//api/StudentTest';
   public StudentTestBUrl = 'http://careerdrishti-dev.us-east-1.elasticbeanstalk.com//api/StudentTestB';
   public SchoolUrl = 'http://careerdrishti-dev.us-east-1.elasticbeanstalk.com//api/School';
@@ -112,15 +113,16 @@ export class ApiService {
   }
 
   getStudents() {
-    return this._http.get<any>(this.StudentUrl).pipe(
+    return this._http.get<any>(this.StudentUrl+'.json').pipe(
       map((res: any) => {
+        console.log(res);
         return res;
       })
     );
   }
 
   addStudent(data: Student) {
-    return this._http.post<Student>(this.StudentUrl + '/addStudent', data).pipe(
+    return this._http.post<Student>(this.StudentUrl + '.json', data).pipe(
       map((res: any) => {
         return res;
       })

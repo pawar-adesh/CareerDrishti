@@ -130,14 +130,15 @@ export class RegisterStudentComponent implements OnInit {
             this.SecondTestAttempt = 'yes';
             this.showForm = '';
             this.registerUser = '';
-            this.spinner.hide();
           }
+          this.spinner.hide();
         });
       } else {
         this.registerUser = 'no';
         this.showForm = 'yes';
         this.spinner.hide();
     }
+    
     this.hideNext = 'yes';
   }
 

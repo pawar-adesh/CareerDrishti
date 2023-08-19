@@ -6,6 +6,7 @@ import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
   selector: 'app-agriculture',
   templateUrl: './agriculture.component.html',
   styleUrls: ['./agriculture.component.css'],
+  // encapsulation: ViewEncapsulation.None
 })
 export class AgricultureComponent implements OnInit {
   selectedTabIndex = 0;

@@ -16,7 +16,15 @@
   border-bottom: 1px solid black;
   font-style: italic;
 }
-
+.btn{
+  background-color: rgb(243, 112, 91); 
+  color: white;
+}
+.btn:hover{
+  background-color: white; 
+  color: rgb(243, 112, 91);
+  border: 1px solid rgb(243, 112, 91);
+}
 /* .center {
   display: flex;
   justify-content: center;

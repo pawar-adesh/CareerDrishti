@@ -1,8 +1,9 @@
 header {
   background-color: white;
-  border-bottom: 1px solid black;
 }
-
+.navbar{
+  border-bottom: 1px solid orange;
+}
 .navbar-brand img {
   width: 250px;
 }
@@ -14,18 +15,43 @@ header {
 .navbar ul li {
   font-size: 20px;
 }
-
+.btn{
+  background-color: rgb(243, 112, 91); 
+  color: white;
+}
+.btn:hover{
+  background-color: white; 
+  color: rgb(243, 112, 91);
+  border: 1px solid rgb(243, 112, 91);
+}
 .container {
   width: 75%;
   /* set the width of the container */
   background-color: white;
 }
-
-.mat-tab-group {
-  background-color: #ebebeb;
-  /* set the background color to gray (replace with your desired color) */
+/* Add custom styles to the tab headers */
+::ng-deep .mat-tab-group {
+  background-color: #333;
+  color: #fff;
 }
 
+/* Add custom styles to the selected tab header */
+::ng-deep .mat-tab-group .mat-tab-label.mat-tab-label-active {
+  background-color: #555;
+}
+
+/* Add custom styles to the tab content */
+::ng-deep .mat-tab-body-wrapper {
+  border: 1px solid #ddd;
+}
+
+.panel-title{
+  color: rgb(243, 112, 91);
+  font-size: 18px;
+}
+.fields-section {
+  background-color: #e6f2ff;
+}
 .field-title {
   font-size: 34px;
   font-weight: bold;

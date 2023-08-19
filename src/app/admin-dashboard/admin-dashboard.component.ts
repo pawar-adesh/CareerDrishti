@@ -37,7 +37,7 @@ export class AdminDashboardComponent implements OnInit {
   schoolData: any;
   schoolObj: School = new School();
   studObj: Student = new Student();
-  studentData: any;
+  studentData: any=[];
   testData: any;
   testBData: any;
   testDataObj: StudentTest = new StudentTest();
@@ -75,7 +75,12 @@ export class AdminDashboardComponent implements OnInit {
 
   getAllStduents() {
     this.api.getStudents().subscribe((res) => {
-      this.studentData = res.studentDetails;
+      // this.studentData = res.studentDetails;
+      for(const r in res){
+        this.studentData.push(res[r]);
+        console.log(res[r]);
+      }
+      // this.studentData = res;
       // console.log(res);
     });
     // this.api.getStudentData().subscribe(res=>{

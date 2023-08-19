@@ -1,7 +1,9 @@
 header {
   background-color: white;
 }
-
+.navbar{
+  border-bottom: 1px solid orange;
+}
 .navbar-brand img {
   width: 250px;
 }
@@ -83,7 +85,7 @@ header {
 }
 
 .options input[type="radio"]:checked~.checkmark {
-  background: #21bf73;
+  background: rgb(243, 112, 91);
   border: white;
   transition: 300ms ease-in-out 0s;
 }

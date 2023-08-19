@@ -1,12 +1,23 @@
 @import '~@angular/material/prebuilt-themes/indigo-pink.css';
 
-.container {
+.screen {
   display: flex;
   justify-content: center;
   align-items: center;
   height: 100vh;
+  background-color: #bed5fd;
+  width: 100vw;
 }
 
+.btn{
+  background-color: rgb(243, 112, 91); 
+  color: white;
+}
+.btn:hover{
+  background-color: white; 
+  color: rgb(243, 112, 91);
+  border: 1px solid rgb(243, 112, 91);
+}
 mat-horizontal-stepper {
   justify-content: center;
   align-items: center;

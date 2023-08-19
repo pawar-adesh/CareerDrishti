@@ -1,36 +1,35 @@
-import { Component, Input, OnInit } from '@angular/core';
-import { ApiService } from '../api.service';
-import { Questions } from '../shared/manage-test.model';
-import arrayShuffle from 'array-shuffle';
-import { StudentTest } from '../shared/student-test.model';
-import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { Observable } from 'rxjs';
-import { CanComponentDeactivate } from './test.guard';
-import { Router } from '@angular/router';
+import { Component, Input, OnInit } from "@angular/core";
+import { ApiService } from "../api.service";
+import { Questions } from "../shared/manage-test.model";
+import arrayShuffle from "array-shuffle";
+import { StudentTest } from "../shared/student-test.model";
+import { FormControl, FormGroup, Validators } from "@angular/forms";
+import { Observable } from "rxjs";
+import { CanComponentDeactivate } from "./test.guard";
+import { Router } from "@angular/router";
+import { NgxSpinnerService } from "ngx-spinner";
 
 @Component({
-  selector: 'app-test',
-  templateUrl: './test.component.html',
-  styleUrls: ['./test.component.css'],
+  selector: "app-test",
+  templateUrl: "./test.component.html",
+  styleUrls: ["./test.component.css"],
 })
-export class TestComponent
-  implements OnInit, CanComponentDeactivate
-{
+export class TestComponent implements OnInit, CanComponentDeactivate {
   currentUser: any;
-  currentStd: string = '';
+  currentStd: string = "";
   // langContainer: String = '';
   preferedLang: any;
   questionSolved = new Set();
   questionData!: any;
   submitClicked: boolean = false;
   questionFieldData: string[] = [
-    'Agriculture',
-    'Arts & Humanity',
-    'Commerce',
-    'Fine Arts',
-    'Health & Life sciences',
-    'Technical',
-    'Uniform Service',
+    "Agriculture",
+    "Arts & Humanity",
+    "Commerce",
+    "Fine Arts",
+    "Health & Life sciences",
+    "Technical",
+    "Uniform Service",
   ];
   questionNumber: number = 0;
   options!: any[];
@@ -40,12 +39,12 @@ export class TestComponent
   isNextDisabled: boolean = true;
   totalMarks: { [key: string]: number } = {
     Agriculture: 0,
-    'Arts & Humanity': 0,
+    "Arts & Humanity": 0,
     Commerce: 0,
-    'Fine Arts': 0,
-    'Health & Life sciences': 0,
+    "Fine Arts": 0,
+    "Health & Life sciences": 0,
     Technical: 0,
-    'Uniform Service': 0,
+    "Uniform Service": 0,
   };
   isTermsAccepted!: boolean;
   public showForm!: boolean;
@@ -53,48 +52,52 @@ export class TestComponent
   queObj: Questions = new Questions();
   studentTestObj: StudentTest = new StudentTest();
 
-  constructor(private api: ApiService, private router: Router) {
+  constructor(
+    private api: ApiService,
+    private router: Router,
+    private spinner: NgxSpinnerService
+  ) {
     this.questionNumber = 0;
     this.marksToQuestion = {
       Agriculture: [],
-      'Arts & Humanity': [],
+      "Arts & Humanity": [],
       Commerce: [],
-      'Fine Arts': [],
-      'Health & Life sciences': [],
+      "Fine Arts": [],
+      "Health & Life sciences": [],
       Technical: [],
-      'Uniform Service': [],
+      "Uniform Service": [],
     };
     this.options = [
       {
-        label: 'Strongly Agree',
+        label: "Strongly Agree",
         marks: 4,
       },
       {
-        label: 'Agree',
+        label: "Agree",
         marks: 3,
       },
       {
-        label: 'Disagree',
+        label: "Disagree",
         marks: 2,
       },
       {
-        label: 'Strongly Disagree',
+        label: "Strongly Disagree",
         marks: 1,
       },
     ];
   }
 
   ngOnInit(): void {
-    this.testLang = sessionStorage.getItem('language');
+    this.testLang = sessionStorage.getItem("language");
     // console.log("Language of test ",this.testLang)
     // this.isTermsAccepted = true;
     this.isTermsAccepted = false;
     this.showForm = false;
-    this.currentUser = localStorage.getItem('user');
-    if(this.currentUser==null){
-      this.router.navigate(['/register']);
-      this.submitClicked= true;;
-  }
+    this.currentUser = localStorage.getItem("user");
+    if (this.currentUser == null) {
+      this.router.navigate(["/register"]);
+      this.submitClicked = true;
+    }
     this.getStandardofStudent();
     // this.getAllFields();
     // console.log(this.currentUser);
@@ -106,13 +109,13 @@ export class TestComponent
     if (this.submitClicked == true) {
       return true;
     } else {
-      alert('Please complete the test before leaving.');
+      alert("Please complete the test before leaving.");
       return false;
     }
   }
 
   form = new FormGroup({
-    language: new FormControl('', Validators.required),
+    language: new FormControl("", Validators.required),
   });
 
   get f() {
@@ -122,22 +125,25 @@ export class TestComponent
   submit() {
     this.preferedLang = this.form.value.language;
     // console.log("preferedLang: ",this.preferedLang);
-    sessionStorage.setItem('language', this.preferedLang);
+    sessionStorage.setItem("language", this.preferedLang);
     // console.log(sessionStorage);
     // this.langContainer='hide';
   }
   getAllQuestions() {
+    this.spinner.show();
     this.api.getStandard(this.currentUser).subscribe((res) => {
       this.currentStd = res.standard;
-      if (this.currentStd == '10th') {
+      if (this.currentStd == "10th") {
         this.api.showQuestions10().subscribe((res) => {
           this.questionData = arrayShuffle(res);
           // console.log(res);
+          this.spinner.hide();
         });
-      } else if (this.currentStd == '12th') {
+      } else if (this.currentStd == "12th") {
         this.api.showQuestions12().subscribe((res) => {
           this.questionData = arrayShuffle(res);
           // console.log(res);
+          this.spinner.hide();
         });
       }
     });
@@ -170,7 +176,7 @@ export class TestComponent
 
   displayQuestions(event: any) {
     if (
-      (<HTMLInputElement>document.getElementById('passkey'))!.value == 'test1'
+      (<HTMLInputElement>document.getElementById("passkey"))!.value == "test1"
     ) {
       // this.router.navigate('')
       this.isTermsAccepted = true;
@@ -245,13 +251,14 @@ export class TestComponent
 
   addTestDetails() {
     this.studentTestObj.email = this.currentUser;
-    this.studentTestObj.agriculture = this.totalMarks['Agriculture'];
-    this.studentTestObj.artsHumanity = this.totalMarks['Arts & Humanity'];
-    this.studentTestObj.commerce = this.totalMarks['Commerce'];
-    this.studentTestObj.fineart = this.totalMarks['Fine Arts'];
-    this.studentTestObj.healthLifecycle = this.totalMarks['Health & Life sciences'];
-    this.studentTestObj.technical = this.totalMarks['Technical'];
-    this.studentTestObj.uniformServ = this.totalMarks['Uniform Service'];
+    this.studentTestObj.agriculture = this.totalMarks["Agriculture"];
+    this.studentTestObj.artsHumanity = this.totalMarks["Arts & Humanity"];
+    this.studentTestObj.commerce = this.totalMarks["Commerce"];
+    this.studentTestObj.fineart = this.totalMarks["Fine Arts"];
+    this.studentTestObj.healthLifecycle =
+      this.totalMarks["Health & Life sciences"];
+    this.studentTestObj.technical = this.totalMarks["Technical"];
+    this.studentTestObj.uniformServ = this.totalMarks["Uniform Service"];
     this.api.addMarks(this.studentTestObj).subscribe((res) => {
       // console.log(res);
       // alert('submitted');

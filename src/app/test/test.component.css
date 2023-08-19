@@ -1,7 +1,9 @@
 header {
   background-color: white;
 }
-
+.navbar{
+  border-bottom: 1px solid orange;
+}
 .navbar-brand img {
   width: 250px;
 }
@@ -11,9 +13,9 @@ header {
 }
 
 .navbar ul li {
-  font-size: 14px;
+  font-size: 20px;
   border-bottom: 1px solid black;
-  font-weight: bold;
+  font-weight: italic;
 }
 
 .test-section {
@@ -31,6 +33,8 @@ header {
 .question-row {
   /* border: 1px solid black; */
   /* box-shadow: 10px 8px 8px 1px rgba(0, 0, 255, .2); */
+  /* background-color: #bed5fd;
+  transform: scale(1.001); */
 }
 
 .user-container {
@@ -83,7 +87,7 @@ header {
 }
 
 .options input[type="radio"]:checked~.checkmark {
-  background: #21bf73;
+  background-color: rgb(243, 112, 91);
   border: white;
   transition: 300ms ease-in-out 0s;
 }

@@ -1,4 +1,5 @@
-<div class="container">
+
+<div class="screen">
   <!-- <mat-vertical-stepper>
     <mat-step [completed]="true">
       <ng-template matStepLabel><h1 class="step-label">Step 1</h1></ng-template>
@@ -19,7 +20,7 @@
         <p class="stepper-content-title">Test Submitted Successfully!</p>
         <p class="stepper-content-text">You have submiited the career test successfully. Now it's time for Aptitude
           Test.</p>
-        <button class="btn btn-primary" matStepperNext (click)="enableStep2()">Proceed</button>
+        <button class="btn" matStepperNext (click)="enableStep2()">Proceed</button>
       </div>
     </mat-step>
 
@@ -61,7 +62,7 @@
           <span class="mx-2 mb-2">I have read all instructions carefully. Agree to continue.</span>
         </div>
         <div class="d-flex flex-row align-items-center justify-content-center mb-4">
-          <button class="btn btn-md btn-block btn-primary align-items-center" *ngIf="isTermsAccepted"
+          <button class="btn btn-md btn-block align-items-center" *ngIf="isTermsAccepted"
             [routerLink]="['/test/aptitude']" routerLinkActive="router-link-active">Start</button>
         </div>
       </div>

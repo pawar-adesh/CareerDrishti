@@ -6,6 +6,7 @@ import { StudentTestB } from '../shared/sectionB.model';
 import { CanComponentDeactivate } from '../test/test.guard';
 import { Observable } from 'rxjs';
 import { Router } from '@angular/router';
+import { NgxSpinnerService } from 'ngx-spinner';
 
 @Component({
   selector: 'app-test-section-b',
@@ -30,7 +31,7 @@ export class TestSectionBComponent implements OnInit, CanComponentDeactivate {
     Numerical: 0,
     Spatial: 0,
   };
-  constructor(private api: ApiService, private router: Router) {
+  constructor(private api: ApiService, private router: Router, private spinner: NgxSpinnerService) {
     this.questionNumber = 0;
     this.marksToQueType = {
       Aptitude: [0],
@@ -75,12 +76,15 @@ export class TestSectionBComponent implements OnInit, CanComponentDeactivate {
   }
 
   getAllQuestions() {
+    this.spinner.show();
+
     this.api.sectionBQuestions().subscribe((res) => {
       this.questionBData = arrayShuffle(res.questionDetails);
       // for(let q of res.questionDetails){
       //   console.log(q);
       // }
       // console.log(res);
+      this.spinner.hide();
     });
   }
 

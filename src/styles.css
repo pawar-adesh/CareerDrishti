@@ -20,9 +20,23 @@
   font-style: normal;
 }
 
-*{
-  font-family: 'Poppins', sans-serif;
+@font-face {
+  font-family: 'Nunito';
+  src: url('assets/fonts/nexa/NexaRegular.otf') format('truetype'),
+  url('assets/fonts/nexa/NexaBold.otf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
 }
+@font-face {
+  font-family: 'myriad';
+  src: url('assets/fonts/myraid/MYRIADPRO-REGULAR.woff') format('truetype');
+  /* url('assets/fonts/nexa/NexaBold.otf') format('truetype'); */
+  font-weight: normal;
+  font-style: normal;
+}
+/* *{
+  font-family: 'myriad';
+} */
 
 html {
   overflow-x: hidden;
@@ -30,7 +44,7 @@ html {
 }
 
 body{
-  font-family: "Poppins";
+  font-family: 'myriad';
   background-color: #F1F8FF;
 }
 

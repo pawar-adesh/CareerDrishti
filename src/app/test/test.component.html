@@ -1,9 +1,11 @@
-<header id="header" class="sticky-top">
-
-  <nav class="navbar navbar-expand-lg navbar-light header-nav shadow-5-strong">
+<ngx-spinner bdColor="rgba(0, 0, 0, 0.8)" size="medium" color="#f3705b" type="square-jelly-box" [fullScreen]="true">
+  <p style="color: white"> Loading... </p>
+</ngx-spinner>
+  
+  <nav class="navbar navbar-expand-lg navbar-light header-nav sticky-top shadow-sm  bg-white">
     <div class="container-fluid">
       <a class="navbar-brand" href="#">
-        <img src="../../assets/images/Career Drishti Logo.png" alt="" class="logo">
+        <img src="../../assets/images/CD_withoutBG_logo.png" alt="" class="logo">
       </a>
       <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
         <li class="nav-item mx-2 user-name">
@@ -12,9 +14,8 @@
       </ul>
     </div>
   </nav>
-</header>
 <section class="test-section">
-  <div class="container">
+  <div class="container pb-5">
     <!-- <div class="row p-3 user-container">
       <div class="logo-icon ms-0">CareerDrishti</div>
       <div class="user-name text-center">user: {{currentUser}}</div>
@@ -62,7 +63,7 @@
         </div>
       </div>
     </div>
-    <div class="buttons-row mt-3 py-2">
+    <div class="buttons-row my-3 py-2">
       <div style="float: left;">
         <button type="button" [disabled]="isPrevDisabled" (click)="prevQuestion()" class="btn btn-primary">&lt;&lt;
           prev</button>
@@ -168,3 +169,4 @@
     </div>
   </div>
 </div>
+

@@ -10,7 +10,7 @@
       </a>
 
       <div class="home-tab">
-        <button class="btn btn-primary" [routerLink]="['/']" routerLinkActive="router-link-active">Home</button>
+        <button class="btn" [routerLink]="['/']" routerLinkActive="router-link-active">Home</button>
       </div>
     </div>
   </nav>
@@ -37,11 +37,11 @@
                 </div>
                 <!-- <span ng-show="emailForm.controls['email'].$touched && emailForm.controls['email'].$invalid">The Email is required.</span> -->
               </div>
-              <button type="button" (click)="checkEmail()" class="btn btn-primary"
+              <button type="button" (click)="checkEmail()" class="btn"
                 *ngIf="hideNext!='yes' && emailForm.controls['email'].valid ">Next</button>
             </form>
             <div class="row" *ngIf="SecondTestAttempt == 'yes'">
-              <button type="button" class="btn btn-primary mb-2" (click)="clearText()" style="width: auto;">Clear</button>
+              <button type="button" class="btn mb-2" (click)="clearText()" style="width: auto;">Clear</button>
               <div class=" justify-content-center second-attempt">
               <i class="fa fa-exclamation-triangle my-2" style="font-size:48px;color:rgb(246, 246, 15);" aria-hidden="true"></i>
               <br>
@@ -50,7 +50,7 @@
               Try contacting concerning authority.
             </div>
           </div>
-            <div class="row justify-content-center" *ngIf="registerUser == 'no'">
+            <div class="row justify-content-center" *ngIf="registerUser == 'no'" style="border-radius:25px; padding: 1rem; background:url('../../assets/images/register2.svg'); background-position: center; background-size: cover;background-repeat: no-repeat;">
               <div class="col-md-10 col-lg-6 col-xl-5 order-2 order-lg-1">
 
                 <p class="text-center h1 fw-bold mb-5 mx-1 mx-md-4 mt-4">Student Details</p>
@@ -218,7 +218,7 @@
                   </div>
 
                   <div class="d-grid my-3 my-lg-4">
-                    <button type="button btn-lg" (click)="addStudent()" class="btn btn-primary btn-block btn-lg"
+                    <button type="button btn-lg" (click)="addStudent()" class="btn btn-block btn-lg"
                       [disabled]="formValue.controls['firstName'].invalid || formValue.controls['middleName'].invalid || formValue.controls['lastName'].invalid || formValue.controls['dob'].invalid || formValue.controls['gender'].invalid || formValue.controls['mobile'].invalid|| formValue.controls['schoolname'].invalid || formValue.controls['city'].invalid">
                       Register</button>
                     <!-- data-bs-toggle="modal" data-bs-target="#updateModal" -->
@@ -270,8 +270,8 @@
               </div>
               <div class="col-md-10 col-lg-6 col-xl-7 d-flex align-items-center order-1 order-lg-2 register-image">
 
-                <img src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-registration/draw1.webp"
-                  class="img-fluid align-items-center" alt="Sample image">
+                <!-- <img src="../../assets/images/register.jpg"
+                  class="img-fluid align-items-center" alt="Sample image"> -->
                 <!-- <img src="../../assets/images/businessman-using-tablet.gif" class="img-fluid" alt="register"> -->
 
               </div>
@@ -320,7 +320,7 @@
                 <img src="../../assets/images/online-graduation.svg" class="img-fluid" alt="instructions">
 
               </div>
-              <div class="col-md-10 col-lg-6 col-xl-5 order-2 order-lg-2 test-instructions">
+              <div class="col-md-10 col-lg-6 col-xl-5 order-2 order-lg-2 test-instructions shadow">
 
                 <p class="text-center h2 fw-bold mb-2 mx-1 mx-md-4 mt-4">Test instructions / सूचना</p>
 
@@ -370,7 +370,7 @@
                   <span class="mx-2 mb-2">I have read all instructions carefully. Agree to continue.</span>
                 </div>
                 <div class="d-flex flex-row align-items-center justify-content-center mb-4">
-                  <button class="btn btn-md btn-block btn-primary align-items-center" *ngIf="isTermsAccepted"
+                  <button class="btn btn-md btn-block align-items-center" *ngIf="isTermsAccepted"
                     [routerLink]="['/test']" routerLinkActive="router-link-active">Start</button>
                 </div>
               </div>
