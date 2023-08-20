@@ -23,15 +23,15 @@ import { OwlOptions } from 'ngx-owl-carousel-o';
     trigger('flyInOut', [
       state('void', style({ opacity: 0 })),
       transition(':enter', [
-        style({ opacity: 0 }), 
-        animate('300ms ease-in', style({ opacity: 1 })), 
+        style({ opacity: 0 }),
+        animate('300ms ease-in', style({ opacity: 1 })),
       ]),
       transition(':leave', [
-        animate('100ms ease-out', style({ opacity: 0 })), 
+        animate('100ms ease-out', style({ opacity: 0 })),
       ])
     ])
   ],
-  
+
 })
 
 export class StudentComponent implements OnInit, AfterViewInit  {
@@ -55,6 +55,7 @@ export class StudentComponent implements OnInit, AfterViewInit  {
   navbarCollapsed = true;
   studentData: any;
   emailData: string[] = [];
+  studentDetails:any =[];
   public studentObj = new Student();
   showDescription = false;
   FormData: FormGroup | undefined;
@@ -107,7 +108,7 @@ export class StudentComponent implements OnInit, AfterViewInit  {
       },
     },
   }
-  
+
   ngOnInit(): void {
     // console.log("nav:" , this.isNavbarWhite);
     this.formValue = this.formBuilder.group({
@@ -140,9 +141,9 @@ export class StudentComponent implements OnInit, AfterViewInit  {
     this.isAtHeroSection();
     // this.showScrollButton = window.scrollY > 300;
   }
-  
+
     private updateNavbarBackground() {
-      console.log("Change NAVBAR!!!!!!!!!");;
+      // console.log("Change NAVBAR!!!!!!!!!");;
       const offset = window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop || 0;
       this.isNavbarWhite = offset > 40; // Adjust the value based on when you want the color change to occur
     }
@@ -157,7 +158,7 @@ export class StudentComponent implements OnInit, AfterViewInit  {
     else{
       this.showScrollButton=false;
     }
-    console.log(this.showScrollButton," scroll");
+    // console.log(this.showScrollButton," scroll");
     // If the user is in the hero section, return true, else false.
     return scrollPosition < offset + 50;
   }
@@ -165,7 +166,7 @@ export class StudentComponent implements OnInit, AfterViewInit  {
   toggleNavbarCollapse() {
     this.navbarCollapsed = !this.navbarCollapsed;
   }
-  
+
   itsHome() {
     this.homeStatus = 'active';
     this.aboutStatus = 'not-active';
@@ -272,9 +273,12 @@ export class StudentComponent implements OnInit, AfterViewInit  {
 
   getStudentsData() {
     this.api.getStudents().subscribe((res) => {
-      this.emailData = res.studentDetails;
+      // this.emailData = res.studentDetails;
       // console.log("result: ",res);
-      res.studentDetails.forEach((element: any) => {
+      for(const r in res){
+        this.studentDetails.push(res[r]);
+      }
+      this.studentDetails.forEach((element: any) => {
         this.emailData.push(element.email);
       });
       // console.log("Emails",this.studentData);

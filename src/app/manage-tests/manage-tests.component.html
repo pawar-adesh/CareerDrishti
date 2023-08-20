@@ -39,7 +39,7 @@
             <td>
               <button style="color: #fff;" data-bs-toggle="modal" data-bs-target="#updateQueModal" class="btn btn-info"
                 (click)="onEdit(que)">Edit</button>
-              <button style="color: #fff;" class="btn btn-danger mx-3" (click)="deleteQuestion(que)">Delete</button>
+              <button style="color: #fff;" class="btn btn-danger mx-3" (click)="deleteQuestion10(que)">Delete</button>
             </td>
           </tr>
         </tbody>
@@ -74,9 +74,11 @@
             <td>{{que.questionMarathi}}</td>
             <td>{{que.questionField}}</td>
             <td>
-              <button style="color: #fff;" data-bs-toggle="modal" data-bs-target="#updateQueModal" class="btn btn-info"
-                (click)="onEdit(que)">Edit</button>
-              <button style="color: #fff;" class="btn btn-danger mx-3" (click)="deleteQuestion(que)">Delete</button>
+              <button style="color: #fff;" (click)="onEdit(que)" data-bs-toggle="modal" data-bs-target="#updateQueModal" class="btn btn-info"
+              >Edit</button>
+              <!-- <button style="color: #fff;" (click)="onEdit(que)" class="btn btn-info"
+                >Edit</button> -->
+              <button style="color: #fff;" class="btn btn-danger mx-3" (click)="deleteQuestion12(que)">Delete</button>
             </td>
           </tr>
         </tbody>

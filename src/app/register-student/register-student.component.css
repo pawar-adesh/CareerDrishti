@@ -17,11 +17,11 @@
   font-style: italic;
 }
 .btn{
-  background-color: rgb(243, 112, 91); 
+  background-color: rgb(243, 112, 91);
   color: white;
 }
 .btn:hover{
-  background-color: white; 
+  background-color: white;
   color: rgb(243, 112, 91);
   border: 1px solid rgb(243, 112, 91);
 }
@@ -75,4 +75,9 @@
   padding: 20px;
   line-height: 1.2;
   font-size: 20px;
+}
+
+input[type="checkbox"]{
+  transform : scale(2);
+  margin-right: 0.5rem;
 }

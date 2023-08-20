@@ -135,13 +135,23 @@ export class TestComponent implements OnInit, CanComponentDeactivate {
       this.currentStd = res.standard;
       if (this.currentStd == "10th") {
         this.api.showQuestions10().subscribe((res) => {
-          this.questionData = arrayShuffle(res);
+          const tempQueData=[];
+          for(const r in res){
+            tempQueData.push(res[r]);
+          }
+          this.questionData = arrayShuffle(tempQueData);
+          // this.questionData = arrayShuffle(res);
           // console.log(res);
           this.spinner.hide();
         });
       } else if (this.currentStd == "12th") {
         this.api.showQuestions12().subscribe((res) => {
-          this.questionData = arrayShuffle(res);
+          const tempQueData=[];
+          for(const r in res){
+            tempQueData.push(res[r]);
+          }
+          this.questionData = arrayShuffle(tempQueData);
+          // this.questionData = arrayShuffle(res);
           // console.log(res);
           this.spinner.hide();
         });

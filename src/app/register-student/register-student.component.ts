@@ -23,19 +23,20 @@ export class RegisterStudentComponent implements OnInit {
   SecondTestAttempt = '';
   day = this.now.getDay();
   minDate = moment({
-    year: this.year - 100,
+    year: this.year - 50,
     month: this.month,
     day: this.day,
   }).format('YYYY-MM-DD');
-  maxDate = moment({
-    year: this.year,
-    month: this.month,
-    day: this.day - 2,
-  }).format('YYYY-MM-DD');
+  // maxDate = moment({
+  //   year: this.year,
+  //   month: this.month,
+  //   day: this.day - 2,
+  // }).format('YYYY-MM-DD');
+  maxDate="";
   formValue!: FormGroup;
   emailForm!: FormGroup;
   public studentObj = new Student();
-  allSchools: any;
+  allSchools: any = [];
   showForm: String = '';
   langContainer: String = '';
   hideNext: String = '';
@@ -44,6 +45,8 @@ export class RegisterStudentComponent implements OnInit {
   registerUser: string = '';
   isTermsAccepted!: boolean;
   emailVal:String="";
+  studentDetails:any=[];
+  schoolDetails:any=[];
 
   emailData: any = [];
   constructor(
@@ -51,7 +54,14 @@ export class RegisterStudentComponent implements OnInit {
     private api: ApiService,
     private router: Router,
     private spinner: NgxSpinnerService
-  ) {}
+  ) {
+    const currentDate = new Date();
+    const maxDate = new Date(currentDate);
+    maxDate.setFullYear(maxDate.getFullYear() - 8);
+    this.maxDate = maxDate.toISOString().split('T')[0];
+  }
+
+
   ngOnInit(): void {
     localStorage.clear();
     this.formValue = this.fb.group({
@@ -102,9 +112,13 @@ export class RegisterStudentComponent implements OnInit {
   }
   getStudentsData() {
     this.api.getStudents().subscribe((res) => {
-      this.emailData = res.studentDetails;
+      // this.emailData = res.studentDetails;
+      for(const r in res){
+        this.studentDetails.push(res[r]);
+      }
       // console.log('result: ', res);
-      res.studentDetails.forEach((element: any) => {
+      // res.studentDetails.forEach((element: any) => {
+      this.studentDetails.forEach((element: any) => {
         this.emailData.push(element.email);
       });
       // console.log("Emails",this.studentData);
@@ -138,7 +152,7 @@ export class RegisterStudentComponent implements OnInit {
         this.showForm = 'yes';
         this.spinner.hide();
     }
-    
+
     this.hideNext = 'yes';
   }
 
@@ -187,8 +201,11 @@ export class RegisterStudentComponent implements OnInit {
   }
   getSchools() {
     this.spinner.show();
-    this.api.getSchools().subscribe((r) => {
-      this.allSchools = r.schoolDetails;
+    this.api.getSchools().subscribe((res) => {
+      // this.allSchools = r.schoolDetails;
+      for(const r in res){
+        this.allSchools.push(res[r]);
+      }
       // console.log(this.allSchools);
       setTimeout(() => {
         this.spinner.hide();

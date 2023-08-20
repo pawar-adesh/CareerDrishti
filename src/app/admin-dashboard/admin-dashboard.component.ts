@@ -34,12 +34,13 @@ export class AdminDashboardComponent implements OnInit {
   enableQuestions: boolean = false;
   schools!: FormGroup;
   formValue!: FormGroup;
-  schoolData: any;
+  schoolData: any = [];
   schoolObj: School = new School();
   studObj: Student = new Student();
   studentData: any=[];
-  testData: any;
-  testBData: any;
+  testData: any = [];
+  testBData: any = [];
+  currentSchoolId = "";
   testDataObj: StudentTest = new StudentTest();
   testBDatObj: StudentTestB = new StudentTestB();
   constructor(
@@ -67,18 +68,23 @@ export class AdminDashboardComponent implements OnInit {
   }
 
   getSchools() {
+    this.schoolData=[];
     this.api.getSchools().subscribe((res) => {
-      this.schoolData = res.schoolDetails;
+      for(const r in res){
+        this.schoolData.push({ ...res[r], id:r});
+      }
+      // this.schoolData = res.schoolDetails;
       // console.log(res);
     });
   }
 
   getAllStduents() {
+    this.studentData=[];
     this.api.getStudents().subscribe((res) => {
       // this.studentData = res.studentDetails;
       for(const r in res){
         this.studentData.push(res[r]);
-        console.log(res[r]);
+        // console.log(res[r]);
       }
       // this.studentData = res;
       // console.log(res);
@@ -105,16 +111,25 @@ export class AdminDashboardComponent implements OnInit {
   // }
 
   getAllDetails() {
-    this.api.getTestDetails().subscribe((r) => {
-      this.testData = r.studentTestDetails;
+    this.testData=[];
+    this.api.getTestDetails().subscribe((res) => {
+      // this.testData = r.studentTestDetails;
+      for(const r in res){
+        this.testData.push({ ...res[r], id:r})
+      }
       // console.log(r);
     });
   }
 
   getTestBResults() {
-    this.api.getTestBDetails().subscribe((r) => {
-      this.testBData = r.studentTestDetails;
-      // console.log("testB ",r);
+    this.testBData=[];
+    this.api.getTestBDetails().subscribe((res) => {
+      // this.testBData = r.studentTestDetails;
+
+      for(const r in res){
+        this.testBData.push({ ...res[r], id:r})
+      }
+      // console.log("testB ",res);
     });
   }
 
@@ -131,12 +146,13 @@ export class AdminDashboardComponent implements OnInit {
     this.schoolObj.name = row.name;
     this.schools.controls['name'].setValue(row.name);
     this.schools.controls['city'].setValue(row.city);
+    this.currentSchoolId=row.id;
   }
 
   editSchool() {
     this.schoolObj.name = this.schools.value.name;
     this.schoolObj.city = this.schools.value.city;
-    this.api.updateSchool(this.schoolObj).subscribe((res) => {
+    this.api.updateSchool(this.schoolObj, this.currentSchoolId).subscribe((res) => {
       alert('Updated Successfully');
       let closeBtn = document.getElementById('close');
       closeBtn?.click();
@@ -147,7 +163,7 @@ export class AdminDashboardComponent implements OnInit {
   deleteSchool(row: any) {
     let clickedYes = confirm('Are you sure want to delete');
     if (clickedYes) {
-      this.api.deleteSchool(row.name).subscribe((res) => {
+      this.api.deleteSchool(row.id).subscribe((res) => {
         this.getSchools();
         alert('Deleted Successfully');
       });

@@ -36,9 +36,9 @@ export class AdminComponent implements OnInit {
   login() {
     // console.log(this.loginForm.value.username);
     this.api.GetAdminCreds().subscribe((res) => {
-      //console.log(res);
-      this.userId = res.adminCreds[0].username;
-      this.password = res.adminCreds[0].password;
+      // console.log(res);
+      this.userId = res['username'];
+      this.password = res['password'];
       // console.log(this.userId,this.password);
 
       if (

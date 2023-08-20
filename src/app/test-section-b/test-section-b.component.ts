@@ -14,7 +14,7 @@ import { NgxSpinnerService } from 'ngx-spinner';
   styleUrls: ['./test-section-b.component.css'],
 })
 export class TestSectionBComponent implements OnInit, CanComponentDeactivate {
-  questionBData!: any;
+  questionBData: any =[];
   currentUser: any;
   questionNumber: number = 0;
   isPrevDisabled: boolean = true;
@@ -79,7 +79,11 @@ export class TestSectionBComponent implements OnInit, CanComponentDeactivate {
     this.spinner.show();
 
     this.api.sectionBQuestions().subscribe((res) => {
-      this.questionBData = arrayShuffle(res.questionDetails);
+      // this.questionBData = arrayShuffle(res.questionDetails);
+      const questsionDetails=[];
+      for(const r in res){
+        this.questionBData.push(res[r]);
+      }
       // for(let q of res.questionDetails){
       //   console.log(q);
       // }

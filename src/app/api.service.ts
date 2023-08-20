@@ -8,15 +8,22 @@ import { Student } from './shared/student.model';
   providedIn: 'root',
 })
 export class ApiService {
-  public AdminApiUrl = 'http://careerdrishti-dev.us-east-1.elasticbeanstalk.com//api/Admin';
+  // public AdminApiUrl = 'http://careerdrishti-dev.us-east-1.elasticbeanstalk.com//api/Admin';
+  public AdminApiUrl = 'https://careerdrishti-api-default-rtdb.firebaseio.com/admin/';
   public QuestionUrl = 'http://careerdrishti-dev.us-east-1.elasticbeanstalk.com//api/Questions';
+  public Question10Url = 'https://careerdrishti-api-default-rtdb.firebaseio.com/Questions10/';
+  public Question12Url = 'https://careerdrishti-api-default-rtdb.firebaseio.com/Questions12/';
   public spHandlerUrl = 'http://careerdrishti-dev.us-east-1.elasticbeanstalk.com//api/spHandling';
   // public StudentUrl = 'http://careerdrishti-dev.us-east-1.elasticbeanstalk.com//api/Student';
   public StudentUrl = 'https://careerdrishti-api-default-rtdb.firebaseio.com/Student/';
-  public StudentTestUrl = 'http://careerdrishti-dev.us-east-1.elasticbeanstalk.com//api/StudentTest';
-  public StudentTestBUrl = 'http://careerdrishti-dev.us-east-1.elasticbeanstalk.com//api/StudentTestB';
-  public SchoolUrl = 'http://careerdrishti-dev.us-east-1.elasticbeanstalk.com//api/School';
-  public SectionBUrl = 'http://careerdrishti-dev.us-east-1.elasticbeanstalk.com//api/SectionB';
+  // public StudentTestUrl = 'http://careerdrishti-dev.us-east-1.elasticbeanstalk.com//api/StudentTest';
+  public StudentTestUrl = 'https://careerdrishti-api-default-rtdb.firebaseio.com/StudentTest/';
+  // public StudentTestBUrl = 'http://careerdrishti-dev.us-east-1.elasticbeanstalk.com//api/StudentTestB';
+  public StudentTestBUrl = 'https://careerdrishti-api-default-rtdb.firebaseio.com/StudentTestB/';
+  // public SchoolUrl = 'http://careerdrishti-dev.us-east-1.elasticbeanstalk.com//api/School';
+  public SchoolUrl = 'https://careerdrishti-api-default-rtdb.firebaseio.com/School/';
+  // public SectionBUrl = 'http://careerdrishti-dev.us-east-1.elasticbeanstalk.com//api/SectionB';
+  public SectionBUrl = 'https://careerdrishti-api-default-rtdb.firebaseio.com/SectionB/';
   constructor(private _http: HttpClient) {}
 
   // getStudentData(){
@@ -25,7 +32,7 @@ export class ApiService {
   //   }));
   // }
   GetAdminCreds() {
-    return this._http.get<any>(this.AdminApiUrl + '/admin').pipe(
+    return this._http.get<any>(this.AdminApiUrl + '.json').pipe(
       map((res: any) => {
         return res;
       })
@@ -33,31 +40,41 @@ export class ApiService {
   }
 
   showQuestions10() {
-    return this._http.get<any>(this.QuestionUrl + '/getAllQues').pipe(
+    return this._http.get<any>(this.Question10Url + '.json').pipe(
       map((res: any) => {
-        return res.questionDetails.filter((item: any) => item.std == '10');
+        // return res.questionDetails.filter((item: any) => item.std == '10');
+        return res;
       })
     );
   }
 
   showQuestions12() {
-    return this._http.get<any>(this.QuestionUrl + '/getAllQues').pipe(
+    return this._http.get<any>(this.Question12Url + '.json').pipe(
       map((res: any) => {
-        return res.questionDetails.filter((item: any) => item.std == '12');
+        // return res.questionDetails.filter((item: any) => item.std == '12');
+        return res;
       })
     );
   }
 
   sectionBQuestions() {
-    return this._http.get<any>(this.SectionBUrl + '/getAllQues').pipe(
+    return this._http.get<any>(this.SectionBUrl + '.json').pipe(
       map((res: any) => {
         return res;
       })
     );
   }
 
-  addQuestions(data: any) {
-    return this._http.post<any>(this.QuestionUrl + '/addQue', data).pipe(
+  addQuestions10(data: any) {
+    return this._http.post<any>(this.Question10Url + '.json', data).pipe(
+      map((res: any) => {
+        return res;
+      })
+    );
+  }
+
+  addQuestions12(data: any) {
+    return this._http.post<any>(this.Question12Url + '.json', data).pipe(
       map((res: any) => {
         return res;
       })
@@ -65,31 +82,55 @@ export class ApiService {
   }
 
   addQuestionsB(data: any) {
-    return this._http.post<any>(this.SectionBUrl + '/addQue', data).pipe(
+    return this._http.post<any>(this.SectionBUrl + '.json', data).pipe(
       map((res: any) => {
         return res;
       })
     );
   }
 
-  updateQuestion(data: any) {
-    return this._http.put<any>(this.QuestionUrl + '/updateQue', data).pipe(
+  updateQuestion10(data: any, id:any) {
+    return this._http.put<any>(this.Question10Url+ id + '/.json', data).pipe(
       map((res: any) => {
         return res;
       })
     );
   }
 
-  updateQuestionB(data: any) {
-    return this._http.put<any>(this.SectionBUrl + '/updateQue', data).pipe(
+  updateQuestion12(data: any, id:any) {
+    return this._http.put<any>(this.Question12Url+ id + '.json', data).pipe(
       map((res: any) => {
         return res;
       })
     );
   }
 
-  delQue(id: number) {
-    return this._http.delete<any>(this.QuestionUrl + '/delQue/' + id).pipe(
+  updateQuestionB(data: any, id:any) {
+    return this._http.put<any>(this.SectionBUrl+ id + '.json', data).pipe(
+      map((res: any) => {
+        return res;
+      })
+    );
+  }
+
+  // delQue(id: number) {
+  //   return this._http.delete<any>(this.QuestionUrl + '/delQue/' + id).pipe(
+  //     map((res: any) => {
+  //       return res;
+  //     })
+  //   );
+  // }
+
+  delQue10(id: number) {
+    return this._http.delete<any>(this.Question10Url + id + '/.json' ).pipe(
+      map((res: any) => {
+        return res;
+      })
+    );
+  }
+
+  delQue12(id: number) {
+    return this._http.delete<any>(this.Question12Url + id + '/.json').pipe(
       map((res: any) => {
         return res;
       })
@@ -97,7 +138,7 @@ export class ApiService {
   }
 
   delQueB(id: number) {
-    return this._http.delete<any>(this.SectionBUrl + '/delQue/' + id).pipe(
+    return this._http.delete<any>(this.SectionBUrl + id + '/.json').pipe(
       map((res: any) => {
         return res;
       })
@@ -115,7 +156,7 @@ export class ApiService {
   getStudents() {
     return this._http.get<any>(this.StudentUrl+'.json').pipe(
       map((res: any) => {
-        console.log(res);
+        // console.log(res);
         return res;
       })
     );
@@ -138,15 +179,20 @@ export class ApiService {
   }
 
   getStandard(email: String) {
-    return this._http.get<any>(this.StudentUrl).pipe(
+    return this._http.get<any>(this.StudentUrl+'.json').pipe(
       map((res: any) => {
-        return res.studentDetails.find((item: any) => item.email == email);
+        // return res.studentDetails.find((item: any) => item.email == email);
+        const studentDetails=[];
+        for(const r in res){
+          studentDetails.push(res[r]);
+        }
+        return studentDetails.find((item: any) => item.email == email);
       })
     );
   }
 
   getTestDetails() {
-    return this._http.get<any>(this.StudentTestUrl + '/testDetails').pipe(
+    return this._http.get<any>(this.StudentTestUrl + '.json').pipe(
       map((res: any) => {
         return res;
       })
@@ -154,9 +200,16 @@ export class ApiService {
   }
 
   checkStudentMarksExist(email: String) {
-    return this._http.get<any>(this.StudentTestUrl + '/testDetails').pipe(
+    return this._http.get<any>(this.StudentTestUrl + '.json').pipe(
       map((res: any) => {
-        const user = res.studentTestDetails.find(
+        const tempTestDetails = [];
+        for(const r in res){
+          tempTestDetails.push(res[r]);
+        }
+        // const user = res.studentTestDetails.find(
+        //   (item: any) => item.email === email
+        // );
+        const user = tempTestDetails.find(
           (item: any) => item.email === email
         );
         if (user) {
@@ -169,7 +222,7 @@ export class ApiService {
 
   addSectionBMarks(data: any) {
     return this._http
-      .post<any>(this.StudentTestBUrl + '/addTestMarks', data)
+      .post<any>(this.StudentTestBUrl + '.json', data)
       .pipe(
         map((res: any) => {
           return res;
@@ -178,7 +231,7 @@ export class ApiService {
   }
 
   getTestBDetails() {
-    return this._http.get<any>(this.StudentTestBUrl + '/testDetails').pipe(
+    return this._http.get<any>(this.StudentTestBUrl + '.json').pipe(
       map((res: any) => {
         return res;
       })
@@ -187,7 +240,7 @@ export class ApiService {
 
   addMarks(data: any) {
     return this._http
-      .post<any>(this.StudentTestUrl + '/addTestMarks', data)
+      .post<any>(this.StudentTestUrl + '.json', data)
       .pipe(
         map((res: any) => {
           return res;
@@ -196,30 +249,30 @@ export class ApiService {
   }
 
   addSchool(data: any) {
-    return this._http.post<any>(this.SchoolUrl + '/addSchool', data).pipe(
+    return this._http.post<any>(this.SchoolUrl + '.json', data).pipe(
       map((res: any) => {
         return res;
       })
     );
   }
 
-  deleteSchool(name: string) {
-    return this._http.delete(this.SchoolUrl + '/delSchool/' + name).pipe(
+  deleteSchool(id: any) {
+    return this._http.delete(this.SchoolUrl + id + '.json').pipe(
       map((res: any) => {
         return res;
       })
     );
   }
 
-  updateSchool(data: any) {
-    return this._http.put<any>(this.SchoolUrl + '/updateSchool', data).pipe(
+  updateSchool(data: any, id:any) {
+    return this._http.put<any>(this.SchoolUrl + id + '.json', data).pipe(
       map((res: any) => {
         return res;
       })
     );
   }
   getSchools() {
-    return this._http.get(this.SchoolUrl).pipe(
+    return this._http.get(this.SchoolUrl+'.json').pipe(
       map((res: any) => {
         return res;
       })
