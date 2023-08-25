@@ -159,49 +159,68 @@
     </div>
 
     <div *ngIf="enableTests">
-      <table class="table mt-3 table-bordered border-primary text-center table-striped">
+      <mat-form-field>
+      <mat-label>Filter by School</mat-label>
+         <mat-select [(ngModel)]="selectedSchool">
+      <mat-option value="all">All</mat-option>
+      <mat-option *ngFor="let school of schoolData" [value]="school.name">{{ school.name }}</mat-option>
+      </mat-select>
+    </mat-form-field>
+    <!-- <button mat-raised-button color="primary">Fetch</button> -->
+      <div *ngIf="filteredTestData.length==0">
+        <div class="alert alert-danger">
+          <h2>No records yet.</h2>
+        </div>
+      </div>
+      <div *ngIf="filteredTestData.length > 0">
+        <table class="table mt-3 table-bordered border-primary text-center table-striped">
 
-        <thead>
-          <tr>
-            <th scope="col">Student EmailID</th>
-            <th scope="col">Agriculture</th>
-            <th scope="col">Arts & Humanity</th>
-            <th scope="col">Commerce</th>
-            <th scope="col">Fine Arts</th>
-            <th scope="col">Health & Life sciences</th>
-            <th scope="col">Technical</th>
-            <th scope="col">Uniformed Services</th>
-            <th scope="col">Aptitude</th>
-            <th scope="col">Verbal</th>
-            <th scope="col">Spatial</th>
-            <th scope="col">Numerical</th>
-            <th scope="col">Action</th>
-          </tr>
-        </thead>
+          <thead>
+            <tr>
+              <th scope="col">Sr. No.</th>
+              <th scope="col">Student EmailID</th>
+              <th scope="col">School Name</th>
+              <th scope="col">Agriculture</th>
+              <th scope="col">Arts & Humanity</th>
+              <th scope="col">Commerce</th>
+              <th scope="col">Fine Arts</th>
+              <th scope="col">Health & Life sciences</th>
+              <th scope="col">Technical</th>
+              <th scope="col">Uniformed Services</th>
+              <th scope="col">Aptitude</th>
+              <th scope="col">Verbal</th>
+              <th scope="col">Spatial</th>
+              <th scope="col">Numerical</th>
+              <th scope="col">Action</th>
+            </tr>
+          </thead>
 
-        <tbody>
-          <tr *ngFor="let test of testData; let i = index;">
-            <!-- <tr *ngFor="let test of testData"> -->
-            <td>{{test.email}}</td>
-            <td>{{test.agriculture}}</td>
-            <td>{{test.artsHumanity}}</td>
-            <td>{{test.commerce}}</td>
-            <td>{{test.fineart}}</td>
-            <td>{{test.healthLifecycle}}</td>
-            <td>{{test.technical}}</td>
-            <td>{{test.uniformServ}} </td>
-            <td>{{testBData[i].aptitude}}</td>
-            <td>{{testBData[i].verbal}}</td>
-            <td>{{testBData[i].spatial}}</td>
-            <td>{{testBData[i].numerical}}</td>
-            <td #chartContainer>
-              <button class="btn btn-danger" (click)="generateReport(test, testBData[i])">
-                Generate Report
-              </button>
-            </td>
-          </tr>
-        </tbody>
-      </table>
+          <tbody>
+            <tr *ngFor="let test of filteredTestData; let i = index;">
+              <!-- <tr *ngFor="let test of testData"> -->
+              <td>{{i+1}}</td>
+              <td>{{test.email}}</td>
+              <td>{{test.school}}</td>
+              <td>{{test.agriculture}}</td>
+              <td>{{test.artsHumanity}}</td>
+              <td>{{test.commerce}}</td>
+              <td>{{test.fineart}}</td>
+              <td>{{test.healthLifecycle}}</td>
+              <td>{{test.technical}}</td>
+              <td>{{test.uniformServ}} </td>
+              <td>{{testBData[i].aptitude}}</td>
+              <td>{{testBData[i].verbal}}</td>
+              <td>{{testBData[i].spatial}}</td>
+              <td>{{testBData[i].numerical}}</td>
+              <td #chartContainer>
+                <button class="btn btn-danger" (click)="generateReport(test, testBData[i])">
+                  Generate Report
+                </button>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
     </div>
   </div>
 </div>

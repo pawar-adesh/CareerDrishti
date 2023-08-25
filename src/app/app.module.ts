@@ -25,6 +25,9 @@ import { TestCompleteComponent } from './test-complete/test-complete.component';
 import { MatDialogModule } from '@angular/material/dialog';
 import {MatCardModule} from '@angular/material/card';
 import { CarouselModule } from 'ngx-owl-carousel-o';
+import {MatFormFieldModule} from '@angular/material/form-field';
+import {MatSelectModule} from '@angular/material/select';
+import {MatButtonModule} from '@angular/material/button';
 // import { StudentDataComponent } from './student-data/student-data.component';
 // import { TestDetailsComponent } from './test-details/test-details.component';
 @NgModule({
@@ -58,7 +61,10 @@ import { CarouselModule } from 'ngx-owl-carousel-o';
     NgParticlesModule,
     MatDialogModule,
     MatCardModule,
-    CarouselModule
+    CarouselModule,
+    MatFormFieldModule,
+    MatSelectModule,
+    MatButtonModule
   ],
   providers: [TestGuard],
   bootstrap: [AppComponent],

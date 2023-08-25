@@ -7,6 +7,7 @@ import { Student } from '../shared/student.model';
 import { StudentTest } from '../shared/student-test.model';
 // import { jsPDF } from 'jspdf';
 import { Router } from '@angular/router';
+import {Title}  from '@angular/platform-browser'
 
 // import * as pdfMake from 'pdfmake/build/pdfmake.js';
 // import * as pdfFonts from 'pdfmake/build/vfs_fonts.js';
@@ -43,11 +44,16 @@ export class AdminDashboardComponent implements OnInit {
   currentSchoolId = "";
   testDataObj: StudentTest = new StudentTest();
   testBDatObj: StudentTestB = new StudentTestB();
+  selectedSchool:any;
+  // displayedColumns: string[] = ['Student Email', 'School name', 'Agriculture', 'Arts & Humanity','Commerce','Fine Arts','Health & Life sciences','Technical', 'Uniformed Services','Aptitude', 'Verbal', 'Spatial', 'Numerical', 'Action'];
+
   constructor(
     private fb: FormBuilder,
     private api: ApiService,
-    private router: Router
-  ) {}
+    private router: Router,
+    private titleService: Title) {
+      this.titleService.setTitle("Admin Dashboard | Careerdrishti");
+    }
 
   ngOnInit(): void {
     this.schools = this.fb.group({
@@ -114,9 +120,12 @@ export class AdminDashboardComponent implements OnInit {
     this.testData=[];
     this.api.getTestDetails().subscribe((res) => {
       // this.testData = r.studentTestDetails;
+      const tempArr=[];
       for(const r in res){
-        this.testData.push({ ...res[r], id:r})
+        this.testData.push({ ...res[r], id:r, school:this.studentData.find((item: any) => item.email == res[r].email).schoolname});
+        // console.log(this.studentData.find((item: any) => item.email == res[r].email));
       }
+      // console.log(this.testData);
       // console.log(r);
     });
   }
@@ -127,9 +136,10 @@ export class AdminDashboardComponent implements OnInit {
       // this.testBData = r.studentTestDetails;
 
       for(const r in res){
-        this.testBData.push({ ...res[r], id:r})
+        // this.testBData.push({ ...res[r], id:r})
+        this.testBData.push({ ...res[r], id:r, school:this.studentData.find((item: any) => item.email == res[r].email).schoolname});
       }
-      // console.log("testB ",res);
+      console.log("testB ",this.testBData);
     });
   }
 
@@ -262,5 +272,13 @@ export class AdminDashboardComponent implements OnInit {
     });
 
     return chartData;
+  }
+
+  get filteredTestData(): any[] {
+    console.log(this.testData.filter((item: { school: any; }) => item.school === this.selectedSchool));
+    if (this.selectedSchool == 'all' || !this.selectedSchool) {
+      return this.testData;
+    }
+    return this.testData.filter((item: { school: any; }) => item.school === this.selectedSchool);
   }
 }

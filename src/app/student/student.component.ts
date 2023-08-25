@@ -8,6 +8,7 @@ import { VideoPopupComponent } from './video-popup.component';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import * as AOS from 'aos';
 import { OwlOptions } from 'ngx-owl-carousel-o';
+import { Title } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-student',
@@ -81,8 +82,11 @@ export class StudentComponent implements OnInit, AfterViewInit  {
     private api: ApiService,
     private formBuilder: FormBuilder,
     private router: Router,
-    private dialog: MatDialog
-  ) {}
+    private dialog: MatDialog,
+    private titleService: Title
+  ) {
+    this.titleService.setTitle("Careerdrishti");
+  }
 
   customOptions: OwlOptions = {
     loop: true,

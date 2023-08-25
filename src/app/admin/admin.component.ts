@@ -8,6 +8,7 @@ import {
   Validators,
   FormControl,
 } from '@angular/forms';
+import { Title } from '@angular/platform-browser';
 @Component({
   selector: 'app-admin',
   templateUrl: './admin.component.html',
@@ -22,8 +23,10 @@ export class AdminComponent implements OnInit {
     private fb: FormBuilder,
     private http: HttpClient,
     private api: ApiService,
-    private router: Router
-  ) {}
+    private router: Router,
+    private titleService: Title) {
+      this.titleService.setTitle("Sign in - Admin | Careerdrishti");
+    }
 
   ngOnInit(): void {
     // console.log(this.api.GetAdminCreds);

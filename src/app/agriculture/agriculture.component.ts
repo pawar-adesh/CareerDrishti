@@ -1,7 +1,7 @@
 import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
-
+import { Title } from '@angular/platform-browser';
 @Component({
   selector: 'app-agriculture',
   templateUrl: './agriculture.component.html',
@@ -18,12 +18,13 @@ export class AgricultureComponent implements OnInit {
   videoUrl5: SafeResourceUrl | undefined;
   videoUrl6: SafeResourceUrl | undefined;
   videoUrl7: SafeResourceUrl | undefined;
-  constructor(private route: ActivatedRoute, private sanitizer: DomSanitizer) {
+  constructor(private route: ActivatedRoute, private sanitizer: DomSanitizer, private titleService: Title) {
     this.videoUrl = this.sanitizer.bypassSecurityTrustResourceUrl('assets/videos/agriculture.mp4');
     // this.videoUrl2 = this.sanitizer.bypassSecurityTrustResourceUrl('assets/videos/OpportunitiesinArt.mp4');
     this.videoUrl3 = this.sanitizer.bypassSecurityTrustResourceUrl('assets/videos/Commerce.mp4');
     this.videoUrl4 = this.sanitizer.bypassSecurityTrustResourceUrl('assets/videos/Fine Art.mp4');
     this.videoUrl7 = this.sanitizer.bypassSecurityTrustResourceUrl('assets/videos/UniformServices.mp4');
+    this.titleService.setTitle("Explore Fields | Careerdrishti");
   }
 
   ngOnInit(): void {

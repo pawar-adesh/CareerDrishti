@@ -10,6 +10,7 @@ import { ApiService } from '../api.service';
 import { Router } from '@angular/router';
 import { NgxSpinnerService } from 'ngx-spinner';
 import * as moment from 'moment';
+import { Title } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-register-student',
@@ -53,12 +54,14 @@ export class RegisterStudentComponent implements OnInit {
     private fb: FormBuilder,
     private api: ApiService,
     private router: Router,
-    private spinner: NgxSpinnerService
+    private spinner: NgxSpinnerService,
+    private titleService: Title
   ) {
     const currentDate = new Date();
     const maxDate = new Date(currentDate);
     maxDate.setFullYear(maxDate.getFullYear() - 8);
     this.maxDate = maxDate.toISOString().split('T')[0];
+    this.titleService.setTitle("Register Student | Careerdrishti");
   }
 
 
