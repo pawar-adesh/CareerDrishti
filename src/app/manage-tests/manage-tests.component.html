@@ -1,12 +1,12 @@
-<div class="container">
-  <div class="row my-3 p-2">
-    <div class="col-md-3 p-3 d-grid">
+<div class="questionContainer">
+  <div class="row my-3 py-2">
+    <div class="col-md-3 py-3 d-grid">
       <button class="btn btn-lg btn-warning text-white" (click)="manage10()">10<sup>th</sup></button>
     </div>
-    <div class="col-md-3 p-3 d-grid">
+    <div class="col-md-3 py-3 d-grid">
       <button class="btn btn-lg btn-warning text-white" (click)="manage12()">12<sup>th</sup></button>
     </div>
-    <div class="col-md-3 p-3 d-grid">
+    <div class="col-md-3 py-3 d-grid">
       <button class="btn btn-lg btn-warning text-white" (click)="manageApti()">Aptitude Test</button>
     </div>
 
@@ -37,9 +37,26 @@
             <td>{{que.questionMarathi}}</td>
             <td>{{que.questionField}}</td>
             <td>
-              <button style="color: #fff;" data-bs-toggle="modal" data-bs-target="#updateQueModal" class="btn btn-info"
-                (click)="onEdit(que)">Edit</button>
-              <button style="color: #fff;" class="btn btn-danger mx-3" (click)="deleteQuestion10(que)">Delete</button>
+              <table>
+                <tbody>
+                  <td>
+                    <button style="color: #fff;" data-bs-toggle="modal" data-bs-target="#updateQueModal" class="btn btn-info"
+                    (click)="onEdit(que)">Edit</button>
+                  </td>
+                    <td>
+                  <button style="color: #fff;" class="btn btn-danger mx-3" (click)="deleteQuestion10(que)">Delete</button>
+                    </td>
+                </tbody>
+              </table>
+              <!-- <div class="row">
+                <div class="col">
+                  <button style="color: #fff;" data-bs-toggle="modal" data-bs-target="#updateQueModal" class="btn btn-info"
+                    (click)="onEdit(que)">Edit</button>
+                </div>
+                <div class="col">
+                  <button style="color: #fff;" class="btn btn-danger mx-3" (click)="deleteQuestion10(que)">Delete</button>
+                </div>
+              </div> -->
             </td>
           </tr>
         </tbody>
@@ -74,11 +91,25 @@
             <td>{{que.questionMarathi}}</td>
             <td>{{que.questionField}}</td>
             <td>
-              <button style="color: #fff;" (click)="onEdit(que)" data-bs-toggle="modal" data-bs-target="#updateQueModal" class="btn btn-info"
-              >Edit</button>
+              <table>
+                <tbody>
+                  <td>
+                    <button style="color: #fff;" (click)="onEdit(que)" data-bs-toggle="modal" data-bs-target="#updateQueModal" class="btn btn-info"
+                    >Edit</button>
+                  </td>
+                    <td>
+                      <button style="color: #fff;" class="btn btn-danger mx-3" (click)="deleteQuestion12(que)">Delete</button>
+                    </td>
+                </tbody>
+              </table>
+              <!-- <div class="row">
+                <div class="col">
+                </div>
+                <div class="col">
+                </div>
+              </div> -->
               <!-- <button style="color: #fff;" (click)="onEdit(que)" class="btn btn-info"
                 >Edit</button> -->
-              <button style="color: #fff;" class="btn btn-danger mx-3" (click)="deleteQuestion12(que)">Delete</button>
             </td>
           </tr>
         </tbody>
@@ -121,9 +152,18 @@
             <td>{{que.answer}}</td>
             <td>{{que.queType}}</td>
             <td>
-              <button style="color: #fff;" data-bs-toggle="modal" data-bs-target="#updateAptiQueModal" class="btn btn-info"
-                (click)="onEditApti(que)">Edit</button>
-              <button style="color: #fff;" class="btn btn-danger mx-3" (click)="deleteAptiQuestion(que)">Delete</button>
+              <table>
+              <tbody>
+                <td>
+                  <button style="color: #fff;" data-bs-toggle="modal" data-bs-target="#updateAptiQueModal" class="btn btn-info"
+                    (click)="onEditApti(que)">Edit</button>
+                </td>
+                  <td>
+                    <button style="color: #fff;" class="btn btn-danger mx-3" (click)="deleteAptiQuestion(que)">Delete</button>
+                  </td>
+              </tbody>
+            </table>
+
             </td>
           </tr>
         </tbody>

@@ -20,7 +20,7 @@
       <div class="logo-icon ms-0">CareerDrishti</div>
       <div class="user-name text-center">user: {{currentUser}}</div>
     </div> -->
-    <div class="row mt-5 p-5 question-row border border-dark rounded shadow-lg">
+    <div class="row mt-5 p-3 question-row border border-dark rounded shadow-lg">
       <div class="question">
         <div class="py-1 h5">
           <p>
@@ -57,7 +57,7 @@
       </div>
     </div>
 
-    <div class="row mt-3 p-5 question-row border border-dark rounded shadow-lg">
+    <div class="row mt-4 p-3 question-row border border-dark rounded shadow-lg">
       <div class="question">
         <div class="py-1 h5">
           <p>
@@ -95,13 +95,13 @@
     </div>
     <div class="buttons-row mt-3 py-2">
       <div style="float: left;">
-        <button type="button" [disabled]="isPrevDisabled" (click)="prevQuestion()" class="btn btn-primary">&lt;&lt;
+        <button type="button" [disabled]="isPrevDisabled" (click)="prevQuestion()" class="btn btn-lg">&lt;&lt;
           prev</button>
       </div>
       <div style="float: right;">
-        <button type="button" *ngIf="isSubmit" (click)="submitTest()" class="btn btn-success" [routerLink]="['/testComplete']"
+        <button type="button" *ngIf="isSubmit" (click)="submitTest()" class="btn btn-lg btn-submit" [routerLink]="['/testComplete']"
           routerLinkActive="router-link-active" [disabled] = "isNextDisabled">Submit</button>
-        <button type="button" *ngIf="!isSubmit" (click)="changeQuestion()" class="btn btn-primary" [disabled] = "isNextDisabled">next
+        <button type="button" *ngIf="!isSubmit" (click)="changeQuestion()" class="btn btn-lg" [disabled] = "isNextDisabled">next
           &gt;&gt;</button>
       </div>
     </div>

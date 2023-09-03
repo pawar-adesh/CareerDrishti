@@ -102,3 +102,22 @@ header {
     word-spacing: 2px;
   }
 }
+.btn{
+  background-color: rgb(243, 112, 91);
+  color: white;
+}
+.btn:hover{
+  background-color: white;
+  color: rgb(243, 112, 91);
+  border: 1px solid rgb(243, 112, 91);
+}
+
+.btn-submit{
+  background-color: green;
+  color: white;
+}
+.btn-submit:hover{
+  background-color: white;
+  color: green;
+  border: 1px solid green;
+}

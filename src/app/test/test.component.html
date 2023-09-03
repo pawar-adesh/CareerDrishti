@@ -1,7 +1,7 @@
 <ngx-spinner bdColor="rgba(0, 0, 0, 0.8)" size="medium" color="#f3705b" type="square-jelly-box" [fullScreen]="true">
   <p style="color: white"> Loading... </p>
 </ngx-spinner>
-  
+
   <nav class="navbar navbar-expand-lg navbar-light header-nav sticky-top shadow-sm  bg-white">
     <div class="container-fluid">
       <a class="navbar-brand" href="#">
@@ -20,7 +20,7 @@
       <div class="logo-icon ms-0">CareerDrishti</div>
       <div class="user-name text-center">user: {{currentUser}}</div>
     </div> -->
-    <div class="row mt-5 p-5 question-row border border-dark rounded shadow-lg">
+    <div class="row mt-5 p-3 question-row border border-dark rounded shadow-lg">
       <div class="question">
         <div class="py-1 h5">
           <p>
@@ -42,7 +42,7 @@
       </div>
     </div>
 
-    <div class="row mt-3 p-5 question-row border border-dark rounded shadow-lg">
+    <div class="row mt-4 p-3 question-row border border-dark rounded shadow-lg">
       <div class="question">
         <div class="py-1 h5">
           <p>
@@ -50,7 +50,7 @@
               *</span>
           </p>
           <p>
-            &nbsp;&#40;{{questionData[questionNumber].questionMarathi}}<span class="text-danger">
+            &nbsp;&#40;{{questionData[questionNumber+1].questionMarathi}}<span class="text-danger">
               *</span>&#41;
           </p>
         </div>
@@ -65,13 +65,13 @@
     </div>
     <div class="buttons-row my-3 py-2">
       <div style="float: left;">
-        <button type="button" [disabled]="isPrevDisabled" (click)="prevQuestion()" class="btn btn-primary">&lt;&lt;
+        <button type="button" [disabled]="isPrevDisabled" (click)="prevQuestion()" class="btn btn-lg">&lt;&lt;
           prev</button>
       </div>
       <div style="float: right;">
-        <button type="button" *ngIf="isSubmit" (click)="submitTest()" class="btn btn-success"
+        <button type="button" *ngIf="isSubmit" (click)="submitTest()" class="btn btn-lg btn-submit "
           [routerLink]="['/instructions']" routerLinkActive="router-link-active" [disabled] = "isNextDisabled">Submit</button>
-        <button type="button" *ngIf="!isSubmit" (click)="changeQuestion()" class="btn btn-primary" [disabled] = "isNextDisabled">next
+        <button type="button" *ngIf="!isSubmit" (click)="changeQuestion()" class="btn btn-lg" [disabled] = "isNextDisabled">next
           &gt;&gt;</button>
       </div>
     </div>
@@ -163,7 +163,7 @@
       </div>
       <div class="modal-footer">
         <!-- <button id="close" type="button" class="btn btn-secondary" >Close</button> -->
-        <button class="btn btn-primary" type="submit" [disabled]="!form.valid" data-bs-dismiss="modal"
+        <button class="btn btn-lg" type="submit" [disabled]="!form.valid" data-bs-dismiss="modal"
           (click)="submit()">Next</button>
       </div>
     </div>
