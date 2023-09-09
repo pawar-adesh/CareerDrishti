@@ -170,12 +170,13 @@ export class ApiService {
     );
   }
 
-  delStudent(data: String) {
-    return this._http.delete<any>(this.StudentUrl + '/delStudent/' + data).pipe(
-      map((res: any) => {
-        return res;
-      })
-    );
+  delStudent(id: any) {
+      return this._http.delete<any>(this.StudentUrl+ id + '/.json' ).pipe(
+        map((res: any) => {
+          console.log(res);
+          return res;
+        })
+      );
   }
 
   getStandard(email: String) {

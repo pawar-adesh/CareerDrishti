@@ -7,7 +7,9 @@ import { Student } from '../shared/student.model';
 import { StudentTest } from '../shared/student-test.model';
 // import { jsPDF } from 'jspdf';
 import { Router } from '@angular/router';
-import {Title}  from '@angular/platform-browser'
+import {Title}  from '@angular/platform-browser';
+import { NgxSpinner, NgxSpinnerService } from 'ngx-spinner';
+import { MatDialog } from '@angular/material/dialog';
 
 // import * as pdfMake from 'pdfmake/build/pdfmake.js';
 // import * as pdfFonts from 'pdfmake/build/vfs_fonts.js';
@@ -18,6 +20,7 @@ import Chart from 'chart.js/auto';
 import * as XLSX from 'xlsx';
 import * as html2canvas from 'html2canvas';
 import { StudentTestB } from '../shared/sectionB.model';
+import { ConfirmationDialogComponent } from './confirmation-dialog.component';
 @Component({
   selector: 'app-admin-dashboard',
   templateUrl: './admin-dashboard.component.html',
@@ -28,7 +31,10 @@ export class AdminDashboardComponent implements OnInit {
   @ViewChild('chartCanvas')
   chartCanvas!: ElementRef;
   hide = false;
+  keepCheckDisable=0;
+  keepCheckDisable1=0;
   public chart: any;
+  s:any;
   enableSchools: boolean = false;
   enableStudents: boolean = false;
   enableTests: boolean = false;
@@ -39,18 +45,26 @@ export class AdminDashboardComponent implements OnInit {
   schoolObj: School = new School();
   studObj: Student = new Student();
   studentData: any=[];
+  studentData10: any = [];
+  studentData12: any = [];
   testData: any = [];
+  testData10: any;
+  testData12: any;
   testBData: any = [];
   currentSchoolId = "";
   testDataObj: StudentTest = new StudentTest();
   testBDatObj: StudentTestB = new StudentTestB();
   selectedSchool:any;
+  // selectedStd="both";
+  selectedSchoolA="all";
   // displayedColumns: string[] = ['Student Email', 'School name', 'Agriculture', 'Arts & Humanity','Commerce','Fine Arts','Health & Life sciences','Technical', 'Uniformed Services','Aptitude', 'Verbal', 'Spatial', 'Numerical', 'Action'];
 
   constructor(
     private fb: FormBuilder,
     private api: ApiService,
     private router: Router,
+    private spinner: NgxSpinnerService,
+    private dialog: MatDialog,
     private titleService: Title) {
       this.titleService.setTitle("Admin Dashboard | Careerdrishti");
     }
@@ -61,24 +75,39 @@ export class AdminDashboardComponent implements OnInit {
       city: [''],
     });
     this.getSchools();
+    this.studentData=[];
     this.getAllStduents();
     this.getAllDetails();
     this.getTestBResults();
   }
-  exportStudents(): void {
+
+  refreshTestResult(){
+    this.getAllDetails();
+    this.getTestBResults();
+  }
+  exportStudents10(): void {
     let element = document.getElementById('student-table');
     const ws: XLSX.WorkSheet = XLSX.utils.table_to_sheet(element);
     const wb: XLSX.WorkBook = XLSX.utils.book_new();
     XLSX.utils.book_append_sheet(wb, ws, 'Students');
-    XLSX.writeFile(wb, 'CareerDrishti-AdminDataSheet.xlsx');
+    XLSX.writeFile(wb, this.selectedSchoolA+'- 10th_Std.xlsx');
+  }
+  exportStudents12(): void {
+    let element = document.getElementById('student-table');
+    const ws: XLSX.WorkSheet = XLSX.utils.table_to_sheet(element);
+    const wb: XLSX.WorkBook = XLSX.utils.book_new();
+    XLSX.utils.book_append_sheet(wb, ws, 'Students');
+    XLSX.writeFile(wb, this.selectedSchoolA+'- 12th_Std.xlsx');
   }
 
   getSchools() {
     this.schoolData=[];
+    this.spinner.show();
     this.api.getSchools().subscribe((res) => {
       for(const r in res){
         this.schoolData.push({ ...res[r], id:r});
       }
+      this.spinner.hide();
       // this.schoolData = res.schoolDetails;
       // console.log(res);
     });
@@ -86,14 +115,20 @@ export class AdminDashboardComponent implements OnInit {
 
   getAllStduents() {
     this.studentData=[];
+    this.studentData10=[];
+    this.studentData12=[];
+    this.spinner.show();
     this.api.getStudents().subscribe((res) => {
       // this.studentData = res.studentDetails;
       for(const r in res){
-        this.studentData.push(res[r]);
+        this.studentData.push({ ...res[r], id:r});
         // console.log(res[r]);
       }
       // this.studentData = res;
       // console.log(res);
+      this.studentData10 = this.studentData.filter((item: { standard: any; }) => item.standard === "10th");
+      this.studentData12 = this.studentData.filter((item: { standard: any; }) => item.standard === "12th");
+      this.spinner.hide();
     });
     // this.api.getStudentData().subscribe(res=>{
     //   console.log("Getting response: ",res)
@@ -101,6 +136,72 @@ export class AdminDashboardComponent implements OnInit {
     //   console.log(error)
     // });
   }
+
+  toggleCheckBox(st:any){
+    if(st.selected){
+      this.keepCheckDisable+=1;
+    }
+    else{
+      this.keepCheckDisable-=1;
+    }
+    console.log(this.keepCheckDisable);
+  }
+
+  toggleCheckBox1(st:any){
+    if(st.selected){
+      this.keepCheckDisable1+=1;
+    }
+    else{
+      this.keepCheckDisable1-=1;
+    }
+    console.log(this.keepCheckDisable1);
+  }
+
+  deleteStudent10() {
+    const dialogRef = this.dialog.open(ConfirmationDialogComponent, {
+      data: {
+        message: 'Are you sure you want to delete the selected rows?',
+      },
+    });
+
+    dialogRef.afterClosed().subscribe((result) => {
+      if (result) {
+        const selectedItems = this.studentData10.filter((item:any) => item.selected);
+        selectedItems.forEach((element:any) => {
+          this.api.delStudent(element.id).subscribe(() => {
+            // alert('Deleted Successfully');
+            // this.getAllStduents();
+            this.studentData10 = this.studentData10.filter((item:any) => item.id != element.id);
+            // console.log(res);
+          });
+        });
+      }
+    });
+  }
+
+  deleteStudent12() {
+    const dialogRef = this.dialog.open(ConfirmationDialogComponent, {
+      data: {
+        message: 'Are you sure you want to delete the selected rows?',
+      },
+    });
+
+    dialogRef.afterClosed().subscribe((result) => {
+      if (result) {
+        const selectedItems = this.studentData12.filter((item:any) => item.selected);
+        selectedItems.forEach((element:any) => {
+          // console.log(element.email, element.id);
+          this.api.delStudent(element.id).subscribe(() => {
+            // alert('Deleted Successfully');
+            // this.getAllStduents();
+            this.studentData12 = this.studentData12.filter((item:any) => item.id != element.id);
+            // console.log(res);
+          });
+        });
+      }
+    });
+  }
+
   // deleteStudent(e:String){
   // let clickedYes = confirm("Are you sure want to delete");
   //   if(clickedYes){
@@ -118,29 +219,38 @@ export class AdminDashboardComponent implements OnInit {
 
   getAllDetails() {
     this.testData=[];
+    this.spinner.show();
     this.api.getTestDetails().subscribe((res) => {
       // this.testData = r.studentTestDetails;
-      const tempArr=[];
       for(const r in res){
-        this.testData.push({ ...res[r], id:r, school:this.studentData.find((item: any) => item.email == res[r].email).schoolname});
-        // console.log(this.studentData.find((item: any) => item.email == res[r].email));
+        console.log(res[r].email);
+        this.s= this.studentData.find((item: {email : any}) => item.email === res[r].email);
+        if(this.s!=undefined){
+        this.testData.push({ ...res[r], id:r, school:this.s.schoolname});
+        }
       }
-      // console.log(this.testData);
-      // console.log(r);
+      this.testData10 = this.testData.filter((item: { standard: any; }) => item.standard === "10th");
+      this.testData12 = this.testData.filter((item: { standard: any; }) => item.standard === "12th");
+      // console.log(this.testData10,"\n",this.testData12);
+      this.spinner.hide();
     });
+
   }
 
   getTestBResults() {
+    this.spinner.show();
     this.testBData=[];
     this.api.getTestBDetails().subscribe((res) => {
-      // this.testBData = r.studentTestDetails;
-
       for(const r in res){
-        // this.testBData.push({ ...res[r], id:r})
-        this.testBData.push({ ...res[r], id:r, school:this.studentData.find((item: any) => item.email == res[r].email).schoolname});
+        this.s= this.studentData.find((item: {email : any}) => item.email === res[r].email);
+        if(this.s!=undefined){
+        this.testBData.push({ ...res[r], id:r, school:this.s.schoolname});
+        }
       }
-      console.log("testB ",this.testBData);
+      this.spinner.hide();
+      // console.log("testB ",this.testBData);
     });
+
   }
 
   addSchool() {
@@ -274,11 +384,37 @@ export class AdminDashboardComponent implements OnInit {
     return chartData;
   }
 
-  get filteredTestData(): any[] {
-    console.log(this.testData.filter((item: { school: any; }) => item.school === this.selectedSchool));
+  get filteredTestData10(): any[] {
+    // console.log(this.testData10.filter((item: { school: any; }) => item.school === this.selectedSchool));
     if (this.selectedSchool == 'all' || !this.selectedSchool) {
-      return this.testData;
+      // this.testData10 = this.testData10.sort((a, b) => a["prop"] - b[prop]);
+      return this.testData10;
     }
-    return this.testData.filter((item: { school: any; }) => item.school === this.selectedSchool);
+    return this.testData10.filter((item: { school: any; }) => item.school === this.selectedSchool);
+  }
+
+  get filteredTestData12(): any[] {
+    // console.log(this.testData12.filter((item: { school: any; }) => item.school === this.selectedSchool));
+    if (this.selectedSchool == 'all' || !this.selectedSchool) {
+      // this.testData12 = this.testData12.sort((a, b) => a["prop"] - b[prop]);
+      return this.testData12;
+    }
+    return this.testData12.filter((item: { school: any; }) => item.school === this.selectedSchool);
+  }
+
+
+
+  get filteredStudentData10(): any[] {
+    if (this.selectedSchoolA == 'all' || !this.selectedSchoolA) {
+      return this.studentData10;
+    }
+    return this.studentData10.filter((item: { schoolname: any; }) => item.schoolname === this.selectedSchoolA);
+  }
+
+  get filteredStudentData12(): any[] {
+    if (this.selectedSchoolA == 'all' || !this.selectedSchoolA) {
+    return this.studentData12;
+  }
+  return this.studentData12.filter((item: { schoolname: any; }) => item.schoolname === this.selectedSchoolA);
   }
 }

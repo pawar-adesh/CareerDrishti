@@ -10,7 +10,7 @@
       </a>
 
       <div class="home-tab">
-        <button class="btn" [routerLink]="['/']" routerLinkActive="router-link-active">Home</button>
+        <button class="btn"> <a href="https://careerdrishti.com/" style="text-decoration: none; color:white;">Home</a></button>
       </div>
     </div>
   </nav>
@@ -28,7 +28,7 @@
                   </div>
                   <!-- <label for="email" class="form-label">Email address</label> -->
                   <input type="email" formControlName="email" class="form-control" id="email"
-                    aria-describedby="emailHelp" placeholder="Email address" [(ngModel)]="emailVal" email required>
+                    aria-describedby="emailHelp" placeholder="Email address" [(ngModel)]="emailVal" email required autocomplete="off">
                 </div>
                 <div
                   *ngIf="emailForm.controls['email'].invalid && (emailForm.controls['email'].dirty || emailForm.controls['email'].touched)"
@@ -63,7 +63,7 @@
                         <i class="fa fa-user"></i>
                       </div>
                       <input type="text" formControlName="firstName" class="form-control" id="fname" [required]="true"
-                        placeholder="First Name">
+                        placeholder="First Name" autocomplete="off">
                     </div>
                     <span class="text-danger"
                       *ngIf="formValue.controls['firstName'].invalid && (formValue.controls['firstName'].dirty || formValue.controls['firstName'].touched)">*First
@@ -76,7 +76,7 @@
                         <i class="fa fa-user"></i>
                       </div>
                       <input type="text" formControlName="middleName" class="form-control" id="mname"
-                        placeholder="Middle Name">
+                        placeholder="Middle Name" autocomplete="off">
                     </div>
                     <span class="text-danger"
                       *ngIf="formValue.controls['middleName'].invalid && (formValue.controls['middleName'].dirty || formValue.controls['middleName'].touched)">
@@ -89,7 +89,7 @@
                         <i class="fa fa-user"></i>
                       </div>
                       <input type="text" formControlName="lastName" class="form-control" id="lname"
-                        placeholder="Last Name">
+                        placeholder="Last Name" autocomplete="off">
                     </div>
                     <span class="text-danger"
                       *ngIf="formValue.controls['lastName'].invalid && (formValue.controls['lastName'].dirty || formValue.controls['lastName'].touched)">
@@ -192,7 +192,7 @@
                         <i class="fa fa-phone"></i>
                       </div>
                       <input type="text" formControlName="mobile" class="form-control" id="mobileNum" maxlength="10"
-                        minlength="10" placeholder="Mobile Number">
+                        minlength="10" placeholder="Mobile Number"  autocomplete="off">
                     </div>
                     <span class="text-danger"
                       *ngIf="formValue.controls['mobile'].invalid && (formValue.controls['mobile'].dirty || formValue.controls['mobile'].touched)">
@@ -209,7 +209,7 @@
                         <i class="fa fa-map-marker"></i>
                       </div>
                       <input type="text" formControlName="city" class="form-control" id="city"
-                        placeholder="City/Town/Village">
+                        placeholder="City/Town/Village"  autocomplete="off">
                     </div>
                     <span class="text-danger"
                       *ngIf="formValue.controls['city'].invalid && (formValue.controls['city'].dirty || formValue.controls['city'].touched)">

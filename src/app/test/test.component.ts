@@ -269,6 +269,7 @@ export class TestComponent implements OnInit, CanComponentDeactivate {
       this.totalMarks["Health & Life sciences"];
     this.studentTestObj.technical = this.totalMarks["Technical"];
     this.studentTestObj.uniformServ = this.totalMarks["Uniform Service"];
+    this.studentTestObj.standard = this.currentStd;
     this.api.addMarks(this.studentTestObj).subscribe((res) => {
       // console.log(res);
       // alert('submitted');

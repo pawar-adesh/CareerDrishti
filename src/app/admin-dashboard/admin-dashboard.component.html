@@ -1,3 +1,6 @@
+<ngx-spinner bdColor="rgba(0, 0, 0, 0.8)" size="medium" color="#f3705b" type="square-jelly-box" [fullScreen]="true">
+  <p style="color: white"> Loading... </p>
+</ngx-spinner>
 <div class="admin-body">
   <nav class="navbar navbar-light bg-primary">
     <div class="container-fluid">
@@ -121,106 +124,268 @@
     </div>
     <div *ngIf="enableStudents">
       <div class="row mt-3">
-        <button class="btn btn-success btn-lg" (click)="exportStudents()" style="width:fit-content; float:right;">Export
-          Data</button>
-        <table class="table mt-3 table-bordered border-primary text-center table-striped" id="student-table">
+        <mat-tab-group>
+          <mat-tab label="10th">
+            <mat-form-field style="width:fit-content;">
+              <mat-label>Filter by School</mat-label>
+              <mat-select [(ngModel)]="selectedSchoolA">
+                <mat-option value="all">All</mat-option>
+                <mat-option *ngFor="let school of schoolData" [value]="school.name">{{ school.name }}</mat-option>
+              </mat-select>
+            </mat-form-field>
+            <div class="row mx-auto">
+              <button class="btn export-btn btn-lg" (click)="exportStudents10()">Export
+                Data for School: {{selectedSchoolA}} </button>
+              </div>
 
-          <thead>
-            <tr>
-              <th scope="col">Student Name</th>
-              <th scope="col">Email ID</th>
-              <th scope="col">Gender</th>
-              <th scope="col">DOB</th>
-              <th scope="col">School Name</th>
-              <th scope="col">Standard</th>
-              <th scope="col">Mobile Number</th>
-              <th scope="col">City</th>
-              <!-- <th scope="col">Action</th> -->
-            </tr>
-          </thead>
+              <button class="btn btn-lg btn-danger my-3 me-0" (click)="deleteStudent10()" [disabled]="keepCheckDisable1===0"><i class="fa fa-trash text-white" aria-hidden="true"></i></button>
+              <button class="btn btn-lg btn-primary my-3 ms-1" (click)="getAllStduents()" [disabled]="keepCheckDisable1!=0"><i class="fa fa-refresh" aria-hidden="true"></i></button>
 
-          <tbody>
-            <tr *ngFor="let st of studentData">
-              <td>{{st.firstname + " " + st.middlename + " " + st.lastname}} </td>
-              <td>{{st.email}}</td>
-              <td>{{st.gender}}</td>
-              <td>{{st.dob}}</td>
-              <td>{{st.schoolname}}</td>
-              <td>{{st.standard}}</td>
-              <td>{{st.mobile}}</td>
-              <td>{{st.city}}</td>
-              <!-- <td>
-            <button style="color: #fff;" class="btn btn-danger mx-3" (click)="deleteStudent(st.email)">Delete</button>
-          </td> -->
-            </tr>
-          </tbody>
-        </table>
+              <div *ngIf="filteredStudentData10.length==0">
+              <div class="alert alert-danger">
+                <h2>The result is empty where school = {{selectedSchoolA}} and std = 10th.</h2>
+              </div>
+            </div>
+            <div *ngIf="filteredStudentData10.length>0">
+            <table class="table mt-3 table-bordered border-primary text-center table-striped" id="student-table">
+
+              <thead>
+                <tr>
+                  <th></th>
+                  <th scope="col">Student Name</th>
+                  <th scope="col">Email ID</th>
+                  <th scope="col">Gender</th>
+                  <th scope="col">DOB</th>
+                  <th scope="col">School Name</th>
+                  <th scope="col">Standard</th>
+                  <th scope="col">Mobile Number</th>
+                  <th scope="col">City</th>
+                  <!-- <th scope="col">Action</th> -->
+                </tr>
+              </thead>
+
+              <tbody>
+                <tr *ngFor="let st of filteredStudentData10">
+                  <td><input type="checkbox" [(ngModel)]="st.selected" (change)="toggleCheckBox1(st)"></td>
+                  <td>{{st.firstname + " " + st.middlename + " " + st.lastname}} </td>
+                  <td>{{st.email}}</td>
+                  <td>{{st.gender}}</td>
+                  <td>{{st.dob}}</td>
+                  <td>{{st.schoolname}}</td>
+                  <td>{{st.standard}}</td>
+                  <td>{{st.mobile}}</td>
+                  <td>{{st.city}}</td>
+                  <!-- <td>
+                <button style="color: #fff;" class="btn btn-danger mx-3" (click)="deleteStudent(st.email)">Delete</button>
+              </td> -->
+                </tr>
+              </tbody>
+            </table>
+            </div>
+          </mat-tab>
+
+          <mat-tab label="12th">
+            <mat-form-field style="width:fit-content;">
+            <mat-label>Filter by School</mat-label>
+            <mat-select [(ngModel)]="selectedSchoolA">
+              <mat-option value="all">All</mat-option>
+              <mat-option *ngFor="let school of schoolData" [value]="school.name">{{ school.name }}</mat-option>
+            </mat-select>
+          </mat-form-field>
+          <div class="row mx-auto">
+            <button class="btn export-btn btn-lg" (click)="exportStudents12()">Export
+              Data for School: {{selectedSchoolA}} </button>
+            </div>
+
+            <button class="btn btn-lg btn-danger my-2 me-0" (click)="deleteStudent12()" [disabled]="keepCheckDisable===0"><i class="fa fa-trash text-white" aria-hidden="true"></i></button>
+            <button class="btn btn-lg btn-primary my-3 ms-1" (click)="getAllStduents()" [disabled]="keepCheckDisable!=0"><i class="fa fa-refresh" aria-hidden="true"></i></button>
+
+            <div *ngIf="filteredStudentData12.length==0">
+              <div class="alert alert-danger">
+                <h2>The result is empty where school = {{selectedSchoolA}} and std = 12th.</h2>
+              </div>
+            </div>
+            <div *ngIf="filteredStudentData12.length>0">
+          <table class="table mt-3 table-bordered border-primary text-center table-striped" id="student-table">
+
+            <thead>
+              <tr>
+                <th></th>
+                <th scope="col">Student Name</th>
+                <th scope="col">Email ID</th>
+                <th scope="col">Gender</th>
+                <th scope="col">DOB</th>
+                <th scope="col">School Name</th>
+                <th scope="col">Standard</th>
+                <th scope="col">Mobile Number</th>
+                <th scope="col">City</th>
+                <!-- <th scope="col">Action</th> -->
+              </tr>
+            </thead>
+
+            <tbody>
+              <tr *ngFor="let st of filteredStudentData12">
+                <td><input type="checkbox" [(ngModel)]="st.selected" (change)="toggleCheckBox(st)"></td>
+                <td>{{st.firstname + " " + st.middlename + " " + st.lastname}} </td>
+                <td>{{st.email}}</td>
+                <td>{{st.gender}}</td>
+                <td>{{st.dob}}</td>
+                <td>{{st.schoolname}}</td>
+                <td>{{st.standard}}</td>
+                <td>{{st.mobile}}</td>
+                <td>{{st.city}}</td>
+                <!-- <td>
+              <button style="color: #fff;" class="btn btn-danger mx-3" (click)="deleteStudent(st.email)">Delete</button>
+            </td> -->
+              </tr>
+            </tbody>
+          </table>
+          </div>
+          </mat-tab>
+        </mat-tab-group>
       </div>
     </div>
 
     <div *ngIf="enableTests">
-      <mat-form-field>
-      <mat-label>Filter by School</mat-label>
-         <mat-select [(ngModel)]="selectedSchool">
-      <mat-option value="all">All</mat-option>
-      <mat-option *ngFor="let school of schoolData" [value]="school.name">{{ school.name }}</mat-option>
-      </mat-select>
-    </mat-form-field>
-    <!-- <button mat-raised-button color="primary">Fetch</button> -->
-      <div *ngIf="filteredTestData.length==0">
-        <div class="alert alert-danger">
-          <h2>No records yet.</h2>
-        </div>
-      </div>
-      <div *ngIf="filteredTestData.length > 0">
-        <table class="table mt-3 table-bordered border-primary text-center table-striped">
 
-          <thead>
-            <tr>
-              <th scope="col">Sr. No.</th>
-              <th scope="col">Student EmailID</th>
-              <th scope="col">School Name</th>
-              <th scope="col">Agriculture</th>
-              <th scope="col">Arts & Humanity</th>
-              <th scope="col">Commerce</th>
-              <th scope="col">Fine Arts</th>
-              <th scope="col">Health & Life sciences</th>
-              <th scope="col">Technical</th>
-              <th scope="col">Uniformed Services</th>
-              <th scope="col">Aptitude</th>
-              <th scope="col">Verbal</th>
-              <th scope="col">Spatial</th>
-              <th scope="col">Numerical</th>
-              <th scope="col">Action</th>
-            </tr>
-          </thead>
+      <mat-tab-group>
+        <mat-tab label="10th">
+          <mat-form-field class="my-3">
+            <mat-label>Filter by School</mat-label>
+               <mat-select [(ngModel)]="selectedSchool">
+            <mat-option value="all">All</mat-option>
+            <mat-option *ngFor="let school of schoolData" [value]="school.name">{{ school.name }}</mat-option>
+            </mat-select>
+          </mat-form-field>
+          <!-- <button mat-raised-button color="primary">Fetch</button> -->
+          <button class="btn btn-lg btn-primary mb-3 ms-3" (click)="refreshTestResult()"><i class="fa fa-refresh" aria-hidden="true"></i></button>
 
-          <tbody>
-            <tr *ngFor="let test of filteredTestData; let i = index;">
-              <!-- <tr *ngFor="let test of testData"> -->
-              <td>{{i+1}}</td>
-              <td>{{test.email}}</td>
-              <td>{{test.school}}</td>
-              <td>{{test.agriculture}}</td>
-              <td>{{test.artsHumanity}}</td>
-              <td>{{test.commerce}}</td>
-              <td>{{test.fineart}}</td>
-              <td>{{test.healthLifecycle}}</td>
-              <td>{{test.technical}}</td>
-              <td>{{test.uniformServ}} </td>
-              <td>{{testBData[i].aptitude}}</td>
-              <td>{{testBData[i].verbal}}</td>
-              <td>{{testBData[i].spatial}}</td>
-              <td>{{testBData[i].numerical}}</td>
-              <td #chartContainer>
-                <button class="btn btn-danger" (click)="generateReport(test, testBData[i])">
-                  Generate Report
-                </button>
-              </td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
+
+            <div *ngIf="filteredTestData10.length==0">
+              <div class="alert alert-danger">
+                <h2>The result is empty where school = {{selectedSchool}} and std = 10th.</h2>
+              </div>
+            </div>
+            <div *ngIf="filteredTestData10.length > 0">
+              <table class="table mt-3 table-bordered border-primary text-center table-striped">
+
+                <thead>
+                  <tr>
+                    <th scope="col">Sr. No.</th>
+                    <th scope="col">Student EmailID</th>
+                    <th scope="col">School Name</th>
+                    <th scope="col">Agriculture</th>
+                    <th scope="col">Arts & Humanity</th>
+                    <th scope="col">Commerce</th>
+                    <th scope="col">Fine Arts</th>
+                    <th scope="col">Health & Life sciences</th>
+                    <th scope="col">Technical</th>
+                    <th scope="col">Uniformed Services</th>
+                    <th scope="col">Aptitude</th>
+                    <th scope="col">Verbal</th>
+                    <th scope="col">Spatial</th>
+                    <th scope="col">Numerical</th>
+                    <th scope="col">Action</th>
+                  </tr>
+                </thead>
+
+                <tbody>
+                  <tr *ngFor="let test of filteredTestData10; let i = index;">
+                    <!-- <tr *ngFor="let test of testData"> -->
+                    <td>{{i+1}}</td>
+                    <td>{{test.email}}</td>
+                    <td>{{test.school}}</td>
+                    <td>{{test.agriculture}}</td>
+                    <td>{{test.artsHumanity}}</td>
+                    <td>{{test.commerce}}</td>
+                    <td>{{test.fineart}}</td>
+                    <td>{{test.healthLifecycle}}</td>
+                    <td>{{test.technical}}</td>
+                    <td>{{test.uniformServ}} </td>
+                    <td>{{testBData[i].aptitude}}</td>
+                    <td>{{testBData[i].verbal}}</td>
+                    <td>{{testBData[i].spatial}}</td>
+                    <td>{{testBData[i].numerical}}</td>
+                    <td #chartContainer>
+                      <button class="btn btn-danger" (click)="generateReport(test, testBData[i])">
+                        Generate Report
+                      </button>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+        </mat-tab>
+
+        <mat-tab label="12th">
+          <mat-form-field class="my-3">
+            <mat-label>Filter by School</mat-label>
+               <mat-select [(ngModel)]="selectedSchool">
+            <mat-option value="all">All</mat-option>
+            <mat-option *ngFor="let school of schoolData" [value]="school.name">{{ school.name }}</mat-option>
+            </mat-select>
+          </mat-form-field>
+          <!-- <button mat-raised-button color="primary">Fetch</button> -->
+            <button class="btn btn-lg btn-primary mb-3 ms-3" (click)="refreshTestResult()"><i class="fa fa-refresh" aria-hidden="true"></i></button>
+
+            <div *ngIf="filteredTestData12.length==0">
+              <div class="alert alert-danger">
+                <h2>The result is empty where school = {{selectedSchool}} and std = 12th.</h2>
+              </div>
+            </div>
+            <div *ngIf="filteredTestData12.length > 0">
+              <table class="table mt-3 table-bordered border-primary text-center table-striped">
+
+                <thead>
+                  <tr>
+                    <th scope="col">Sr. No.</th>
+                    <th scope="col">Student EmailID</th>
+                    <th scope="col">School Name</th>
+                    <th scope="col">Agriculture</th>
+                    <th scope="col">Arts & Humanity</th>
+                    <th scope="col">Commerce</th>
+                    <th scope="col">Fine Arts</th>
+                    <th scope="col">Health & Life sciences</th>
+                    <th scope="col">Technical</th>
+                    <th scope="col">Uniformed Services</th>
+                    <th scope="col">Aptitude</th>
+                    <th scope="col">Verbal</th>
+                    <th scope="col">Spatial</th>
+                    <th scope="col">Numerical</th>
+                    <th scope="col">Action</th>
+                  </tr>
+                </thead>
+
+                <tbody>
+                  <tr *ngFor="let test of filteredTestData12; let i = index;">
+                    <!-- <tr *ngFor="let test of testData"> -->
+                    <td>{{i+1}}</td>
+                    <td>{{test.email}}</td>
+                    <td>{{test.school}}</td>
+                    <td>{{test.agriculture}}</td>
+                    <td>{{test.artsHumanity}}</td>
+                    <td>{{test.commerce}}</td>
+                    <td>{{test.fineart}}</td>
+                    <td>{{test.healthLifecycle}}</td>
+                    <td>{{test.technical}}</td>
+                    <td>{{test.uniformServ}} </td>
+                    <td>{{testBData[i].aptitude}}</td>
+                    <td>{{testBData[i].verbal}}</td>
+                    <td>{{testBData[i].spatial}}</td>
+                    <td>{{testBData[i].numerical}}</td>
+                    <td #chartContainer>
+                      <button class="btn btn-danger" (click)="generateReport(test, testBData[i])">
+                        Generate Report
+                      </button>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+        </mat-tab>
+
+      </mat-tab-group>
+
     </div>
   </div>
 </div>

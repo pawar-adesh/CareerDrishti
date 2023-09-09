@@ -7,4 +7,5 @@ export class StudentTest  {
   healthLifecycle: number = 0;
   technical: number = 0;
   uniformServ: number = 0;
+  standard: string = "";
 }

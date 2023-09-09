@@ -69,13 +69,13 @@ export class GeneratePdfComponent implements OnInit {
     // this.totalMarks['UNIFORMED SERVICES'] = this.myObject.uniformServ;
     // console.log(this.totalMarks);
 
-    this.dataArray[0] = this.myObject.agriculture;
-    this.dataArray[1] = this.myObject.artsHumanity;
-    this.dataArray[2] = this.myObject.commerce;
-    this.dataArray[3] = this.myObject.fineart;
-    this.dataArray[4] = this.myObject.healthLifecycle;
-    this.dataArray[5] = this.myObject.technical;
-    this.dataArray[6] = this.myObject.uniformServ;
+    this.dataArray[0] = this.myObject.agriculture.toFixed(0);
+    this.dataArray[1] = this.myObject.artsHumanity.toFixed(0);
+    this.dataArray[2] = this.myObject.commerce.toFixed(0);
+    this.dataArray[3] = this.myObject.fineart.toFixed(0);
+    this.dataArray[4] = this.myObject.healthLifecycle.toFixed(0);
+    this.dataArray[5] = this.myObject.technical.toFixed(0);
+    this.dataArray[6] = this.myObject.uniformServ.toFixed(0);
 
     this.AptiTest = history.state.data.param2;
     // console.log(this.AptiTest);
