@@ -86,8 +86,8 @@ export class GeneratePdfComponent implements OnInit {
 
     this.dataArrayB[0] = this.AptiTest.aptitude;
     this.dataArrayB[1] = this.AptiTest.verbal;
-    this.dataArrayB[2] = this.AptiTest.numerical;
-    this.dataArrayB[3] = this.AptiTest.spatial;
+    this.dataArrayB[2] = this.AptiTest.spatial;
+    this.dataArrayB[3] = this.AptiTest.numerical;
 
     this.createChart();
     this.createChart2();

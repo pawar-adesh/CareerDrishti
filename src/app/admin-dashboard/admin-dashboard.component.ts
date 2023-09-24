@@ -144,7 +144,7 @@ export class AdminDashboardComponent implements OnInit {
     else{
       this.keepCheckDisable-=1;
     }
-    console.log(this.keepCheckDisable);
+    // console.log(this.keepCheckDisable);
   }
 
   toggleCheckBox1(st:any){
@@ -154,7 +154,7 @@ export class AdminDashboardComponent implements OnInit {
     else{
       this.keepCheckDisable1-=1;
     }
-    console.log(this.keepCheckDisable1);
+    // console.log(this.keepCheckDisable1);
   }
 
   deleteStudent10() {
@@ -223,7 +223,7 @@ export class AdminDashboardComponent implements OnInit {
     this.api.getTestDetails().subscribe((res) => {
       // this.testData = r.studentTestDetails;
       for(const r in res){
-        console.log(res[r].email);
+        // console.log(res[r].email);
         this.s= this.studentData.find((item: {email : any}) => item.email === res[r].email);
         if(this.s!=undefined){
         this.testData.push({ ...res[r], id:r, school:this.s.schoolname});

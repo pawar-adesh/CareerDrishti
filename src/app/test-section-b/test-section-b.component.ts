@@ -80,14 +80,15 @@ export class TestSectionBComponent implements OnInit, CanComponentDeactivate {
 
     this.api.sectionBQuestions().subscribe((res) => {
       // this.questionBData = arrayShuffle(res.questionDetails);
-      const questsionDetails=[];
+      const questsionDetails: any[]=[];
       for(const r in res){
-        this.questionBData.push(res[r]);
+        questsionDetails.push(res[r]);
       }
       // for(let q of res.questionDetails){
       //   console.log(q);
       // }
       // console.log(res);
+      this.questionBData = arrayShuffle(questsionDetails);
       this.spinner.hide();
     });
   }
