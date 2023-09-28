@@ -78,7 +78,7 @@ export class GeneratePdfComponent implements OnInit {
     this.dataArray[6] = this.myObject.uniformServ.toFixed(0);
 
     this.AptiTest = history.state.data.param2;
-    // console.log(this.AptiTest);
+    console.log(this.AptiTest);
     // this.aptiMarks['LOGICAL APTITUDE'] = this.AptiTest.aptitude;
     // this.aptiMarks['VERBAL APTITUDE'] = this.AptiTest.verbal;
     // this.aptiMarks['NUMERICAL APTITUDE'] = this.AptiTest.numerical;

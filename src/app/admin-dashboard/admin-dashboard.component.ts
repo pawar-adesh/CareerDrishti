@@ -248,7 +248,7 @@ export class AdminDashboardComponent implements OnInit {
         }
       }
       this.spinner.hide();
-      // console.log("testB ",this.testBData);
+      console.log("testB ",this.testBData);
     });
 
   }

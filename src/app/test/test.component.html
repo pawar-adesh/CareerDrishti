@@ -65,14 +65,16 @@
     </div>
     <div class="buttons-row my-3 py-2">
       <div style="float: left;">
-        <button type="button" [disabled]="isPrevDisabled" (click)="prevQuestion()" class="btn btn-lg">&lt;&lt;
-          prev</button>
+        <!-- <button type="button" [disabled]="isPrevDisabled" (click)="prevQuestion()" class="btn btn-lg">&lt;&lt;
+          prev</button> -->
       </div>
       <div style="float: right;">
         <button type="button" *ngIf="isSubmit" (click)="submitTest()" class="btn btn-lg btn-submit "
           [routerLink]="['/instructions']" routerLinkActive="router-link-active" [disabled] = "isNextDisabled">Submit</button>
-        <button type="button" *ngIf="!isSubmit" (click)="changeQuestion()" class="btn btn-lg" [disabled] = "isNextDisabled">next
-          &gt;&gt;</button>
+        <button type="button" *ngIf="!isSubmit" (click)="changeQuestion()" class="btn btn-lg" [disabled] = "isNextDisabled">
+          next <i class="fa fa-solid fa-chevron-right"></i>
+          <!-- &gt;&gt; -->
+        </button>
       </div>
     </div>
   </div>

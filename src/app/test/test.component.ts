@@ -35,7 +35,7 @@ export class TestComponent implements OnInit, CanComponentDeactivate {
   options!: any[];
   marksToQuestion: { [key: string]: number[] } = {};
   isSubmit: boolean = false;
-  isPrevDisabled: boolean = true;
+  // isPrevDisabled: boolean = true;
   isNextDisabled: boolean = true;
   totalMarks: { [key: string]: number } = {
     Agriculture: 0,
@@ -208,17 +208,17 @@ export class TestComponent implements OnInit, CanComponentDeactivate {
     // console.log("question solved: ",this.questionSolved, queNum);
   }
 
-  prevQuestion() {
-    if (this.questionNumber == 0) {
-      this.isPrevDisabled = true;
-    } else {
-      this.questionNumber -= 2;
-      // (document.querySelector('input[name="option"]:checked') as HTMLInputElement).checked = true;
-    }
-  }
+  // prevQuestion() {
+  //   if (this.questionNumber == 0) {
+  //     this.isPrevDisabled = true;
+  //   } else {
+  //     this.questionNumber -= 2;
+  //     // (document.querySelector('input[name="option"]:checked') as HTMLInputElement).checked = true;
+  //   }
+  // }
   changeQuestion() {
     if (this.questionNumber < this.questionData.length - 2) {
-      this.isPrevDisabled = false;
+      // this.isPrevDisabled = false;
       this.isNextDisabled = true;
       this.questionNumber += 2;
       (

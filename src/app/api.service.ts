@@ -24,6 +24,8 @@ export class ApiService {
   public SchoolUrl = 'https://careerdrishti-api-default-rtdb.firebaseio.com/School/';
   // public SectionBUrl = 'http://careerdrishti-dev.us-east-1.elasticbeanstalk.com//api/SectionB';
   public SectionBUrl = 'https://careerdrishti-api-default-rtdb.firebaseio.com/SectionB/';
+
+  public SpatialQueUrl = 'https://careerdrishti-api-default-rtdb.firebaseio.com/spatialQuestion/';
   constructor(private _http: HttpClient) {}
 
   // getStudentData(){
@@ -237,6 +239,14 @@ export class ApiService {
         return res;
       })
     );
+  }
+
+  getSpatialQuestions(){
+    return this._http.get<any>(this.SpatialQueUrl + '.json').pipe(
+      map((res:any) => {
+        return res;
+      })
+    )
   }
 
   addMarks(data: any) {

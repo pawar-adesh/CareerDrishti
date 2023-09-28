@@ -20,6 +20,7 @@
       <div class="logo-icon ms-0">CareerDrishti</div>
       <div class="user-name text-center">user: {{currentUser}}</div>
     </div> -->
+    <div *ngIf="!isSpatial">
     <div class="row mt-5 p-3 question-row border border-dark rounded shadow-lg">
       <div class="question">
         <div class="py-1 h5">
@@ -93,16 +94,58 @@
         </div>
       </div>
     </div>
+  </div>
+
+  <div *ngIf="isSpatial">
+      <div class="row mt-5 p-3 question-row border border-dark rounded shadow-lg">
+      <div class="question">
+        <div class="py-1 h5">
+          <p>
+            {{questionNumber+1}}.&nbsp;{{spatialQuestions[spatialIndex].questionStmt}}<span class="text-danger">
+              *</span>
+            </p>
+
+          <div class="row spatial-que-image p-2 mt-1 justify-content-center text-center ">
+            <img [src]="spatialQuestions[spatialIndex].imageUrl" alt="">
+          </div>
+        </div>
+        <div class="ml-md-3 ml-sm-3 pl-md-5 pt-sm-0 pt-3" id="options">
+          <label class="options">A
+            <input type="radio" name="option" id="optionButton"
+              (click)="onSelect('Spatial','A', questionNumber)">
+            <span class="checkmark"></span>
+          </label>
+          <label class="options">B
+            <input type="radio" name="option" id="optionButton"
+              (click)="onSelect('Spatial','B' , questionNumber)">
+            <span class="checkmark"></span>
+          </label>
+          <label class="options">C
+            <input type="radio" name="option" id="optionButton"
+              (click)="onSelect('Spatial','C' , questionNumber)">
+            <span class="checkmark"></span>
+          </label>
+          <label class="options">D
+            <input type="radio" name="option" id="optionButton"
+              (click)="onSelect('Spatial','D' , questionNumber)">
+            <span class="checkmark"></span>
+          </label>
+        </div>
+      </div>
+      </div>
+    </div>
     <div class="buttons-row mt-3 py-2">
       <div style="float: left;">
-        <button type="button" [disabled]="isPrevDisabled" (click)="prevQuestion()" class="btn btn-lg">&lt;&lt;
-          prev</button>
+        <!-- <button type="button" [disabled]="isPrevDisabled" (click)="prevQuestion()" class="btn btn-lg">&lt;&lt;
+          prev</button> -->
       </div>
       <div style="float: right;">
         <button type="button" *ngIf="isSubmit" (click)="submitTest()" class="btn btn-lg btn-submit" [routerLink]="['/testComplete']"
           routerLinkActive="router-link-active" [disabled] = "isNextDisabled">Submit</button>
-        <button type="button" *ngIf="!isSubmit" (click)="changeQuestion()" class="btn btn-lg" [disabled] = "isNextDisabled">next
-          &gt;&gt;</button>
+        <button type="button" *ngIf="!isSubmit" (click)="changeQuestion()" class="btn btn-lg" [disabled] = "isNextDisabled">
+          <!-- next&gt;&gt; -->
+          next <i class="fa fa-solid fa-chevron-right"></i>
+        </button>
       </div>
     </div>
   </div>
